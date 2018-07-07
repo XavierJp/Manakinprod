@@ -1,0 +1,188 @@
+@font-face {
+  font-family: 'Minimal';
+  src: url('../resources/fonts/minimal.otf') format('otf');
+  font-weight: 'normal';
+}
+
+@font-face {
+  font-family: 'Helvetica-Light';
+  src: url('../resources/fonts/Helvetica-Light.otf') format('otf');
+  font-weight: 'normal';
+}
+
+.home {
+  overflow: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Helvetica-Light';
+  font-size: 21px;
+  color: #43365b;
+  font-weight:300;
+  
+  a {
+    color: #43365b;
+  }
+  a:hover {
+    color: #000;
+  }
+  
+  .separator {
+    color: #ead94c;
+    font-weight: 500;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .menu {
+    font-family: 'Minimal';
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 30px 0;
+    text-transform: uppercase;
+
+    img {
+      height: 200px;
+      z-index: 2;
+    }
+
+    div {
+      z-index: 0;
+      font-size: 9rem;
+      margin-left: -30px;
+      margin-top: 25px;
+    }
+  }
+
+  .artists {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+
+    > div {
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+
+      .artist-name {
+        text-align: center
+      }
+    }
+
+    .separator {
+      margin-right: 20px;
+    }
+  }
+
+  .team {
+    display: flex;
+    flex-direction: row;
+    margin: 30px 0;
+    font-size: 1.2rem;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      margin: 0 20px;
+    }
+
+    > div:first-of-type {
+      text-align: right;
+    }
+
+    > div:last-of-type {
+      text-align: left;
+    }
+  }
+
+  .newsletter {
+    text-transform: uppercase;
+    margin: 20px 0;
+  }
+
+  .summary {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+
+    > div:first-of-type {
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    .separator {
+      margin: 0 20px;
+    }
+  }
+
+  @media (min-width: 1px) and (max-width: 800px)
+  {
+    .home {
+      justify-content: baseline;
+    }
+
+
+    .menu {
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+
+      img {
+        height: 90px;
+      }
+
+      div {
+        font-size: 4rem;
+        margin: 10px -15px 0;
+      }
+    }
+
+    .artists {
+      text-transform: uppercase;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+
+      > div {
+        margin: 5px 0;
+      }
+
+      .separator {
+        display: none;
+      }
+    }
+
+    .team {
+      flex-direction: column;
+      margin: 20px 0;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0;
+      }
+
+      > div:first-of-type {
+        text-align: center;
+      }
+
+      > div:last-of-type {
+        text-align: center;
+      }
+    }
+
+    .summary {
+      flex-direction: column;
+      margin: 20px 20px 50px 20px;
+      text-align: center;
+
+      .separator {
+        margin: 10px 0;
+      }
+    }
+  }
+}
