@@ -68,7 +68,7 @@
       margin: 0 10px;
 
       .artist-name {
-        text-align: center
+        text-align: center;
       }
     }
 
@@ -86,11 +86,12 @@
     > div {
       display: flex;
       flex-direction: column;
-      margin: 0 20px;
+      padding: 0px 20px 10px 20px;
     }
 
     > div:first-of-type {
       text-align: right;
+      border-right: 1px solid #ead94c;
     }
 
     > div:last-of-type {
@@ -168,6 +169,7 @@
 
       > div:first-of-type {
         text-align: center;
+        border:none;
       }
 
       > div:last-of-type {

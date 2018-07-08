@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import logo_manakin from '../resources/logo_manakin.png';
 import styles from './styles.scss';
 import LinkUnderlined from '../components/linkUnderlined';
+import TextInput from '../components/textInput';
 
 const artists = [
   {name:'Jonas Chéreau', link:'https://www.jonaschereau.org/'},
@@ -45,6 +46,7 @@ export default () =>
     </div>
     <div className="newsletter" style={{display:'none'}}>
       Newsletter
+      <TextInput />
     </div>
     <div className="summary">
       <div>Plateforme de production</div>
