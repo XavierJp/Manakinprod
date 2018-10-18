@@ -6,7 +6,9 @@ class LinkUnderlined extends React.Component {
   static defaultProps= {
     label: PropTypes.string.isRequired,
     isEnabled: PropTypes.bool,
-    link: PropTypes.string.isRequired,
+    targetPath: PropTypes.string,
+    onClick: PropTypes.func,
+    style: PropTypes.object,
   }
 
   mouseEnter = () => {
@@ -34,15 +36,22 @@ class LinkUnderlined extends React.Component {
   }
   
   render() {
-    const { label, link } = this.props;
+    const { label, targetPath, onClick, style } = this.props;
+
     
     return (
-      <div  style={styles} 
+      <div  style={{...styles, ...style}}
         className="link-underlined" 
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}
+        onClick={onClick}
         >
-        <a className="label" href={link} target="_blank">{label}</a>
+        { !!targetPath && (
+          <a className="label" href={targetPath} target="_blank">{label}</a>
+        )}
+        { !targetPath && (
+          <div className="label">{label}</div>
+        )}
         <div className="underline" ref={el=>this.underline = el}></div>
       </div>
     );

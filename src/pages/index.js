@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import logo_manakin from '../resources/logo_manakin.png';
 import styles from './styles.scss';
-import LinkUnderlined from '../components/linkUnderlined';
-import TextInput from '../components/textInput';
+import LinkUnderlined from '../uiComponents/linkUnderlined';
+import Newsletter from '../components/newsletter';
 
 const artists = [
   {name:'Jonas Chéreau', link:'https://www.jonaschereau.org/'},
@@ -18,7 +18,6 @@ export default () =>
       <img
       alt="MANAKIN PRODUCTION"
       src={logo_manakin}/>
-      <div>Manakin</div>
     </div>
     <div className="artists">
       {artists.map((artist, index)=>
@@ -29,7 +28,7 @@ export default () =>
           <LinkUnderlined 
             className="artist-name"
             label={artist.name}
-            link={artist.link}
+            targetPath={artist.link}
           />
         </div>
       )}
@@ -44,13 +43,11 @@ export default () =>
       <a href="mailto:leslie@manakinprod.fr">leslie@manakinprod.fr</a>
     </div>
     </div>
-    <div className="newsletter" style={{display:'none'}}>
-      Newsletter
-      <TextInput />
-    </div>
+    <Newsletter />
     <div className="summary">
       <div>Plateforme de production</div>
       <div className="separator">/</div>
       <div>MANAKIN part du constat que les spectacles de demain ne sont pas encore nés aujourd'hui.</div>
     </div>
+    <div className="adress">15 - 27 rue Moussorgski Paris XVIII</div>
   </div>
