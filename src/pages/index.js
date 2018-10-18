@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logo_manakin from '../resources/logo_manakin.png';
+import logo_manakin from '../resources/logo_centered.png';
 import styles from './styles.scss';
 import LinkUnderlined from '../uiComponents/linkUnderlined';
 import Newsletter from '../components/newsletter';
@@ -14,40 +14,57 @@ const artists = [
 
 export default () => 
   <div styles={styles} className="home">
-    <div className="menu">
+    <div className="logo">
       <img
       alt="MANAKIN PRODUCTION"
       src={logo_manakin}/>
+        <p>MANAKIN <span className="separator">&#x2022;</span> <span className="bracket"> plateforme de production </span><br />
+        Lauren Boyer & Leslie Perrin<br />
+        Paris 18e<br />
+        </p>
     </div>
-    <div className="artists">
+    <div className="main-container">
+    <menu>
+      <div>AGENDA</div>
+    <div className="artists-menu">
       {artists.map((artist, index)=>
-        <div key={index}>
-          {index > 0 && (
-            <div className="separator">/</div>
-          )}
-          <LinkUnderlined 
-            className="artist-name"
-            label={artist.name}
-            targetPath={artist.link}
-          />
-        </div>
-      )}
-    </div>      
-    <div className="team">
+        <LinkUnderlined 
+        className="artist-name"
+        label={artist.name}
+        targetPath={artist.link}
+        />
+        )}
+    </div> 
     <div>
-      <div>Lauren Boyer</div>
-      <a href="mailto:lauren@manakinprod.fr">lauren@manakinprod.fr</a>
+      <div>CONTACT / EN SAVOIR +</div>
+      <div>SOUTENIR MANAKIN</div>
     </div>
-    <div>
-      <div>Leslie Perrin</div>
-      <a href="mailto:leslie@manakinprod.fr">leslie@manakinprod.fr</a>
-    </div>
-    </div>
-    <Newsletter />
+    <div>&#x261e; NEWSLETTER</div>
+    {/* <Newsletter /> */}
+
+    </menu>
+
     <div className="summary">
-      <div>Plateforme de production</div>
-      <div className="separator">/</div>
-      <div>MANAKIN part du constat que les spectacles de demain ne sont pas encore nés aujourd'hui.</div>
-    </div>
-    <div className="adress">15 - 27 rue Moussorgski Paris XVIII</div>
+      <p>
+        MANAKIN est une <span className="bracket"> plateforme de
+        production </span> co-fondée par <span className="bracket"> Lauren Boyer et Leslie Perrin </span> pour co-construire et développer
+        des projets artistiques originaux
+        avec
+      </p>
+      <div className="artists">
+        {artists.map((artist, index)=>
+          <div key={index}>
+            <LinkUnderlined 
+              className="artist-name"
+              label={artist.name}
+              targetPath={artist.link}
+              />
+              {index < artists.length - 1 && (
+                <div className="separator">&#x2022;</div>
+              )}
+          </div>
+        )}
+      </div>
+    </div>      
   </div>
+</div>
