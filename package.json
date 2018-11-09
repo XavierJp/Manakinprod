@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "description": "Gatsby hello world starter",
+  "name": "Manakin-prod",
+  "description": "Manakin production website",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
@@ -8,9 +8,13 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "gatsby": "^1.9.250",
-    "gatsby-link": "^1.6.40",
+    "gatsby": "^2.0.28",
+    "gatsby-link": "^2.0.4",
     "gatsby-plugin-favicon": "^2.1.1",
-    "gatsby-plugin-sass": "^1.0.26"
+    "gatsby-plugin-sass": "^2.0.1",
+    "gatsby-source-contentful": "^2.0.4",
+    "node-sass": "^4.9.4",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
   }
 }

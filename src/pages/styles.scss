@@ -1,9 +1,6 @@
 .home {
   font-family: 'Courier New', Courier, monospace;
   overflow: auto;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   font-size: 21px;
   color: #43365b;
   font-weight:300;
@@ -25,7 +22,8 @@
     cursor:pointer;
     
     &:hover {
-      color: #ead94c;
+      color: #dd3546;
+      transition: color 200ms ease-in-out;
     }
 
     &:before {
@@ -41,72 +39,16 @@
     }
   }
 
-  
-  .logo {
-    font-size: 1rem;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-top: 10px;
-    margin-left: 30px;
-
-    img {
-      height: 230px;
-      margin: 0 20px 0 0;
-    }
-
-    p {
-      padding-top: 20px;
-      line-height: 20px;
-    }
-  }
-
-  .main-container {
-    display: flex;
-    menu {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      margin-left: 30px;
-      margin-top:0;
-      width: 350px;
-  
-      .artists-menu {
-        text-transform: uppercase;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    
-        > div {
-          display: flex;
-          align-items: center;
-          margin: 3px 0;
-    
-          .artist-name {
-            text-align: center;
-          }
-        }
-      }
-  
-      > div {
-        margin: 15px 0;
-  
-        > div {
-          margin: 10px 0;
-        }
-      }
-    } 
-  }
-
   .summary {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     line-height: 45px;
-    margin-left:0;
-    padding: 0 10%;
-    width: calc( 100% - 400px);
+    margin: 0 10%;
+    width: 80%;
+    margin-top: 75px;
 
     p {
       margin:0;
+      text-align: center;
     }
 
     .artists {

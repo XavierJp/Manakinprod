@@ -1,49 +1,13 @@
 import React from 'react';
-
-import logo_manakin from '../resources/logo_centered.png';
 import styles from './styles.scss';
 import LinkUnderlined from '../uiComponents/linkUnderlined';
-import Newsletter from '../components/newsletter';
+import Header from '../components/header';
+import { graphql } from 'gatsby';
+import { sanitizeName } from '../utils';
 
-const artists = [
-  {name:'Jonas Chéreau', link:'https://www.jonaschereau.org/'},
-  { name:'Volmir Cordeiro',link:'http://volmircordeiro.com/'},
-  { name:'Mathilde Delahaye', link:'http://cdntours.fr/mathilde-delahaye'},
-  { name:'Nach Anne-Marie Van', link:'http://www.villakujoyama.jp/resident/van-anne-marie-nach/'}
-];
-
-export default () => 
+export default (props) => 
   <div styles={styles} className="home">
-    <div className="logo">
-      <img
-      alt="MANAKIN PRODUCTION"
-      src={logo_manakin}/>
-        <p>MANAKIN <span className="separator">&#x2022;</span> <span className="bracket"> plateforme de production </span><br />
-        Lauren Boyer & Leslie Perrin<br />
-        Paris 18e<br />
-        </p>
-    </div>
-    <div className="main-container">
-    <menu>
-      <div>AGENDA</div>
-    <div className="artists-menu">
-      {artists.map((artist, index)=>
-        <LinkUnderlined 
-        className="artist-name"
-        label={artist.name}
-        targetPath={artist.link}
-        />
-        )}
-    </div> 
-    <div>
-      <div>CONTACT / EN SAVOIR +</div>
-      <div>SOUTENIR MANAKIN</div>
-    </div>
-    <div>&#x261e; NEWSLETTER</div>
-    {/* <Newsletter /> */}
-
-    </menu>
-
+    <Header/>
     <div className="summary">
       <p>
         MANAKIN est une <span className="bracket"> plateforme de
@@ -52,19 +16,31 @@ export default () =>
         avec
       </p>
       <div className="artists">
-        {artists.map((artist, index)=>
+        {props.data.allContentfulArtists.edges.map((artist, index)=>
           <div key={index}>
             <LinkUnderlined 
               className="artist-name"
-              label={artist.name}
-              targetPath={artist.link}
+              label={artist.node.name}
+              targetPath={`artists/${sanitizeName(artist.node.name)}`}
               />
-              {index < artists.length - 1 && (
+              {index < props.data.allContentfulArtists.edges.length - 1 && (
                 <div className="separator">&#x2022;</div>
               )}
           </div>
         )}
       </div>
-    </div>      
   </div>
 </div>
+
+export const pageQuery = graphql`
+  query artists
+    {
+      allContentfulArtists { edges {
+        node {
+          id
+          name,
+          website
+        }
+      } }
+    }
+`

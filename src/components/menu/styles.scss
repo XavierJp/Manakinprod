@@ -1,0 +1,14 @@
+menu {
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
+  flex-grow: 1;
+  margin-left: 30px;
+  margin: 25px 0;
+
+  div {
+    margin: 0 20px;
+  }
+}
