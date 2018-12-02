@@ -39,8 +39,6 @@ class LinkUnderlined extends React.Component {
   render() {
     const { label, targetPath, onClick, style } = this.props;
 
-    console.log(targetPath)
-    
     return (
       <div  style={{...styles, ...style}}
         className="link-underlined" 

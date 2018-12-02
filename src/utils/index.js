@@ -1,5 +1,5 @@
 export const sanitizeName = (artistName) => {
-  if (!!artistName) {
+  if (!artistName) {
       console.error (`invalid url : no name provided`);
   }
 
