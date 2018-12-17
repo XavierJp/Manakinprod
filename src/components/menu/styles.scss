@@ -10,5 +10,10 @@ menu {
 
   div {
     margin: 0 20px;
+
+  }
+
+  > .newsletter {
+    flex-shrink: 0;
   }
 }

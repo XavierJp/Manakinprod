@@ -13,21 +13,8 @@ exports.createPages = ({ graphql, actions }) => {
                 node {
                   id
                   name,
-                  website
-                  childContentfulArtistsDescriptionTextNode {
-                    id
-                    description
-                  }
-                  image {
-                    title
-                    fixed(width: 500) {
-                      width
-                      height
-                      src
-                    }
-                  }
-                }
               } }
+            }
             }
             `
         ).then(result => {
@@ -42,7 +29,7 @@ exports.createPages = ({ graphql, actions }) => {
             let path ='';
             try {
               path = edge.node.name.replace(' ','-').toLowerCase();
-              path = path.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+              path = path.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
             } catch(e) {
               console.error(e)
             }
@@ -50,10 +37,7 @@ exports.createPages = ({ graphql, actions }) => {
               path: `artists/${path}`, // required
               component: artistPageTemplate,
               context: {
-                // name:edge.node.artist.name,
-                // website:edge.node.artist.website,
-                // biography:edge.node.artist.childContentfulArtistsDescriptionTextNode.description,
-                // image:edge.node.artist.childContentfulArtistsDescriptionTextNode.image,
+                artistId:edge.node.id,
               },
             })
           })

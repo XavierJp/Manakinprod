@@ -5,9 +5,9 @@ import LinkUnderlined from '../../uiComponents/linkUnderlined';
 
 export default (props) => 
   <menu styles={styles}>
-    <LinkUnderlined label="AGENDA"></LinkUnderlined>
-    <LinkUnderlined label="ARTISTES"></LinkUnderlined> 
-    <LinkUnderlined label="EN SAVOIR +"></LinkUnderlined>
-    <LinkUnderlined label="&#x261e; NEWSLETTER"></LinkUnderlined>
+    <LinkUnderlined label="AGENDA" highlighted={props.activeTab==='agenda'}></LinkUnderlined>
+    <LinkUnderlined label="ARTISTES" highlighted={props.activeTab==='artists'}></LinkUnderlined> 
+    <LinkUnderlined label="EN SAVOIR +" highlighted={props.activeTab==='more'}></LinkUnderlined>
+    <LinkUnderlined className='newletter' label="&#x261e; NEWSLETTER" highlighted={props.activeTab==='newsletter'}></LinkUnderlined>
     {/* <Newsletter /> */}
   </menu>

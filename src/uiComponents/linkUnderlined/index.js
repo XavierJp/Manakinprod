@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./styles.scss";
 import PropTypes from "prop-types";
-import { Link } from '@reach/router';
 
 class LinkUnderlined extends React.Component {
   static defaultProps= {
@@ -10,6 +9,7 @@ class LinkUnderlined extends React.Component {
     targetPath: PropTypes.string,
     onClick: PropTypes.func,
     style: PropTypes.object,
+    highlighted: PropTypes.bool = false,
   }
 
   mouseEnter = () => {
@@ -37,17 +37,16 @@ class LinkUnderlined extends React.Component {
   }
   
   render() {
-    const { label, targetPath, onClick, style } = this.props;
-
+    const { label, targetPath, onClick, style, highlighted } = this.props;
     return (
       <div  style={{...styles, ...style}}
-        className="link-underlined" 
+        className={`link-underlined ${highlighted ? 'highlighted' : ''}`}
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}
         onClick={onClick}
         >
         { typeof targetPath === 'string' && (
-          <Link className="label" href={targetPath}>{label}</Link>
+          <a className="label" href={targetPath}>{label}</a>
         )}
         { typeof targetPath !== 'string' && (
           <span className="label">{label}</span>

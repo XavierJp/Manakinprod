@@ -7,5 +7,5 @@ import Menu from '../menu';
 export default (props) => 
   <header styles={styles}>
     <Miniature />
-    <Menu />
+    <Menu activeTab={props.activeTab} />
   </header>

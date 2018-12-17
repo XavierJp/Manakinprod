@@ -1,16 +1,15 @@
   import React from 'react';
   import styles from './styles.scss';
   import logo_manakin from '../../resources/logo_centered.png';
-  import { Link } from '@reach/router';
 
   export default () => 
   <div styles={styles} className="logo">
-    <Link to="/">
+    <a href="/">
       <img
         alt="MANAKIN PRODUCTION"
         src={logo_manakin}/>
-    </Link>
-    <p>MANAKIN <span className="separator">&#x2022;</span> <span className="bracket"> plateforme de production </span><br />
+    </a>
+    <p><b>MANAKIN</b> <span className="separator">&#x2022;</span> <a href="/more" className="bracket"> plateforme de production </a><br />
     Lauren Boyer & Leslie Perrin<br />
     Paris 18e<br />
     </p>
