@@ -8,24 +8,30 @@ export default props => (
   <>
     <Header activeTab={'artists'} />
     <div styles={styles} className="artists-page">
-      {props.data.allContentfulArtists.edges.map(artist => (
-        <Link
-          style={{
-            width: `${artist.node.image.fixed.width}px`,
-            height: `${artist.node.image.fixed.height}px`,
-            backgroundColor: '#eee',
-          }}
-          to={`/artists/${sanitizeName(artist.node.name)}`}
-        >
-          <img
-            src={artist.node.image.fixed.src}
-            alt={artist.node.image.title}
-          />
-          <div className="button">
-            <p>{artist.node.name}</p>
-          </div>
-        </Link>
-      ))}
+      <div className="bread-crumb">
+        <Link to="/artists">Artistes</Link>
+        {/* <span className="hand-separator">&#x261e;</span> */}
+      </div>
+      <div className="artists-list">
+        {props.data.allContentfulArtists.edges.map(artist => (
+          <Link
+            style={{
+              width: `${artist.node.image.fixed.width}px`,
+              height: `${artist.node.image.fixed.height}px`,
+              backgroundColor: '#eee',
+            }}
+            to={`/artists/${sanitizeName(artist.node.name)}`}
+          >
+            <img
+              src={artist.node.image.fixed.src}
+              alt={artist.node.image.title}
+            />
+            <div className="button">
+              <p>{artist.node.name}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   </>
 );

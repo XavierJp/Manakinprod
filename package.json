@@ -2,7 +2,7 @@
   "name": "Manakin-prod",
   "description": "Manakin production website",
   "license": "MIT",
-  "main": "./public/index.html",
+  "main": "public/index.html",
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
 import { graphql, Link } from 'gatsby';
+import { sanitizeName } from '../../utils';
 
 export default props => (
   <>
@@ -57,7 +58,7 @@ export default props => (
               <h2>Prochaines dates</h2>
               {props.data.contentfulArtists.show
                 .reduce((acc, show) => {
-                  if (!show.showDate) {
+                  if (!show.showdate) {
                     return acc;
                   }
                   return [
@@ -92,9 +93,6 @@ export default props => (
                         }).format(new Date(showDate.endDate))}`}
                       </span>
                       <div className="show-name">{showDate.name}</div>
-                      <Link className="more button" to="/">
-                        <p>En savoir plus</p>
-                      </Link>
                     </div>
                   </li>
                 ))}
@@ -102,7 +100,11 @@ export default props => (
             <div className="artist-links">
               <h3>Liens utiles</h3>
               <div>
-                <Link to="/agenda">
+                <Link
+                  to={`/agenda/${sanitizeName(
+                    props.data.contentfulArtists.name,
+                  )}`}
+                >
                   <span className="hand-separator">&#x261e;</span> Agenda
                 </Link>
               </div>

@@ -3,7 +3,25 @@
 .social-networks {
   display: flex;
   justify-content: center;
-  svg {
-    stroke: $bodyManakin;
+
+  > a {
+    &:first-of-type {
+      border-right: 2px solid $yellowManakin;
+    }
+    &:hover {
+      border-bottom: transparent !important;
+      > svg {
+        stroke: $yellowManakin !important;
+      }
+    }
+    > svg {
+      &:first-of-type {
+        padding-right: 15px;
+      }
+      &:last-of-type {
+        padding-left: 15px;
+      }
+      stroke: $bodyManakin;
+    }
   }
 }
