@@ -1,16 +1,23 @@
+@import 'src/resources/colors.scss';
+
 .link-underlined {
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
 
-  a {
+  &:hover {
+    font-weight: 600;
+  }
+  > a {
+    color: $bodyManakin;
+    border: none;
     text-decoration: none;
     text-align: center;
   }
-  
-  .underline {
-    background-color: #fc0;
+
+  > .underline {
+    background-color: $yellowManakin;
     height: 2px;
     width: 0%;
     margin-top: 5px;

@@ -2,46 +2,70 @@ import React from 'react';
 import styles from './styles.scss';
 import LinkUnderlined from '../uiComponents/linkUnderlined';
 import Header from '../components/header';
-import { graphql } from 'gatsby';
+import SocialNetworks from '../components/socialNetworks';
+import { graphql, Link } from 'gatsby';
 import { sanitizeName } from '../utils';
 
-export default (props) => 
+export default props => (
   <div styles={styles} className="home">
-    <Header/>
+    <Header />
     <div className="summary">
-      <p>
-        MANAKIN est une <span className="bracket"> plateforme de
-        production </span> co-fondée par <span className="bracket"> Lauren Boyer et Leslie Perrin </span> pour co-construire et développer
-        des projets artistiques originaux
-        avec
-      </p>
+      <h1>
+        MANAKIN est une{' '}
+        <span className="bracket">
+          {' '}
+          <Link to="more">plateforme de production</Link>{' '}
+        </span>{' '}
+        co-fondée par{' '}
+        <span className="bracket">
+          {' '}
+          <Link to="more"> Lauren Boyer et Leslie Perrin</Link>{' '}
+        </span>{' '}
+        pour co-construire et développer des projets artistiques originaux avec
+      </h1>
       <div className="artists">
-        {props.data.allContentfulArtists.edges.map((artist, index)=>
+        {props.data.allContentfulArtists.edges.map((artist, index) => (
           <div key={index}>
-            <LinkUnderlined 
+            <LinkUnderlined
               className="artist-name"
               label={artist.node.name}
               targetPath={`artists/${sanitizeName(artist.node.name, artist)}`}
-              />
-              {index < props.data.allContentfulArtists.edges.length - 1 && (
-                <div className="separator">&#x2022;</div>
-              )}
+            />
+            {index < props.data.allContentfulArtists.edges.length - 1 && (
+              <div className="separator">&#x2022;</div>
+            )}
           </div>
-        )}
+        ))}
       </div>
+      <div className="contact">
+        <div>
+          <div>Lauren Boyer</div>
+          <div>lauren@manakinprod.fr</div>
+        </div>
+        <div>
+          <div>Leslie Perrin</div>
+          <div>leslie@manakinprod.fr</div>
+        </div>
+      </div>
+      <SocialNetworks />
+      <div />
+      {/* <div>
+        <Link to="mentions-legales">Mentions légales</Link>
+      </div> */}
+    </div>
   </div>
-</div>
+);
 
 export const pageQuery = graphql`
-  query artists
-    {
-      allContentfulArtists { edges {
+  query artists {
+    allContentfulArtists {
+      edges {
         node {
           id
-          name,
+          name
           website
         }
-      } }
+      }
     }
+  }
 `;
-

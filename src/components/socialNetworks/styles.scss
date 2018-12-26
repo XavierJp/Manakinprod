@@ -1,0 +1,9 @@
+@import 'src/resources/colors.scss';
+
+.social-networks {
+  display: flex;
+  justify-content: center;
+  svg {
+    stroke: $bodyManakin;
+  }
+}

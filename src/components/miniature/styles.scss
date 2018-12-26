@@ -5,14 +5,23 @@
   align-items: center;
   margin-left: 20px;
   width: 530px;
-  
-  img {
-    height: 100px;
-    margin: 10px 10px 0 0;
+
+  > a {
+    border-bottom: none !important;
+    > img {
+      height: 75px;
+      margin: 10px 10px 0 0;
+    }
   }
-  
-  p {
-    margin: 25px 0;
-    line-height: 23px;
+
+  > div {
+    > p {
+      margin: 0;
+      line-height: 23px;
+    }
+
+    > div {
+      font-size: 0.8rem;
+    }
   }
 }

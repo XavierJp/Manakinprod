@@ -1,18 +1,23 @@
-  import React from 'react';
-  import styles from './styles.scss';
-  import logo_manakin from '../../resources/logo_centered.png';
+import React from 'react';
+import styles from './styles.scss';
+import { Link } from 'gatsby';
+import logo_manakin from '../../resources/logo_centered.png';
 
-  export default () => 
+export default () => (
   <div styles={styles} className="logo">
-    <a href="/">
-      <img
-        alt="MANAKIN PRODUCTION"
-        src={logo_manakin}/>
-    </a>
-    <p><b>MANAKIN</b> <span className="separator">&#x2022;</span> <a href="/more" className="bracket"> plateforme de production </a><br />
-    Lauren Boyer & Leslie Perrin<br />
-    Paris 18e<br />
-    </p>
+    <Link to="/">
+      <img alt="MANAKIN PRODUCTION" src={logo_manakin} />
+    </Link>
+    <div>
+      <p>
+        <b>MANAKIN</b> <span className="separator">&#x2022;</span>{' '}
+        <span to="/more" className="bracket">
+          {' '}
+          <Link to="/more">plateforme de production</Link>{' '}
+        </span>
+        <br />
+      </p>
+      <div>Paris 18e, 15-27 rue Moussorgski</div>
+    </div>
   </div>
-
-
+);

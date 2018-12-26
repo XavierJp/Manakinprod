@@ -1,0 +1,60 @@
+@import 'src/resources/colors.scss';
+
+.agenda-page {
+  max-width: 1400px;
+  margin: 20px auto 0;
+  width: calc(100% - 100px);
+
+  .bread-crumb {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+
+    > a:last-of-type {
+      font-weight: 600;
+      border-bottom: 2px solid #ffcc00;
+    }
+
+    > .hand-separator {
+      margin: 0 10px;
+    }
+  }
+
+  .separator {
+    margin: 0 10px;
+  }
+  > ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    > li {
+      font-size: 1rem;
+      list-style-type: none;
+      display: flex;
+      align-items: flex-start;
+      margin: 10px 15px 0 0;
+      padding: 15px;
+      flex-direction: column;
+      border: 1px solid #ffcc00;
+
+      > div.date {
+        display: flex;
+        flex-direction: row;
+        font-size: 0.9rem;
+      }
+
+      > div.show-name {
+        font-style: italic;
+        font-size: 1.2rem;
+      }
+
+      > div.bracket {
+        margin-top: 5px;
+        > a {
+          margin: 0 7px;
+        }
+      }
+    }
+  }
+}

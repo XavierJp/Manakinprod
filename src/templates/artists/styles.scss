@@ -1,25 +1,30 @@
+@import 'src/resources/colors.scss';
+
 .artist-page {
-  width: 85%;
+  max-width: 1400px;
   margin: 20px auto 0;
-  
+  width: calc(100% - 100px);
+
+  h1 {
+    margin-top: 0;
+    font-size: 18px;
+    display: inline-block;
+  }
+
+  h3 {
+    font-size: 16px;
+    display: inline-block;
+    margin: 0 0 5px;
+  }
+
   .bread-crumb {
-    font-size: 1rem;
+    font-size: 1.4rem;
     display: flex;
     align-items: center;
-    margin-left: 30px;
 
-    > a {
-      border-bottom: 2px solid transparent;
-      transition: 175ms border ease-in-out;
-    }
-    
     > a:last-of-type {
       font-weight: 600;
       border-bottom: 2px solid #ffcc00;
-    }
-
-    > a:hover {
-      border-bottom: 2px solid #43365b;
     }
 
     > .hand-separator {
@@ -29,36 +34,27 @@
 
   .artist-container {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: left;
     position: relative;
-    margin: 30px 0 0 30px;
+    margin: 30px 0 0;
 
-    
-    @media (min-width: 1px) and (max-width: 1024px) {
-      flex-direction: column;
-    }
-
-    h1 {
-      margin-top: 0;
-      font-size: 18px;
-      display: inline-block;
-    }
-    
-    .artist-summary {
+    .first-col {
       max-height: 100%;
-      height: calc(100vh - 250px);
+      height: calc(100vh - 230px);
+      min-height: 450px;
       overflow: auto;
+      width: 35%;
+      flex-shrink: 0;
+      margin-right: 10px;
 
-      &::-webkit-scrollbar { 
-        display: none; 
+      &::-webkit-scrollbar {
+        display: none;
       }
 
       > div.artist-description {
-        font-size: 16px;
-        line-height: 24px;
-        max-width: 500px;
-        min-width: 350px;
+        font-size: 1rem;
+        line-height: 2;
         padding-bottom: 50px;
 
         > p:first-of-type {
@@ -68,74 +64,147 @@
         &:after {
           position: absolute;
           content: '';
-          width: 100%;
+          width: 35%;
           height: 30px;
           bottom: 0;
           background: linear-gradient(0deg, #fff, transparent);
         }
       }
-
     }
 
-    .picture {
+    .second-col {
       margin: 0 15px;
+      display: flex;
+      flex-direction: column;
+      width: 35%;
 
       img {
-        border-radius: 5px;
-        width: 450px;
-        height: 300px;
+        width: 100%;
+        height: 250px;
         object-fit: cover;
       }
-    }
 
-    .more {
-      font-size: 0.9rem;
-      border-bottom: 2px solid #ffcc00;
-      margin: 15px 0 20px;
+      .picture-credit {
+        font-style: italic;
+        font-size: 0.8rem;
+        color: #aaa;
+      }
 
-      &:hover {
-        font-weight: 600;
+      .sub-section {
+        margin: 20px 0 0;
       }
     }
 
-    .artist-dates {
-      border: 1px solid #ffcc00;
-      border-radius: 6px;
-      height: 400px;
-      min-width: 250px;
-      position: relative;
+    .third-col {
+      width: 30%;
       margin: 0 15px;
-      padding: 20px;
-      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
 
+      .show-name {
+        font-style: italic;
+      }
 
-      > h1 {
-        background-color: #fff;
-        position: absolute;
-        top: -10px;
-        left: 10px;
-        padding: 0 5px;
+      > div.artist-links {
+        font-size: 0.9rem;
+        margin-top: 20px;
+
+        > div > a > span {
+          vertical-align: middle;
+        }
       }
     }
 
-    .artist-shows {
+    .sub-section {
       border: 1px solid #ffcc00;
-      border-radius: 6px;
       position: relative;
       padding: 20px;
-      margin: 20px 0 0;
-      font-size: 1rem;
+      font-size: 0.9rem;
+      flex-grow: 1;
 
-
-
-      > h1 {
+      > h2 {
+        margin-top: 0;
+        font-size: 18px;
+        display: inline-block;
         background-color: #fff;
         position: absolute;
-        top: -10px;
-        left: 10px;
+        top: -12px;
+        left: 15px;
         padding: 0 5px;
+      }
+
+      > li {
+        list-style-type: none;
+        display: flex;
+        margin: 10px 0 25px;
+
+        > div:first-of-type {
+          margin-right: 15px;
+        }
+
+        > div:last-of-type {
+          flex-grow: 1;
+
+          > div:first-of-type {
+            text-align: left;
+            margin-bottom: 10px;
+          }
+          > a.more {
+            position: relative;
+            z-index: 0;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 0.8rem;
+
+            &:before {
+              z-index: 1;
+              content: ' ';
+              display: block;
+              position: absolute;
+              top: 4px;
+              left: 4px;
+              height: 100%;
+              width: 100%;
+              background: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><pattern id="Pattern2" patternUnits="userSpaceOnUse" width="5" height="5"><path d="M 0,5 l 5,-5 M -1,1 l 2.5,-2.5 M 4,6 l 2.5,-2.5" stroke-width="1" shape-rendering="auto" stroke="#788080" stroke-linecap="square"></path></pattern></defs><rect fill="url(#Pattern2)" x="0" y="0" width="100" height="100"/></svg>');
+            }
+
+            > p {
+              z-index: 20;
+              position: relative;
+              background: $backgroundManakin;
+              border: 1px solid $bodyManakin;
+              padding: 5px;
+              margin: 0;
+            }
+
+            &:hover {
+              > p {
+                transform: translateY(-2px);
+                font-weight: 900;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1px) and (max-width: 1024px) {
+      flex-direction: column-reverse;
+      margin: 0;
+
+      .first-col {
+        width: 100%;
+        height: auto;
+      }
+
+      .second-col {
+        width: 100%;
+        margin: 0;
+      }
+
+      .third-col {
+        display: none;
       }
     }
   }
 }
-
