@@ -1,6 +1,9 @@
 .more-about-manakin {
   max-width: 1400px;
   margin: 20px auto 0;
-  width: calc(100% - 100px);
   text-align: center;
+  width: calc(100% - 80px);
+  @media (min-width: 1px) and (max-width: 1024px) {
+    width: calc(100% - 40px);
+  }
 }

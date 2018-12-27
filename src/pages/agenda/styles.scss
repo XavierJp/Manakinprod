@@ -3,7 +3,10 @@
 .agenda-page {
   max-width: 1400px;
   margin: 20px auto 0;
-  width: calc(100% - 100px);
+  width: calc(100% - 80px);
+  @media (min-width: 1px) and (max-width: 1024px) {
+    width: calc(100% - 40px);
+  }
 
   .bread-crumb {
     font-size: 1.4rem;
@@ -42,18 +45,29 @@
         display: flex;
         flex-direction: row;
         font-size: 0.9rem;
+        margin: 6px 0 3px;
       }
 
       > div.show-name {
-        font-style: italic;
-        font-size: 1.2rem;
+        font-size: 1rem;
+        margin-bottom: 3px;
       }
 
       > div.bracket {
-        margin-top: 5px;
+        font-size: 1rem;
+
         > a {
           margin: 0 7px;
         }
+      }
+
+      > div.city {
+        font-size: 0.8rem;
+        font-style: italic;
+      }
+
+      > div.theatre {
+        font-size: 0.9rem;
       }
     }
   }

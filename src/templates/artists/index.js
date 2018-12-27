@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
 import { graphql, Link } from 'gatsby';
-import { sanitizeName } from '../../utils';
+import { formatShowDate } from '../../utils';
 
 export default props => (
   <>
@@ -65,34 +65,47 @@ export default props => (
                     ...acc,
                     ...show.showdate.map(s => {
                       return {
-                        startDate: s.startDate,
-                        endDate: s.endDate,
+                        ...s,
                         name: show.name,
                       };
                     }),
                   ];
                 }, [])
-                .sort((a, b) => (a.startDate < b.startDate ? 1 : -1))
+                .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
+                .slice(0, 4)
                 .map(showDate => (
                   <li key={showDate.name + showDate.startDate}>
                     <div className="separator">&#x2022;</div>
                     <div>
-                      <span>
-                        {`${new Intl.DateTimeFormat('fr-FR', {
-                          day: 'numeric',
-                          month: '2-digit',
-                        }).format(new Date(showDate.startDate))}
-                        au
-                        ${new Intl.DateTimeFormat('fr-FR', {
-                          day: 'numeric',
-                          month: '2-digit',
-                        }).format(
-                          new Date(showDate.endDate),
-                        )} ${new Intl.DateTimeFormat('fr-FR', {
-                          year: 'numeric',
-                        }).format(new Date(showDate.endDate))}`}
-                      </span>
                       <div className="show-name">{showDate.name}</div>
+                      <div className="date">
+                        <div>{formatShowDate(showDate.startDate)}</div>
+                        {showDate.endDate !== showDate.startDate && (
+                          <>
+                            <div className="separator">&#x2022;</div>
+                            <div className="date">
+                              {formatShowDate(showDate.endDate)}
+                            </div>
+                          </>
+                        )}
+                      </div>
+                      {showDate.url && showDate.theatre && (
+                        <a
+                          className="theatre"
+                          href={showDate.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <span className="hand-separator">&#x261e;</span>
+                          {showDate.theatre}
+                        </a>
+                      )}
+                      {!showDate.url && showDate.theatre && (
+                        <div className="theatre">{showDate.theatre}</div>
+                      )}
+                      {showDate.city && (
+                        <div className="city">{showDate.city}</div>
+                      )}
                     </div>
                   </li>
                 ))}
@@ -101,9 +114,10 @@ export default props => (
               <h3>Liens utiles</h3>
               <div>
                 <Link
-                  to={`/agenda/${sanitizeName(
-                    props.data.contentfulArtists.name,
-                  )}`}
+                  // to={`/agenda/${sanitizeName(
+                  //   props.data.contentfulArtists.name,
+                  // )}`}
+                  to="/"
                 >
                   <span className="hand-separator">&#x261e;</span> Agenda
                 </Link>
@@ -155,6 +169,8 @@ export const pageQuery = graphql`
         showdate {
           startDate
           endDate
+          theatre
+          city
         }
       }
     }

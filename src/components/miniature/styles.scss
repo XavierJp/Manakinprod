@@ -24,4 +24,15 @@
       font-size: 0.8rem;
     }
   }
+
+  @media (min-width: 1px) and (max-width: 1024px) {
+    > div {
+      display: none;
+    }
+
+    > a > img {
+      margin: 20px 20px 0 5px;
+      height: 50px;
+    }
+  }
 }

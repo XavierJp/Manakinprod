@@ -3,16 +3,19 @@
 .artist-page {
   max-width: 1400px;
   margin: 20px auto 0;
-  width: calc(100% - 100px);
+  width: calc(100% - 80px);
+  @media (min-width: 1px) and (max-width: 1024px) {
+    width: calc(100% - 40px);
+  }
 
   h1 {
     margin-top: 0;
-    font-size: 18px;
+    font-size: 1.5rem;
     display: inline-block;
   }
 
   h3 {
-    font-size: 16px;
+    font-size: 1.2rem;
     display: inline-block;
     margin: 0 0 5px;
   }
@@ -34,14 +37,15 @@
 
   .artist-container {
     display: flex;
-    align-items: stretch;
+    // align-items: stretch;
+    align-items: flex-start;
     justify-content: left;
     position: relative;
     margin: 30px 0 0;
 
     .first-col {
       max-height: 100%;
-      height: calc(100vh - 230px);
+      // height: calc(100vh - 230px);
       min-height: 450px;
       overflow: auto;
       width: 35%;
@@ -53,8 +57,8 @@
       }
 
       > div.artist-description {
-        font-size: 1rem;
-        line-height: 2;
+        font-size: 0.9rem;
+        line-height: 1.8;
         padding-bottom: 50px;
 
         > p:first-of-type {
@@ -73,7 +77,7 @@
     }
 
     .second-col {
-      margin: 0 15px;
+      margin: 0 15px 30px;
       display: flex;
       flex-direction: column;
       width: 35%;
@@ -85,24 +89,49 @@
       }
 
       .picture-credit {
+        margin: 8px 0;
         font-style: italic;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         color: #aaa;
       }
 
       .sub-section {
-        margin: 20px 0 0;
+        margin-top: 20px;
       }
     }
 
     .third-col {
       width: 30%;
-      margin: 0 15px;
+      margin: 0 10px 30px;
       display: flex;
       flex-direction: column;
 
-      .show-name {
-        font-style: italic;
+      > div > li > div:not(.separator) {
+        font-size: 0.9rem;
+
+        > div.date {
+          display: flex;
+          flex-direction: row;
+          font-size: 0.9rem;
+          margin: 6px 0 3px;
+        }
+
+        > div.bracket {
+          font-size: 1rem;
+
+          > a {
+            margin: 0 7px;
+          }
+        }
+
+        > div.city {
+          font-size: 0.8rem;
+          font-style: italic;
+        }
+
+        > div.theatre {
+          font-size: 0.9rem;
+        }
       }
 
       > div.artist-links {
@@ -136,52 +165,44 @@
       > li {
         list-style-type: none;
         display: flex;
-        margin: 10px 0 25px;
+        margin: 5px 0 20px;
 
         > div:first-of-type {
           margin-right: 15px;
         }
+        a.more {
+          margin-top: 8px;
+          position: relative;
+          z-index: 0;
+          cursor: pointer;
+          display: inline-block;
+          font-size: 0.8rem;
 
-        > div:last-of-type {
-          flex-grow: 1;
-
-          > div:first-of-type {
-            text-align: left;
-            margin-bottom: 10px;
+          &:before {
+            z-index: 1;
+            content: ' ';
+            display: block;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            height: 100%;
+            width: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><pattern id="Pattern2" patternUnits="userSpaceOnUse" width="5" height="5"><path d="M 0,5 l 5,-5 M -1,1 l 2.5,-2.5 M 4,6 l 2.5,-2.5" stroke-width="1" shape-rendering="auto" stroke="#788080" stroke-linecap="square"></path></pattern></defs><rect fill="url(#Pattern2)" x="0" y="0" width="100" height="100"/></svg>');
           }
-          > a.more {
+
+          > p {
+            z-index: 20;
             position: relative;
-            z-index: 0;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 0.8rem;
+            background: $backgroundManakin;
+            border: 1px solid $bodyManakin;
+            padding: 5px;
+            margin: 0;
+          }
 
-            &:before {
-              z-index: 1;
-              content: ' ';
-              display: block;
-              position: absolute;
-              top: 4px;
-              left: 4px;
-              height: 100%;
-              width: 100%;
-              background: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><pattern id="Pattern2" patternUnits="userSpaceOnUse" width="5" height="5"><path d="M 0,5 l 5,-5 M -1,1 l 2.5,-2.5 M 4,6 l 2.5,-2.5" stroke-width="1" shape-rendering="auto" stroke="#788080" stroke-linecap="square"></path></pattern></defs><rect fill="url(#Pattern2)" x="0" y="0" width="100" height="100"/></svg>');
-            }
-
+          &:hover {
             > p {
-              z-index: 20;
-              position: relative;
-              background: $backgroundManakin;
-              border: 1px solid $bodyManakin;
-              padding: 5px;
-              margin: 0;
-            }
-
-            &:hover {
-              > p {
-                transform: translateY(-2px);
-                font-weight: 900;
-              }
+              transform: translateY(-2px);
+              font-weight: 900;
             }
           }
         }

@@ -4,7 +4,10 @@
   font-size: 14px;
   max-width: 1400px;
   margin: 20px auto 0;
-  width: calc(100% - 100px);
+  width: calc(100% - 80px);
+  @media (min-width: 1px) and (max-width: 1024px) {
+    width: calc(100% - 40px);
+  }
 
   .bread-crumb {
     font-size: 1.4rem;
@@ -32,6 +35,9 @@
       position: relative;
       margin: 10px;
       border: none !important;
+      @media (min-width: 1px) and (max-width: 1024px) {
+        max-width: calc(100%);
+      }
 
       &:hover {
         font-weight: initial !important;

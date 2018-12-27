@@ -3,7 +3,7 @@ import styles from './styles.scss';
 import Header from '../../components/header';
 import { graphql, Link } from 'gatsby';
 import ArtitstsList from '../../components/artitstsList';
-import { sanitizeName } from '../../utils';
+import { sanitizeName, formatShowDate } from '../../utils';
 
 const computeAgendaByDate = flatDateList => {
   return flatDateList.reduce((acc, flatDate) => {
@@ -66,11 +66,7 @@ export default props => (
                     })
                     .map(dateEntry => (
                       <li>
-                        <div className="date">
-                          <div>{dateEntry.startDate}</div>
-                          <div className="separator">&#x2022;</div>
-                          <div className="date">{dateEntry.endDate}</div>
-                        </div>
+                        <div className="show-name">{dateEntry.show.name}</div>
                         <div className="bracket">
                           <Link
                             to={`artists/${sanitizeName(
@@ -80,7 +76,34 @@ export default props => (
                             {dateEntry.show.artist.name}
                           </Link>
                         </div>
-                        <div className="show-name">{dateEntry.show.name}</div>
+                        <div className="date">
+                          <div>{formatShowDate(dateEntry.startDate)}</div>
+                          {dateEntry.endDate !== dateEntry.startDate && (
+                            <>
+                              <div className="separator">&#x2022;</div>
+                              <div className="date">
+                                {formatShowDate(dateEntry.endDate)}
+                              </div>
+                            </>
+                          )}
+                        </div>
+                        {dateEntry.url && dateEntry.theatre && (
+                          <a
+                            className="theatre"
+                            href={dateEntry.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span className="hand-separator">&#x261e;</span>
+                            {dateEntry.theatre}
+                          </a>
+                        )}
+                        {!dateEntry.url && dateEntry.theatre && (
+                          <div className="theatre">{dateEntry.theatre}</div>
+                        )}
+                        {dateEntry.city && (
+                          <div className="city">{dateEntry.city}</div>
+                        )}
                       </li>
                     ))}
                 </ul>
@@ -99,6 +122,8 @@ export const pageQuery = graphql`
         node {
           startDate
           endDate
+          city
+          theatre
           show {
             name
             artist {
