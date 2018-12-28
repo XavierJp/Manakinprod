@@ -1,8 +1,9 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql, Link } from 'gatsby';
 import styles from './styles.scss';
+import { sanitizeName } from '../../utils';
 
-export default () => (
+export default props => (
   <StaticQuery
     query={graphql`
       query artistsList {
@@ -17,11 +18,15 @@ export default () => (
       }
     `}
     render={data => (
-      <div styles={styles} className="artist-list">
+      <div styles={styles} className="artist-list-for-agenda">
         {data.allContentfulArtists.edges.map(artist => (
-          <div key={artist.node.name}>
+          <Link
+            to={`agenda/${sanitizeName(artist.node.name)}`}
+            key={artist.node.name}
+            className={props.active === artist.node.name && 'active'}
+          >
             <p>{artist.node.name}</p>
-          </div>
+          </Link>
         ))}
       </div>
     )}

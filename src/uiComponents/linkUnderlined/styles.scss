@@ -1,18 +1,18 @@
 @import 'src/resources/colors.scss';
 
-.link-underlined {
+a.link-underlined {
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  text-decoration: none;
 
   &:hover {
     font-weight: 600;
   }
-  > a {
+  > div {
     color: $bodyManakin;
     border: none;
-    text-decoration: none;
     text-align: center;
   }
 

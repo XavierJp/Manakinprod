@@ -33,6 +33,7 @@ class Menu extends Component {
           />
           <LinkUnderlined
             className="newletter"
+            targetPath="/"
             label="&#x261e; NEWSLETTER"
             highlighted={activeTab === 'newsletter'}
           />

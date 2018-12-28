@@ -10,7 +10,10 @@ export default () => (
     </Link>
     <div>
       <p>
-        <b>MANAKIN</b> <span className="separator">&#x2022;</span>{' '}
+        <Link to="/">
+          <b>MANAKIN</b>
+        </Link>{' '}
+        <span className="separator">&#x2022;</span>{' '}
         <span to="/more" className="bracket">
           {' '}
           <Link to="/more">plateforme de production</Link>{' '}

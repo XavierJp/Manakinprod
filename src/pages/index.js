@@ -16,12 +16,8 @@ export default props => (
           {' '}
           <Link to="more">plateforme de production</Link>{' '}
         </span>{' '}
-        co-fondée par{' '}
-        <span className="bracket">
-          {' '}
-          <Link to="more"> Lauren Boyer et Leslie Perrin</Link>{' '}
-        </span>{' '}
-        pour co-construire et développer des projets artistiques originaux avec
+        co-fondée par Lauren Boyer et Leslie Perrin pour co-construire et
+        développer des projets artistiques originaux avec
       </h1>
       <div className="artists">
         {props.data.allContentfulArtists.edges.map((artist, index) => (
@@ -40,11 +36,11 @@ export default props => (
       <div className="contact">
         <div>
           <div>Lauren Boyer</div>
-          <div>lauren@manakinprod.fr</div>
+          <a href="mailto:lauren@manakinprod.fr">lauren@manakinprod.fr</a>
         </div>
         <div>
           <div>Leslie Perrin</div>
-          <div>leslie@manakinprod.fr</div>
+          <a href="mailto:leslie@manakinprod.fr">leslie@manakinprod.fr</a>
         </div>
       </div>
       <SocialNetworks />

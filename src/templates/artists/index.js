@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
 import { graphql, Link } from 'gatsby';
-import { formatShowDate } from '../../utils';
+import { sanitizeName, formatShowDate } from '../../utils';
 
 export default props => (
   <>
@@ -114,28 +114,25 @@ export default props => (
               <h3>Liens utiles</h3>
               <div>
                 <Link
-                  // to={`/agenda/${sanitizeName(
-                  //   props.data.contentfulArtists.name,
-                  // )}`}
-                  to="/"
+                  to={`/agenda/${sanitizeName(
+                    props.data.contentfulArtists.name,
+                  )}`}
                 >
                   <span className="hand-separator">&#x261e;</span> Agenda
                 </Link>
               </div>
               {props.data.contentfulArtists.website && (
                 <div>
-                  <a href={props.data.contentfulArtists.website}>
+                  <a
+                    href={props.data.contentfulArtists.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <span className="hand-separator">&#x261e;</span> Site de
                     l‘artiste
                   </a>
                 </div>
               )}
-              <div>
-                <Link>
-                  <span className="hand-separator">&#x261e;</span> Dossier de
-                  presse
-                </Link>
-              </div>
             </div>
           </div>
         )}
@@ -171,6 +168,7 @@ export const pageQuery = graphql`
           endDate
           theatre
           city
+          url
         }
       }
     }

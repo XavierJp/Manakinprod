@@ -1,7 +1,7 @@
 @import 'src/resources/colors.scss';
 
 .artist-page {
-  max-width: 1400px;
+  max-width: 1250px;
   margin: 20px auto 0;
   width: calc(100% - 80px);
   @media (min-width: 1px) and (max-width: 1024px) {
@@ -38,15 +38,14 @@
 
   .artist-container {
     display: flex;
-    // align-items: stretch;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: left;
     position: relative;
     margin: 30px 0 0;
 
     .first-col {
       max-height: 100%;
-      // height: calc(100vh - 230px);
+      height: calc(100vh - 230px);
       min-height: 450px;
       overflow: auto;
       width: 35%;
@@ -64,6 +63,15 @@
 
         > p:first-of-type {
           margin-top: 0;
+        }
+
+        &:after {
+          position: absolute;
+          content: '';
+          width: 35%;
+          height: 30px;
+          bottom: 0;
+          background: linear-gradient(0deg, #fff, transparent);
         }
       }
     }
@@ -106,6 +114,10 @@
           flex-direction: row;
           font-size: 0.9rem;
           margin: 6px 0 3px;
+
+          > .separator {
+            margin: 0 8px;
+          }
         }
 
         > div.bracket {
@@ -121,8 +133,13 @@
           font-style: italic;
         }
 
-        > div.theatre {
+        > div.theatre,
+        > a.theatre {
           font-size: 0.9rem;
+
+          > .hand-separator {
+            margin-right: 7px;
+          }
         }
       }
 
@@ -204,7 +221,10 @@
       margin: 20px 0 0;
       .first-col {
         width: 50%;
-        height: auto;
+
+        .artist-description:after {
+          width: 50% !important;
+        }
       }
 
       .second-col {

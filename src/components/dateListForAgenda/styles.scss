@@ -1,0 +1,54 @@
+@import 'src/resources/colors.scss';
+
+.date-list-for-agenda {
+  > ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    > li {
+      font-size: 1rem;
+      list-style-type: none;
+      display: flex;
+      align-items: flex-start;
+      margin: 0 15px 10px 0;
+      padding: 15px;
+      flex-direction: column;
+      border: 1px solid $yellowManakin;
+
+      > div.date {
+        display: flex;
+        flex-direction: row;
+        font-size: 0.9rem;
+        margin: 6px 0 3px;
+      }
+
+      > div.show-name {
+        font-size: 1rem;
+        margin-bottom: 3px;
+      }
+
+      > div.bracket {
+        font-size: 1rem;
+
+        > a {
+          margin: 0 7px;
+        }
+      }
+
+      > div.city {
+        font-size: 0.8rem;
+        font-style: italic;
+      }
+
+      > div.theatre,
+      > a.theatre {
+        font-size: 0.9rem;
+
+        > .hand-separator {
+          margin-right: 7px;
+        }
+      }
+    }
+  }
+}
