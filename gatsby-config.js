@@ -26,15 +26,5 @@ module.exports = {
         icon: 'src/resources/favicon.png',
       },
     },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          // `lora\:300,300i,700`,
-          // `open sans\:400,400i,700`,
-          // `fira mono\:400,400i,700`,
-        ],
-      },
-    },
   ],
 };
