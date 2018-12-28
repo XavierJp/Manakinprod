@@ -4,6 +4,7 @@
   position: relative;
   font-size: 1rem;
   margin: 10px 0;
+  display: block;
 
   > a {
     position: relative;
@@ -13,7 +14,7 @@
     margin: 10px 20px 10px 0;
 
     &.active {
-      font-weight: 700;
+      font-weight: 900;
 
       > p {
         border-width: 2px;
@@ -42,9 +43,9 @@
     }
 
     &:hover {
-      border: none !important;
+      border-bottom: 2px solid transparent !important;
 
-      > p {
+      &:not(.active) > p {
         transform: translateY(-2px);
         font-weight: 900;
       }

@@ -1,6 +1,9 @@
 @import 'src/resources/colors.scss';
 
 .date-list-for-agenda {
+  > h3 {
+    margin: 10px 0 15px;
+  }
   > ul {
     display: flex;
     flex-wrap: wrap;
