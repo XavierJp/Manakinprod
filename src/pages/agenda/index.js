@@ -58,7 +58,7 @@ export default props => (
             .sort()
             .map(keyEntryPair => (
               <>
-                <h3>{monthNames[keyEntryPair[0]]}</h3>
+                <h3>{monthNames[keyEntryPair[0] - 1]}</h3>
                 <ul>
                   {keyEntryPair[1]
                     .sort((a, b) => {

@@ -28,16 +28,14 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    margin-top: 40px;
+    justify-content: flex-start;
+    margin-top: 25px;
 
     > a {
       position: relative;
-      margin: 10px;
+      margin: 0 20px 20px 0;
       border: none !important;
-      @media (min-width: 1px) and (max-width: 1024px) {
-        max-width: calc(100%);
-      }
+      background-color: #eee;
 
       &:hover {
         font-weight: initial !important;
@@ -46,6 +44,18 @@
 
       > img {
         height: 100%;
+      }
+
+      @media (min-width: 1px) and (max-width: 420px) {
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 0 20px;
+
+        > img {
+          width: 100% !important;
+          height: auto !important;
+          display: block;
+        }
       }
 
       > div {

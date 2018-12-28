@@ -18,7 +18,6 @@ export default props => (
             style={{
               width: `${artist.node.image.fixed.width}px`,
               height: `${artist.node.image.fixed.height}px`,
-              backgroundColor: '#eee',
             }}
             to={`/artists/${sanitizeName(artist.node.name)}`}
           >

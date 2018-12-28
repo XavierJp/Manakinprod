@@ -5,16 +5,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: calc(100% - 50px);
+  margin: 0 auto;
 
   > div.title-404 {
     font-size: 300px;
+
     > svg {
       height: 200px;
+    }
+
+    @media (min-width: 1px) and (max-width: 1024px) {
+      font-size: 150px;
+      > svg {
+        height: 90px;
+      }
     }
   }
 
   > p {
     margin: 40px auto 70px;
+    text-align: center;
+
+    @media (min-width: 1px) and (max-width: 1024px) {
+      margin: 20px auto 30px;
+    }
   }
 
   > a.back {
@@ -41,6 +56,7 @@
       border: 1px solid $bodyManakin;
       padding: 10px;
       margin: 0;
+      text-align: center;
     }
 
     &:hover {

@@ -137,7 +137,10 @@ export default () => (
     <Header />
     <div styles={styles} className="error-404">
       <div className="title-404">4{logo_small}4</div>
-      <p>Oups ! On a bien cherché, mais cette page est introuvable !</p>
+      <p>
+        Oups ! On a bien cherché, mais la page que vous cherchez à atteindre est
+        introuvable !
+      </p>
       <Link to="/" className="back button">
         <p>Retourner à la page d'accueil</p>
       </Link>

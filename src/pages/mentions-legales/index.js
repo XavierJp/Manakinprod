@@ -1,12 +1,37 @@
 import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
+import { graphql } from 'gatsby';
 
 export default props => (
-  <div styles={styles} className="more-about-manakin">
+  <>
     <Header />
-    <div className="more">
-      <p>Mentions légales</p>
+    <div styles={styles} className="mention-legales">
+      <h1>Mentions légales</h1>
+      <p
+        dangerouslySetInnerHTML={{
+          __html:
+            props.data.allContentfulAboutManakin.edges[0].node.mentionsLegales
+              .childMarkdownRemark.html,
+        }}
+      />
     </div>
-  </div>
+  </>
 );
+
+export const pageQuery = graphql`
+  query mentionsLegales {
+    allContentfulAboutManakin {
+      edges {
+        node {
+          id
+          mentionsLegales {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+      }
+    }
+  }
+`;

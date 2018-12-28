@@ -56,6 +56,8 @@ body {
 .home {
   font-size: 16px;
   color: $bodyManakin;
+  position: relative;
+  padding-bottom: 70px;
 
   .summary {
     margin: 75px auto 0;
@@ -113,6 +115,20 @@ body {
         padding-left: 15px;
         text-align: left;
       }
+    }
+  }
+
+  > div.footer {
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    height: 30px;
+    vertical-align: center;
+
+    .separator {
+      margin: 0 10px;
     }
   }
 }

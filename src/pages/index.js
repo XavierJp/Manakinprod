@@ -49,9 +49,11 @@ export default props => (
       </div>
       <SocialNetworks />
       <div />
-      {/* <div>
-        <Link to="mentions-legales">Mentions légales</Link>
-      </div> */}
+    </div>
+    <div className="footer">
+      <span>© 2018 Manakin production</span>
+      <span className="separator">&#x2022;</span>
+      <Link to="mentions-legales">Mentions légales</Link>
     </div>
   </div>
 );

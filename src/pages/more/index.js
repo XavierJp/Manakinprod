@@ -7,10 +7,17 @@ export default props => (
   <>
     <Header />
     <div styles={styles} className="more-about-manakin">
-      <p
+      <div
         dangerouslySetInnerHTML={{
           __html:
             props.data.allContentfulAboutManakin.edges[0].node.about
+              .childMarkdownRemark.html,
+        }}
+      />
+      <div
+        dangerouslySetInnerHTML={{
+          __html:
+            props.data.allContentfulAboutManakin.edges[0].node.biographies
               .childMarkdownRemark.html,
         }}
       />
@@ -25,6 +32,11 @@ export const pageQuery = graphql`
         node {
           id
           about {
+            childMarkdownRemark {
+              html
+            }
+          }
+          biographies {
             childMarkdownRemark {
               html
             }

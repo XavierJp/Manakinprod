@@ -27,7 +27,8 @@
 
     > a:last-of-type {
       font-weight: 600;
-      border-bottom: 2px solid #ffcc00;
+      white-space: nowrap;
+      border-bottom: 2px solid $yellowManakin;
     }
 
     > .hand-separator {
@@ -63,15 +64,6 @@
 
         > p:first-of-type {
           margin-top: 0;
-        }
-
-        &:after {
-          position: absolute;
-          content: '';
-          width: 35%;
-          height: 30px;
-          bottom: 0;
-          background: linear-gradient(0deg, #fff, transparent);
         }
       }
     }
@@ -145,7 +137,7 @@
     }
 
     .sub-section {
-      border: 1px solid #ffcc00;
+      border: 1px solid $yellowManakin;
       position: relative;
       padding: 20px;
       font-size: 0.9rem;
@@ -208,10 +200,26 @@
         }
       }
     }
+    @media (min-width: 521px) and (max-width: 1024px) {
+      margin: 20px 0 0;
+      .first-col {
+        width: 50%;
+        height: auto;
+      }
 
-    @media (min-width: 1px) and (max-width: 1024px) {
+      .second-col {
+        width: 50%;
+        margin: 0;
+      }
+
+      .third-col {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1px) and (max-width: 520px) {
       flex-direction: column-reverse;
-      margin: 0;
+      margin: 20px 0 0;
 
       .first-col {
         width: 100%;
@@ -220,7 +228,7 @@
 
       .second-col {
         width: 100%;
-        margin: 0;
+        margin: 0 0 20px;
       }
 
       .third-col {
