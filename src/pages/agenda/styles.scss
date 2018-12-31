@@ -1,28 +1,6 @@
 @import 'src/resources/colors.scss';
 
 .agenda-page {
-  max-width: 1250px;
-  margin: 20px auto 50px;
-  width: calc(100% - 80px);
-  @media (min-width: 1px) and (max-width: 1024px) {
-    width: calc(100% - 40px);
-  }
-
-  .bread-crumb {
-    font-size: 1.4rem;
-    display: flex;
-    align-items: center;
-
-    > a:last-of-type {
-      font-weight: 600;
-      border-bottom: 2px solid $yellowManakin;
-    }
-
-    > .hand-separator {
-      margin: 0 10px;
-    }
-  }
-
   .separator {
     margin: 0 10px;
   }

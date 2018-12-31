@@ -1,58 +1,5 @@
 @import 'src/resources/colors.scss';
 
-body {
-  font-family: 'Courier', 'Courier New', monospace;
-  font-size: 18px;
-  color: $bodyManakin;
-  background-color: $backgroundManakin;
-  font-weight: 300;
-  margin: 0;
-  padding: 0;
-
-  a:not(.link-underlined):not(.button) {
-    border-bottom: 2px solid transparent;
-    color: $bodyManakin;
-    text-decoration: none;
-    transition: color 150ms ease-in-out;
-  }
-  a:not(.link-underlined):not(.button):hover {
-    border-bottom: 2px solid $bodyManakin;
-    font-weight: 600;
-  }
-
-  a.button {
-    color: $bodyManakin;
-    text-decoration: none;
-  }
-}
-.separator {
-  color: $yellowManakin;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-
-.bracket {
-  cursor: pointer;
-  font-weight: 500;
-  transition: color 100ms ease-in;
-
-  &:hover {
-    color: $bodyManakin;
-  }
-
-  &:before {
-    content: '[';
-    color: $yellowManakin;
-    font-weight: 900;
-  }
-
-  &:after {
-    content: ']';
-    color: $yellowManakin;
-    font-weight: 900;
-  }
-}
-
 .home {
   font-size: 16px;
   color: $bodyManakin;
@@ -61,7 +8,6 @@ body {
 
   .summary {
     margin: 75px auto 0;
-    width: 80%;
     max-width: 900px;
 
     h1 {
@@ -126,8 +72,40 @@ body {
     text-align: center;
     height: 30px;
     vertical-align: center;
+    margin: 0;
 
     .separator {
+      margin: 0 10px;
+    }
+  }
+
+  @media (min-width: 1px) and (max-width: 600px) {
+    .summary {
+      margin-top: 25px;
+      h1 {
+        text-align: left;
+        font-size: 1rem;
+      }
+      > .artists {
+        flex-direction: column;
+        .separator {
+          display: none;
+        }
+      }
+      > .contact {
+        flex-direction: column;
+        margin-top: 50px;
+        margin-bottom: 20px;
+
+        > div {
+          text-align: left !important;
+          border: none !important;
+          padding: 0 !important;
+          margin: 0 0 20px;
+        }
+      }
+    }
+    > div.footer {
       margin: 0 10px;
     }
   }

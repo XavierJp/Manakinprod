@@ -2,12 +2,13 @@ import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
 import { graphql } from 'gatsby';
+import BreadCrumb from '../../uiComponents/breadCrumb';
 
 export default props => (
   <>
     <Header />
     <div styles={styles} className="mention-legales">
-      <h1>Mentions légales</h1>
+      <BreadCrumb current="Mentions légales" />
       <p
         dangerouslySetInnerHTML={{
           __html:

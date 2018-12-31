@@ -7,15 +7,57 @@ class Menu extends Component {
     if (!this.menu || !this.burger) {
       return;
     }
+    // should check first if js is active
+
+    if (this.burger.classList.contains('open')) {
+      // close
+      this.menu.childNodes.forEach((el, index) => {
+        el.animate(
+          [
+            {
+              opacity: 1,
+              transform: 'translateX(0)',
+            },
+            {
+              opacity: 0,
+              transform: 'translateX(-200px)',
+            },
+          ],
+          { delay: index * 100, duration: 175, fill: 'forwards' },
+        );
+      });
+      window.setTimeout(() => this.menu.classList.remove('visible'), 400);
+    } else {
+      // opens
+      this.menu.childNodes.forEach((el, index) => {
+        el.animate(
+          [
+            {
+              opacity: 0,
+              transform: 'translateX(-200px)',
+            },
+            {
+              opacity: 1,
+              transform: 'translateX(0)',
+            },
+          ],
+          {
+            delay: index * 100,
+            duration: 150,
+            fill: 'forwards',
+          },
+        );
+      });
+      this.menu.classList.add('visible');
+    }
     this.burger.classList.toggle('open');
-    this.menu.classList.toggle('visible');
   };
 
   render() {
     const { activeTab } = this.props;
     return (
-      <menu styles={styles} ref={el => (this.menu = el)}>
-        <div>
+      <menu styles={styles}>
+        <div ref={el => (this.menu = el)}>
           <LinkUnderlined
             targetPath="agenda"
             label="AGENDA"

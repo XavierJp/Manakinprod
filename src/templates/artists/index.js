@@ -1,18 +1,26 @@
 import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
+import Layout from '../../uiComponents/layout';
 import { graphql, Link } from 'gatsby';
 import { sanitizeName, formatShowDate } from '../../utils';
+import BreadCrumb from '../../uiComponents/breadCrumb';
+
+const breadCrumbPath = [
+  {
+    to: '/artists',
+    label: 'Artistes',
+  },
+];
 
 export default props => (
-  <>
+  <Layout>
     <Header activeTab={'artists'} />
     <div styles={styles} className="artist-page">
-      <div className="bread-crumb">
-        <Link to="/artists">Artistes</Link>
-        <span className="hand-separator">&#x261e;</span>
-        <Link to="/">{props.data.contentfulArtists.name}</Link>
-      </div>
+      <BreadCrumb
+        paths={breadCrumbPath}
+        current={props.data.contentfulArtists.name}
+      />
       <div className="artist-container">
         <div className="first-col">
           <div
@@ -138,7 +146,7 @@ export default props => (
         )}
       </div>
     </div>
-  </>
+  </Layout>
 );
 
 export const pageQuery = graphql`

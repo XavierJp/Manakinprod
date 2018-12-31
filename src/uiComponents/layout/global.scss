@@ -1,0 +1,62 @@
+@import 'src/resources/colors.scss';
+
+body {
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 18px;
+  color: $bodyManakin;
+  background-color: $backgroundManakin;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+
+  div#layout-global > div:not(header) {
+    max-width: 1250px;
+    margin: 20px auto 0;
+    width: calc(100% - 80px);
+    @media (min-width: 1px) and (max-width: 1024px) {
+      width: calc(100% - 40px);
+    }
+  }
+  a:not(.link-underlined):not(.button) {
+    border-bottom: 2px solid transparent;
+    color: $bodyManakin;
+    text-decoration: none;
+    transition: color 150ms ease-in-out;
+  }
+  a:not(.link-underlined):not(.button):hover {
+    border-bottom: 2px solid $bodyManakin;
+    font-weight: 600;
+  }
+
+  a.button {
+    color: $bodyManakin;
+    text-decoration: none;
+  }
+}
+.separator {
+  color: $yellowManakin;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.bracket {
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 100ms ease-in;
+
+  &:hover {
+    color: $bodyManakin;
+  }
+
+  &:before {
+    content: '[';
+    color: $yellowManakin;
+    font-weight: 900;
+  }
+
+  &:after {
+    content: ']';
+    color: $yellowManakin;
+    font-weight: 900;
+  }
+}

@@ -1,19 +1,27 @@
 import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
-import { graphql, Link } from 'gatsby';
+import Layout from '../../uiComponents/layout';
+import { graphql } from 'gatsby';
 import ArtitstsList from '../../components/artitstsListForAgenda';
 import DateListForAgenda from '../../components/dateListForAgenda';
+import BreadCrumb from '../../uiComponents/breadCrumb';
+
+const breadCrumbPath = [
+  {
+    to: '/agenda',
+    label: 'Agenda',
+  },
+];
 
 export default props => (
-  <>
+  <Layout>
     <Header activeTab={'agenda'} />
     <div styles={styles} className="agenda-page">
-      <div className="bread-crumb">
-        <Link to="/agenda">Agenda</Link>
-        <span className="hand-separator">&#x261e;</span>
-        <Link to="/">{props.data.contentfulArtists.name}</Link>
-      </div>
+      <BreadCrumb
+        paths={breadCrumbPath}
+        current={props.data.contentfulArtists.name}
+      />
       <ArtitstsList active={props.data.contentfulArtists.name} />
       <DateListForAgenda
         dates={props.data.contentfulArtists.show.reduce((acc, show) => {
@@ -37,7 +45,7 @@ export default props => (
         }, [])}
       />
     </div>
-  </>
+  </Layout>
 );
 
 export const agendaForArtist = graphql`

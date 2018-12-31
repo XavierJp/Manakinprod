@@ -1,17 +1,16 @@
 import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
+import Layout from '../../uiComponents/layout';
 import { graphql, Link } from 'gatsby';
 import { sanitizeName } from '../../utils';
+import BreadCrumb from '../../uiComponents/breadCrumb';
 
 export default props => (
-  <>
+  <Layout>
     <Header activeTab={'artists'} />
     <div styles={styles} className="artists-page">
-      <div className="bread-crumb">
-        <Link to="/artists">Artistes</Link>
-        {/* <span className="hand-separator">&#x261e;</span> */}
-      </div>
+      <BreadCrumb current="Artistes" />
       <div className="artists-list">
         {props.data.allContentfulArtists.edges.map(artist => (
           <Link
@@ -32,7 +31,7 @@ export default props => (
         ))}
       </div>
     </div>
-  </>
+  </Layout>
 );
 
 export const pageQuery = graphql`

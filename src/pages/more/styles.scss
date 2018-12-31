@@ -1,16 +1,8 @@
 .more-about-manakin {
-  max-width: 1250px;
-  margin: 20px auto 0;
-  width: calc(100% - 80px);
-  @media (min-width: 1px) and (max-width: 1024px) {
-    width: calc(100% - 40px);
-  }
-  font-size: 1rem;
-
   > div {
     > p {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       width: 100%;
       > img {
         height: 250px;

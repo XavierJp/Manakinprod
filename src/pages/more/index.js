@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
+import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 
 export default props => (
-  <>
+  <Layout>
     <Header />
     <div styles={styles} className="more-about-manakin">
       <div
@@ -22,7 +23,7 @@ export default props => (
         }}
       />
     </div>
-  </>
+  </Layout>
 );
 
 export const pageQuery = graphql`
