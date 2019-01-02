@@ -4,14 +4,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 class LinkUnderlined extends React.Component {
-  static defaultProps = {
-    label: PropTypes.string.isRequired,
-    isEnabled: PropTypes.bool,
-    targetPath: PropTypes.string.isRequired,
-    style: PropTypes.object,
-    highlighted: (PropTypes.bool = false),
-  };
-
   mouseEnter = () => {
     this.underline.animate(
       [
