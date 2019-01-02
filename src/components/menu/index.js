@@ -9,6 +9,15 @@ class Menu extends Component {
     }
     // should check first if js is active
 
+    try {
+      this.toggleMenu();
+    } catch (e) {
+      this.menu.classList.toggle('visible');
+      this.burger.classList.toggle('open');
+    }
+  };
+
+  toggleMenu = () => {
     if (this.burger.classList.contains('open')) {
       // close
       this.menu.childNodes.forEach((el, index) => {
