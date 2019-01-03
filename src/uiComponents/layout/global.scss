@@ -3,6 +3,7 @@
 @font-face {
   font-family: 'Fira Mono';
   font-style: normal;
+  font-display: swap;
   font-weight: 100 500;
   src: local('Fira Mono'),
     url('../../resources/font/FiraMono-Regular.ttf') format('opentype');
@@ -11,6 +12,7 @@
 @font-face {
   font-family: 'Fira Mono';
   font-style: normal;
+  font-display: swap;
   font-weight: 500 900;
   src: local('Fira Mono'),
     url('../../resources/font/FiraMono-Bold.ttf') format('opentype');
@@ -18,6 +20,7 @@
 @font-face {
   font-family: 'Fira Mono';
   font-style: italic;
+  font-display: swap;
   font-weight: normal;
   src: url('../../resources/font/Courier Prime Italic.ttf') format('opentype');
 }
