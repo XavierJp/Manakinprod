@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
-import Layout from '../../uiComponents/Layout';
+import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 import BreadCrumb from '../../uiComponents/breadCrumb';
 

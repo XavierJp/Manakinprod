@@ -18,7 +18,6 @@ const sanitizeName = artistName => {
   } catch (e) {
     console.error(e);
   }
-  console.log(artistName, path);
   return path;
 };
 
