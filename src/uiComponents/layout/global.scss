@@ -1,9 +1,25 @@
 @import 'src/resources/colors.scss';
 
+@font-face {
+  font-family: 'Fira Mono';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100 500;
+  src: url('../../resources/font/FiraMono-Regular.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Fira Mono';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500 900;
+  src: url('../../resources/font/FiraMono-Bold.ttf') format('opentype');
+}
+
 body {
-  font-family: 'Courier', 'Courier New', monospace;
+  // font-family: 'Courier', 'Courier New', monospace;
+  font-family: 'Fira Mono', 'Courier', monospace;
   font-size: 18px;
-  // line-height: 1;
   color: $bodyManakin;
   background-color: $backgroundManakin;
   font-weight: 300;

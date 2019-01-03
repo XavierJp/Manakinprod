@@ -4,7 +4,6 @@ import { Link } from 'gatsby';
 import { sanitizeName, formatShowDate } from '../../utils';
 
 const computeAgendaByDate = flatDateList => {
-  console.log(flatDateList);
   return flatDateList.reduce((acc, flatDate) => {
     const y = new Intl.DateTimeFormat('fr-FR', {
       year: 'numeric',
@@ -56,7 +55,7 @@ export default props => (
                     return a.startDate < b.startDate ? -1 : 1;
                   })
                   .map(dateEntry => (
-                    <li>
+                    <li key={dateEntry.startDate}>
                       <div className="show-name">{dateEntry.show.name}</div>
                       <div className="bracket">
                         <Link

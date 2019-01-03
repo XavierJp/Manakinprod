@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './styles.scss';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 class LinkUnderlined extends React.Component {

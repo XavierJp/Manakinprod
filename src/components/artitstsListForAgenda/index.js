@@ -23,7 +23,7 @@ export default props => (
           <Link
             to={`agenda/${sanitizeName(artist.node.name)}`}
             key={artist.node.name}
-            className={props.active === artist.node.name && 'active'}
+            className={props.active === artist.node.name ? 'active' : ''}
           >
             <p>{artist.node.name}</p>
           </Link>

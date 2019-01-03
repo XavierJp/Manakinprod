@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
 import { Link } from 'gatsby';
-import logo_manakin from '../../resources/logo_centered.png';
+import logo_manakin from '../../resources/logo_centered_low_q.jpg';
 
 export default () => (
   <div styles={styles} className="logo">
