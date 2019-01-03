@@ -1,8 +1,22 @@
 import React from 'react';
 import globalStyles from './global.scss';
+import { Helmet } from 'react-helmet';
+// import FiraMonoRegular from '../../resources/font/FiraMono-Regular.ttf';
+// import FiraMonoBold from '../../resources/font/FiraMono-Bold.ttf';
 
 export default ({ children }) => (
   <div id="layout-global" style={globalStyles}>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Manakin - Plateforme de production</title>
+      <link rel="canonical" href="http://manakinprod.fr" />
+      <meta
+        name="description"
+        content="MANAKIN est une plateforme de production co-fondée par Lauren Boyer et Leslie Perrin pour co-construire et développer des projets artistiques originaux"
+      />
+      {/* <link rel="preload" href={FiraMonoRegular} as="font" />
+      <link rel="preload" href={FiraMonoBold} as="font" /> */}
+    </Helmet>
     {children}
   </div>
 );

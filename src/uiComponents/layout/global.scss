@@ -2,18 +2,24 @@
 
 @font-face {
   font-family: 'Fira Mono';
-  font-display: swap;
   font-style: normal;
   font-weight: 100 500;
-  src: url('../../resources/font/FiraMono-Regular.ttf') format('opentype');
+  src: local('Fira Mono'),
+    url('../../resources/font/FiraMono-Regular.ttf') format('opentype');
 }
 
 @font-face {
   font-family: 'Fira Mono';
-  font-display: swap;
   font-style: normal;
   font-weight: 500 900;
-  src: url('../../resources/font/FiraMono-Bold.ttf') format('opentype');
+  src: local('Fira Mono'),
+    url('../../resources/font/FiraMono-Bold.ttf') format('opentype');
+}
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: italic;
+  font-weight: normal;
+  src: url('../../resources/font/Courier Prime Italic.ttf') format('opentype');
 }
 
 body {

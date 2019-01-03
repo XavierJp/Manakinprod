@@ -5,6 +5,7 @@ import Layout from '../../uiComponents/layout';
 import { graphql, Link } from 'gatsby';
 import { sanitizeName, formatShowDate } from '../../utils';
 import BreadCrumb from '../../uiComponents/breadCrumb';
+import { Helmet } from 'react-helmet';
 
 const breadCrumbPath = [
   {
@@ -15,6 +16,12 @@ const breadCrumbPath = [
 
 export default props => (
   <Layout>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>
+        Manakin production | page artiste : {props.data.contentfulArtists.name}
+      </title>
+    </Helmet>
     <Header activeTab={'artists'} />
     <div styles={styles} className="artist-page">
       <BreadCrumb
@@ -51,7 +58,12 @@ export default props => (
                   <div className="separator">&#x2022;</div>
                   <div key={show.name}>
                     <div>{show.name}</div>
-                    <Link className="more button" to="/">
+                    <Link
+                      className="more button"
+                      to={`artists/${sanitizeName(
+                        props.data.contentfulArtists.name,
+                      )}/${sanitizeName(show.name)}`}
+                    >
                       <p>En savoir plus</p>
                     </Link>
                   </div>
@@ -119,7 +131,7 @@ export default props => (
                 ))}
             </div>
             <div className="artist-links">
-              <h3>Liens utiles</h3>
+              <h2>Liens utiles</h2>
               <div>
                 <Link
                   to={`/agenda/${sanitizeName(

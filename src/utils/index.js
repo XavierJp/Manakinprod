@@ -5,12 +5,17 @@ export const sanitizeName = artistName => {
 
   let path;
   try {
-    path = artistName.replace(' ', '-').toLowerCase();
-    path = path.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    path = artistName
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/([^a-zA-Z0-9])/g, ' ')
+      .split(' ')
+      .filter(Boolean)
+      .join('-')
+      .toLowerCase();
   } catch (e) {
     console.error(e);
   }
-
   return path;
 };
 

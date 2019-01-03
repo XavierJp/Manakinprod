@@ -1,0 +1,11 @@
+@import 'src/resources/colors.scss';
+
+.show-page {
+  .show-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: left;
+    position: relative;
+    margin: 30px 0 0;
+  }
+}

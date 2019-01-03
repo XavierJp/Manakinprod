@@ -3,7 +3,7 @@
 .artist-list-for-agenda {
   position: relative;
   font-size: 1rem;
-  margin: 10px 0;
+  margin: 0 0 10px;
   display: block;
 
   > a {
@@ -11,7 +11,7 @@
     z-index: 0;
     cursor: pointer;
     display: inline-block;
-    margin: 10px 20px 10px 0;
+    margin: 0 20px 20px 0;
 
     &.active {
       font-weight: 900;

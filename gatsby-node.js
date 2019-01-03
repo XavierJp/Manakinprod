@@ -1,10 +1,33 @@
 const path = require('path');
 
+const sanitizeName = artistName => {
+  if (!artistName) {
+    console.error(`invalid url : no name provided`);
+  }
+
+  let path;
+  try {
+    path = artistName
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/([^a-zA-Z0-9])/g, ' ')
+      .split(' ')
+      .filter(Boolean)
+      .join('-')
+      .toLowerCase();
+  } catch (e) {
+    console.error(e);
+  }
+  console.log(artistName, path);
+  return path;
+};
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   return new Promise((resolve, reject) => {
     const artistPageTemplate = path.resolve(`src/templates/artists/index.js`);
     const agendaPageTemplate = path.resolve(`src/templates/agenda/index.js`);
+    const showPageTemplate = path.resolve(`src/templates/shows/index.js`);
     // Query for markdown nodes to use in creating pages.
     resolve(
       graphql(
@@ -29,8 +52,7 @@ exports.createPages = ({ graphql, actions }) => {
         result.data.allContentfulArtists.edges.forEach(edge => {
           let path = '';
           try {
-            path = edge.node.name.replace(' ', '-').toLowerCase();
-            path = path.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            path = sanitizeName(edge.node.name);
           } catch (e) {
             console.error(e);
           }
@@ -46,6 +68,48 @@ exports.createPages = ({ graphql, actions }) => {
             component: agendaPageTemplate,
             context: {
               artistId: edge.node.id,
+            },
+          });
+        });
+
+        return;
+      }),
+      graphql(
+        `
+          query showsForPath {
+            allContentfulShow {
+              edges {
+                node {
+                  id
+                  name
+                  artist {
+                    id
+                    name
+                  }
+                }
+              }
+            }
+          }
+        `,
+      ).then(result => {
+        if (result.errors) {
+          reject(result.errors);
+        }
+
+        // Create blog post pages.
+        result.data.allContentfulShow.edges.forEach(edge => {
+          let showPath = '';
+          try {
+            showPath = sanitizeName(edge.node.name);
+            artistPath = sanitizeName(edge.node.artist.name);
+          } catch (e) {
+            console.error(e);
+          }
+          createPage({
+            path: `artists/${artistPath}/${showPath}`, // required
+            component: showPageTemplate,
+            context: {
+              showId: edge.node.id,
             },
           });
         });

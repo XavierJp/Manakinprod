@@ -80,9 +80,9 @@ const logo_small = (
     <g
       id="Artboard-2"
       stroke="none"
-      stroke-width="1"
+      strokeWidth="1"
       fill="none"
-      fill-rule="evenodd"
+      fillRule="evenodd"
     >
       <g id="Group">
         <circle id="Oval" fill="#43355E" cx="198.5" cy="198.5" r="198.5" />
@@ -97,12 +97,12 @@ const logo_small = (
           fill="#CC454C"
         />
         <g id="Oval-2">
-          <use fill="black" fill-opacity="1" filter="url(#filter-2)" />
-          <use fill="#FFFFFF" fill-rule="evenodd" />
+          <use fill="black" fillOpacity="1" filter="url(#filter-2)" />
+          <use fill="#FFFFFF" fillRule="evenodd" />
         </g>
         <g id="Oval-2">
-          <use fill="black" fill-opacity="1" filter="url(#filter-4)" />
-          <use fill="#43355E" fill-rule="evenodd" />
+          <use fill="black" fillOpacity="1" filter="url(#filter-4)" />
+          <use fill="#43355E" fillRule="evenodd" />
         </g>
         <path
           d="M225.093925,130.775716 C235.311193,130.775716 245.386293,122.841643 245.386293,113.728945 C245.386293,104.616246 235.311193,96.6821736 225.093925,96.6821736 C214.876657,96.6821736 207.777702,104.387302 207.777702,113.5 C207.777702,122.612698 214.876657,130.775716 225.093925,130.775716 Z"

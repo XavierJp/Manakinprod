@@ -68,14 +68,14 @@ class Menu extends Component {
       <menu styles={styles}>
         <div ref={el => (this.menu = el)}>
           <LinkUnderlined
-            targetPath="agenda"
-            label="AGENDA"
-            highlighted={activeTab === 'agenda'}
-          />
-          <LinkUnderlined
             targetPath="artists"
             label="ARTISTES"
             highlighted={activeTab === 'artists'}
+          />
+          <LinkUnderlined
+            targetPath="agenda"
+            label="AGENDA"
+            highlighted={activeTab === 'agenda'}
           />
           <LinkUnderlined
             targetPath="more"
