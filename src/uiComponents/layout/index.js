@@ -1,8 +1,8 @@
 import React from 'react';
 import globalStyles from './global.scss';
 import { Helmet } from 'react-helmet';
-// import FiraMonoRegular from '../../resources/font/FiraMono-Regular.ttf';
-// import FiraMonoBold from '../../resources/font/FiraMono-Bold.ttf';
+import 'typeface-fira-mono';
+import 'typeface-courier-prime';
 
 export default ({ children }) => (
   <div id="layout-global" style={globalStyles}>
@@ -14,8 +14,6 @@ export default ({ children }) => (
         name="description"
         content="MANAKIN est une plateforme de production co-fondée par Lauren Boyer et Leslie Perrin pour co-construire et développer des projets artistiques originaux"
       />
-      {/* <link rel="preload" href={FiraMonoRegular} as="font" />
-      <link rel="preload" href={FiraMonoBold} as="font" /> */}
     </Helmet>
     {children}
   </div>

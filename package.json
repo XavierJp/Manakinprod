@@ -20,6 +20,8 @@
     "node-sass": "^4.9.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "typeface-courier-prime": "0.0.59",
+    "typeface-fira-mono": "0.0.54"
   }
 }

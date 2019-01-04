@@ -24,8 +24,8 @@
       margin-right: 10px;
 
       > div.artist-description {
-        font-size: 0.9rem;
-        line-height: 1.8;
+        font-size: 1rem;
+        line-height: 1.6;
         padding-bottom: 50px;
 
         > p:first-of-type {
@@ -53,7 +53,6 @@
         width: 100%;
         height: 250px;
         background-color: #eee;
-
         object-fit: cover;
       }
       > div > li {
@@ -198,9 +197,13 @@
         > div:first-of-type {
           margin-right: 15px;
         }
+
+        &:last-of-type {
+          margin-bottom: 10px;
+        }
       }
     }
-    @media (min-width: 521px) and (max-width: 1024px) {
+    @media (min-width: 651px) and (max-width: 1024px) {
       margin: 20px 0 0;
       .first-col {
         width: 50%;
@@ -220,22 +223,30 @@
       }
     }
 
-    @media (min-width: 1px) and (max-width: 520px) {
-      flex-direction: column-reverse;
+    @media (min-width: 1px) and (max-width: 650px) {
+      flex-direction: column;
       margin: 20px 0 0;
 
       .first-col {
         width: 100%;
         height: auto;
+        order: 2;
+
+        > div.artist-description:after {
+          display: none;
+        }
       }
 
       .second-col {
         width: 100%;
+        order: 1;
         margin: 0 0 20px;
       }
 
       .third-col {
-        display: none;
+        order: 3;
+        width: 100%;
+        margin: 0 0 50px;
       }
     }
   }

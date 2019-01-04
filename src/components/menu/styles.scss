@@ -19,62 +19,12 @@ menu {
     }
   }
 
+  .pic {
+    display: none;
+  }
+
   .hamburger {
     display: none;
-    width: 28px;
-    height: 32px;
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    cursor: pointer;
-
-    span {
-      display: block;
-      position: absolute;
-      height: 3px;
-      width: 100%;
-      background: $bodyManakin;
-      opacity: 1;
-      right: 0;
-      transform: rotate(0deg);
-      transition: 250ms ease-in-out;
-
-      &:nth-child(1) {
-        top: 0px;
-        width: 33px;
-      }
-
-      &:nth-child(2) {
-        top: 12px;
-        left: 0px;
-      }
-
-      &:nth-child(3) {
-        top: 24px;
-        width: 35px;
-      }
-    }
-
-    &.open {
-      > span {
-        &:nth-child(1) {
-          width: 35px;
-          top: 12px;
-          transform: rotate(135deg);
-        }
-
-        &:nth-child(2) {
-          opacity: 0;
-          left: -60px;
-        }
-
-        &:nth-child(3) {
-          width: 35px;
-          top: 12px;
-          transform: rotate(-135deg);
-        }
-      }
-    }
   }
 
   @media (min-width: 1px) and (max-width: 1024px) {
@@ -87,7 +37,6 @@ menu {
       justify-content: center;
       width: 100%;
       height: 100vh;
-      margin: 0;
       align-items: center;
       flex-grow: 1;
       position: fixed;
@@ -98,8 +47,8 @@ menu {
       margin: 0;
 
       > a.link-underlined {
-        font-size: 1.3rem;
-        margin: 15px 20px;
+        font-size: 1.7rem;
+        margin: 20px;
         white-space: nowrap;
         opacity: 0;
         transform: translateX(-200px);
@@ -108,10 +57,76 @@ menu {
       &.visible {
         display: flex;
       }
+
+      &.force-visible {
+        display: flex;
+        > a.link-underlined {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
     }
 
     .hamburger {
       display: block;
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+
+      span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 30px;
+        background: $bodyManakin;
+        opacity: 1;
+        right: 0;
+        transform: rotate(0deg);
+        transition: 250ms ease-in-out;
+        right: 20px;
+
+        &:nth-child(1) {
+          top: 20px;
+          width: 30px;
+        }
+
+        &:nth-child(2) {
+          top: 32px;
+          width: 28px;
+          right: 20px;
+        }
+
+        &:nth-child(3) {
+          top: 44px;
+          width: 32px;
+        }
+      }
+
+      &.open {
+        position: fixed;
+
+        > span {
+          &:nth-child(1) {
+            width: 35px;
+            top: 32px;
+            transform: rotate(135deg);
+          }
+
+          &:nth-child(2) {
+            opacity: 0;
+            right: 80px;
+          }
+
+          &:nth-child(3) {
+            width: 35px;
+            top: 32px;
+            transform: rotate(-135deg);
+          }
+        }
+      }
     }
   }
 }

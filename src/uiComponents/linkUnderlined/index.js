@@ -4,39 +4,43 @@ import { Link } from 'gatsby';
 
 class LinkUnderlined extends React.Component {
   mouseEnter = () => {
-    this.underline.animate(
-      [
+    try {
+      this.underline.animate(
+        [
+          {
+            width: '0%',
+          },
+          {
+            width: '100%',
+          },
+        ],
         {
-          width: '0%',
+          duration: 150,
+          fill: 'forwards',
+          easing: 'ease-in-out',
         },
-        {
-          width: '100%',
-        },
-      ],
-      {
-        duration: 150,
-        fill: 'forwards',
-        easing: 'ease-in-out',
-      },
-    );
+      );
+    } catch (e) {}
   };
 
   mouseLeave = () => {
-    this.underline.animate(
-      [
+    try {
+      this.underline.animate(
+        [
+          {
+            width: '100%',
+          },
+          {
+            width: '0%',
+          },
+        ],
         {
-          width: '100%',
+          duration: 150,
+          fill: 'forwards',
+          easing: 'ease-in-out',
         },
-        {
-          width: '0%',
-        },
-      ],
-      {
-        duration: 150,
-        fill: 'forwards',
-        easing: 'ease-in-out',
-      },
-    );
+      );
+    } catch (e) {}
   };
 
   render() {

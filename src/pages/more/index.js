@@ -9,7 +9,7 @@ export default props => (
   <Layout>
     <Header />
     <div styles={styles} className="more-about-manakin">
-      <BreadCrumb current="A propos de Manakin production" />
+      <BreadCrumb current="A propos de Manakin" />
       <div
         dangerouslySetInnerHTML={{
           __html:
