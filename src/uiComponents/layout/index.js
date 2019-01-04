@@ -14,6 +14,10 @@ export default ({ children }) => (
         name="description"
         content="MANAKIN est une plateforme de production co-fondée par Lauren Boyer et Leslie Perrin pour co-construire et développer des projets artistiques originaux"
       />
+      <meta
+        name="google-site-verification"
+        content="1s82ZT6xQazOFEVwn5iUg4KJEQW48-WPgioXI98u8-g"
+      />
     </Helmet>
     {children}
   </div>
