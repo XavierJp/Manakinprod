@@ -9,7 +9,7 @@ export default ({ children }) => (
     <Helmet>
       <meta charSet="utf-8" />
       <title>Manakin - Plateforme de production</title>
-      <link rel="canonical" href="http://manakinprod.fr" />
+      <link rel="canonical" href="https://www.manakinprod.fr" />
       <meta
         name="description"
         content="MANAKIN est une plateforme de production co-fondée par Lauren Boyer et Leslie Perrin pour co-construire et développer des projets artistiques originaux"

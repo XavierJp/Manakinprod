@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
+import Layout from '../../uiComponents/layout';
 import { Link } from 'gatsby';
 
 const logo_small = (
@@ -133,7 +134,7 @@ const logo_small = (
 );
 
 export default () => (
-  <>
+  <Layout>
     <Header />
     <div styles={styles} className="error-404">
       <div className="title-404">4{logo_small}4</div>
@@ -145,5 +146,5 @@ export default () => (
         <p>Retourner à la page d'accueil</p>
       </Link>
     </div>
-  </>
+  </Layout>
 );
