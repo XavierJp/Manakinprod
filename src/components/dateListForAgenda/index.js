@@ -61,7 +61,7 @@ export default props => (
                         <Link
                           to={`artists/${sanitizeName(
                             dateEntry.show.artist.name,
-                          )}`}
+                          )}/`}
                         >
                           {dateEntry.show.artist.name}
                         </Link>

@@ -27,7 +27,10 @@ export default props => (
               <LinkUnderlined
                 className="artist-name"
                 label={artist.node.name}
-                targetPath={`artists/${sanitizeName(artist.node.name, artist)}`}
+                targetPath={`artists/${sanitizeName(
+                  artist.node.name,
+                  artist,
+                )}/`}
               />
               {index < props.data.allContentfulArtists.edges.length - 1 && (
                 <div className="separator">&#x2022;</div>

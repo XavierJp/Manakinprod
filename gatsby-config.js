@@ -61,8 +61,6 @@ module.exports = {
         // Avoids sending pageview hits from custom paths
         exclude: [],
         // Enables Google Optimize using your container Id
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
       },
     },
     {

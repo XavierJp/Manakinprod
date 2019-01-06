@@ -1,8 +1,6 @@
 import React from 'react';
 import globalStyles from './global.scss';
 import { Helmet } from 'react-helmet';
-import 'typeface-fira-mono';
-import 'typeface-courier-prime';
 
 export default ({ children }) => (
   <div id="layout-global" style={globalStyles}>

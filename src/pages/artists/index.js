@@ -18,7 +18,7 @@ export default props => (
               width: `${artist.node.image.fixed.width}px`,
               height: `${artist.node.image.fixed.height}px`,
             }}
-            to={`/artists/${sanitizeName(artist.node.name)}`}
+            to={`/artists/${sanitizeName(artist.node.name)}/`}
           >
             <img
               src={artist.node.image.fixed.src}

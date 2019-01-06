@@ -62,7 +62,7 @@ export default props => (
                       className="more button"
                       to={`artists/${sanitizeName(
                         props.data.contentfulArtists.name,
-                      )}/${sanitizeName(show.name)}`}
+                      )}/${sanitizeName(show.name)}/`}
                     >
                       <p>En savoir plus</p>
                     </Link>

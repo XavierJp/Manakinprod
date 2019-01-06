@@ -17,13 +17,29 @@ export default props => (
               .childMarkdownRemark.html,
         }}
       />
-      <div
-        dangerouslySetInnerHTML={{
-          __html:
-            props.data.allContentfulAboutManakin.edges[0].node.biographies
-              .childMarkdownRemark.html,
-        }}
+      <div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              props.data.allContentfulAboutManakin.edges[0].node.bioLeslie
+                .childMarkdownRemark.html,
+          }}
+        />
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              props.data.allContentfulAboutManakin.edges[0].node.bioLauren
+                .childMarkdownRemark.html,
+          }}
+        />
+      </div>
+      <img
+        src={
+          props.data.allContentfulAboutManakin.edges[0].node.picture.fixed.src
+        }
+        alt={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
       />
+      <p>{props.data.allContentfulAboutManakin.edges[0].node.picLegend}</p>
     </div>
   </Layout>
 );
@@ -39,11 +55,25 @@ export const pageQuery = graphql`
               html
             }
           }
-          biographies {
+          bioLeslie {
             childMarkdownRemark {
               html
             }
           }
+          bioLauren {
+            childMarkdownRemark {
+              html
+            }
+          }
+          picture {
+            title
+            fixed(width: 500) {
+              width
+              height
+              src
+            }
+          }
+          picLegend
         }
       }
     }
