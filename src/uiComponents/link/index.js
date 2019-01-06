@@ -1,10 +1,9 @@
 import React from 'react';
+import {Link} from 'gatsby';
 
 
-const Link = ({to, children, style, onMouseEnter, onMouseLeave, className}) => (
-    <a href={to} style={style} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={className}>
+export default ({to, children, style, onMouseEnter, onMouseLeave, className}) => (
+    <Link to={to} style={style} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={className}>
         {children}
-    </a>
+    </Link>
 );
-
-export default Link;
