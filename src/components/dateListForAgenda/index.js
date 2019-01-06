@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.scss';
-import { Link } from 'gatsby';
+import Link from '../../uiComponents/link';
 import { sanitizeName, formatShowDate } from '../../utils';
 
 const computeAgendaByDate = flatDateList => {
@@ -56,10 +56,14 @@ export default props => (
                   })
                   .map(dateEntry => (
                     <li key={dateEntry.startDate}>
-                      <div className="show-name">{dateEntry.show.name}</div>
-                      <div className="bracket">
+                      <div className="show-name bracket">                 <Link
+                          to={`/artists/${sanitizeName(
+                            dateEntry.show.artist.name,
+                          )}/`}
+                        >{dateEntry.show.name}</Link></div>
+                      <div className="show-artist">
                         <Link
-                          to={`artists/${sanitizeName(
+                          to={`/artists/${sanitizeName(
                             dateEntry.show.artist.name,
                           )}/`}
                         >

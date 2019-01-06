@@ -29,19 +29,25 @@
       > div.show-name {
         font-size: 1rem;
         margin-bottom: 3px;
+
+        &.bracket {
+          font-size: 1rem;
+  
+          > a {
+            margin: 0 7px;
+          }
+        }
       }
 
-      > div.bracket {
+      > div.show-artist {
         font-size: 1rem;
-
-        > a {
-          margin: 0 7px;
-        }
       }
 
       > div.city {
         font-size: 0.8rem;
         font-style: italic;
+        margin-top: 2px;
+        opacity: 0.9;
       }
 
       > div.theatre,

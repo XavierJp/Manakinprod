@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.scss';
-import { Link } from 'gatsby';
+import Link from '../link';
 
 class LinkUnderlined extends React.Component {
   mouseEnter = () => {

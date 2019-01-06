@@ -69,26 +69,26 @@ class Menu extends Component {
       <menu styles={styles}>
         <div ref={el => (this.menu = el)}>
           <LinkUnderlined
-            targetPath="artists"
+            targetPath="/artists"
             label="ARTISTES"
             highlighted={activeTab === 'artists'}
           />
           <LinkUnderlined
-            targetPath="agenda"
+            targetPath="/agenda"
             label="AGENDA"
             highlighted={activeTab === 'agenda'}
           />
           <LinkUnderlined
-            targetPath="more"
+            targetPath="/more"
             label="EN SAVOIR +"
             highlighted={activeTab === 'more'}
           />
-          <LinkUnderlined
+          {/* <LinkUnderlined
             className="newletter"
             targetPath="/"
             label="&#x261e; NEWSLETTER"
             highlighted={activeTab === 'newsletter'}
-          />
+          /> */}
           {/* <Newsletter /> */}
         </div>
         <div
