@@ -4,7 +4,8 @@ import LinkUnderlined from '../uiComponents/linkUnderlined';
 import Header from '../components/header';
 import Layout from '../uiComponents/layout';
 import SocialNetworks from '../components/socialNetworks';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+import Link from '../uiComponents/link';
 import { sanitizeName } from '../utils';
 
 export default props => (

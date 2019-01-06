@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
 import Layout from '../../uiComponents/layout';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+import Link from '../../uiComponents/link';
 import { sanitizeName, formatShowDate } from '../../utils';
 import BreadCrumb from '../../uiComponents/breadCrumb';
 import { Helmet } from 'react-helmet';
@@ -97,7 +98,7 @@ export default props => (
                   <li key={showDate.name + showDate.startDate}>
                     <div className="separator">&#x2022;</div>
                     <div>
-                      <div className="show-name">{showDate.name}</div>
+                      <div className="show-name bracket">{showDate.name}</div>
                       <div className="date">
                         <div>{formatShowDate(showDate.startDate)}</div>
                         {showDate.endDate !== showDate.startDate && (

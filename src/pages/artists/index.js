@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
 import Layout from '../../uiComponents/layout';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+import Link from '../../uiComponents/link';
 import { sanitizeName } from '../../utils';
 import BreadCrumb from '../../uiComponents/breadCrumb';
 

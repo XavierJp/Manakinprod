@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './styles.scss';
 import Header from '../../components/header';
 import Layout from '../../uiComponents/layout';
-import { Link } from 'gatsby';
+import Link from '../../uiComponents/link';
+
 
 const logo_small = (
   <svg viewBox="0 0 418 397" xmlns="http://www.w3.org/2000/svg">

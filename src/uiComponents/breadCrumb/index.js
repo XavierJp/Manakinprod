@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
-import { Link } from 'gatsby';
+import Link from '../link';
+
 
 export default props => (
   <div style={styles} className="bread-crumb">

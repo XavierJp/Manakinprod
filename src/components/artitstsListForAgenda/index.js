@@ -1,5 +1,6 @@
 import React from 'react';
-import { StaticQuery, graphql, Link } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
+import Link from '../../uiComponents/link';
 import styles from './styles.scss';
 import { sanitizeName } from '../../utils';
 
