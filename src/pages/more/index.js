@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
-import Header from '../../components/header';
+import Header from '../../uiComponents/header';
+import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
 import BreadCrumb from '../../uiComponents/breadCrumb';
 import { graphql } from 'gatsby';
@@ -18,14 +19,14 @@ export default props => (
         }}
       />
       <div>
-        <div
+        <p
           dangerouslySetInnerHTML={{
             __html:
               props.data.allContentfulAboutManakin.edges[0].node.bioLeslie
                 .childMarkdownRemark.html,
           }}
         />
-        <div
+        <p
           dangerouslySetInnerHTML={{
             __html:
               props.data.allContentfulAboutManakin.edges[0].node.bioLauren
@@ -39,8 +40,11 @@ export default props => (
         }
         alt={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
       />
-      <p>{props.data.allContentfulAboutManakin.edges[0].node.picLegend}</p>
+      <p className="picture-legend">
+        {props.data.allContentfulAboutManakin.edges[0].node.picLegend}
+      </p>
     </div>
+    <Footer />
   </Layout>
 );
 

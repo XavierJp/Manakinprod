@@ -1,0 +1,27 @@
+@import 'src/resources/colors.scss';
+
+footer {
+  font-size: 0.9rem;
+  color: $bodyLightManakin !important;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  vertical-align: center;
+  margin: 100px 0 20px;
+
+  @media (min-width: 1px) and (max-width: 1024px) {
+    font-size: 0.8rem;
+    margin: 30px 0 20px;
+  }
+
+  a {
+    color: $bodyLightManakin !important;
+  }
+  .separator {
+    margin: 0 15px;
+  }
+
+  > div:last-of-type {
+    margin: 10px 0 40px;
+  }
+}

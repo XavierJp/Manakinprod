@@ -56,11 +56,22 @@ export default props => (
                   })
                   .map(dateEntry => (
                     <li key={dateEntry.startDate}>
-                      <div className="show-name bracket">                 <Link
-                          to={`/artists/${sanitizeName(
-                            dateEntry.show.artist.name,
-                          )}/`}
-                        >{dateEntry.show.name}</Link></div>
+                      <div>
+                        <span className="show-name bracket">
+                          <Link
+                            to={`/artists/${sanitizeName(
+                              dateEntry.show.artist.name,
+                            )}/`}
+                          >
+                            {dateEntry.show.name}
+                          </Link>
+                        </span>
+                        {dateEntry.show.creationYear && (
+                          <span className="creation-year">
+                            Creation {dateEntry.show.creationYear}
+                          </span>
+                        )}
+                      </div>
                       <div className="show-artist">
                         <Link
                           to={`/artists/${sanitizeName(

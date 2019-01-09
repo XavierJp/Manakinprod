@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.scss';
-import Header from '../../components/header';
+import Header from '../../uiComponents/header';
 import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 import Link from '../../uiComponents/link';

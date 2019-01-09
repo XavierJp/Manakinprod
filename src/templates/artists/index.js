@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.scss';
-import Header from '../../components/header';
+import Header from '../../uiComponents/header';
 import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 import Link from '../../uiComponents/link';
@@ -58,7 +58,14 @@ export default props => (
                 <li key="show">
                   <div className="separator">&#x2022;</div>
                   <div key={show.name}>
-                    <div>{show.name}</div>
+                    <div>
+                      <span className="bracket">{show.name}</span>
+                      {show.creationYear && (
+                        <span className="creation-year">
+                          Creation {show.creationYear}
+                        </span>
+                      )}
+                    </div>
                     <Link
                       className="more button"
                       to={`artists/${sanitizeName(
@@ -88,6 +95,7 @@ export default props => (
                       return {
                         ...s,
                         name: show.name,
+                        creationYear: show.creationYear,
                       };
                     }),
                   ];
@@ -98,7 +106,11 @@ export default props => (
                   <li key={showDate.name + showDate.startDate}>
                     <div className="separator">&#x2022;</div>
                     <div>
-                      <div className="show-name bracket">{showDate.name}</div>
+                      <div>
+                        <span className="show-name bracket">
+                          {showDate.name}
+                        </span>
+                      </div>
                       <div className="date">
                         <div>{formatShowDate(showDate.startDate)}</div>
                         {showDate.endDate !== showDate.startDate && (
@@ -150,7 +162,7 @@ export default props => (
                     rel="noopener noreferrer"
                   >
                     <span className="hand-separator">&#x261e;</span> Site de
-                    l‘artiste
+                    l’artiste
                   </a>
                 </div>
               )}
@@ -184,6 +196,7 @@ export const pageQuery = graphql`
       }
       show {
         name
+        creationYear
         showdate {
           startDate
           endDate

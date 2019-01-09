@@ -1,14 +1,19 @@
 import React from 'react';
 import styles from './styles.scss';
-import Header from '../../components/header';
+import Header from '../../uiComponents/header';
 import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 import BreadCrumb from '../../uiComponents/breadCrumb';
+import { sanitizeName } from '../../utils';
 
-const breadCrumbPath = [
+const breadCrumbPath = artist => [
   {
     to: '/artists',
     label: 'Artistes',
+  },
+  {
+    to: sanitizeName(artist),
+    label: artist,
   },
 ];
 
@@ -17,14 +22,28 @@ export default props => (
     <Header activeTab={'artists'} />
     <div styles={styles} className="show-page">
       <BreadCrumb
-        paths={breadCrumbPath}
+        paths={breadCrumbPath(props.data.contentfulShow.artist.name)}
         current={props.data.contentfulShow.name}
       />
       <div className="show-container">
         <div className="first-col">
-          <div className="show-description">
-            {props.data.contentfulShow.name}
-          </div>
+          <div
+            className="show-description"
+            dangerouslySetInnerHTML={{
+              __html:
+                props.data.contentfulShow.childContentfulShowDescriptionTextNode
+                  .childMarkdownRemark.html,
+            }}
+          />
+          <div
+            className="show-distribution"
+            dangerouslySetInnerHTML={{
+              __html:
+                props.data.contentfulShow
+                  .childContentfulShowDistributionTextNode.childMarkdownRemark
+                  .html,
+            }}
+          />
         </div>
         <div className="second-col" />
       </div>
@@ -37,6 +56,20 @@ export const pageQuery = graphql`
     contentfulShow(id: { eq: $showId }) {
       id
       name
+      childContentfulShowDescriptionTextNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+      childContentfulShowDistributionTextNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+      artist {
+        id
+        name
+      }
     }
   }
 `;
