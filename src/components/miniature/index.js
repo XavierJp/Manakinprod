@@ -15,8 +15,7 @@ export default () => (
         </Link>{' '}
         <span className="separator">&#x2022;</span>{' '}
         <span to="/more" className="bracket">
-          {' '}
-          <Link to="/more">plateforme de production</Link>{' '}
+          <Link to="/more">plateforme de production</Link>
         </span>
         <br />
       </p>

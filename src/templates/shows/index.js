@@ -12,7 +12,7 @@ const breadCrumbPath = artist => [
     label: 'Artistes',
   },
   {
-    to: sanitizeName(artist),
+    to: `/artists/${sanitizeName(artist)}`,
     label: artist,
   },
 ];

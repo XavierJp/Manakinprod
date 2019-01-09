@@ -16,36 +16,49 @@
     margin: 30px 0 0;
 
     .first-col {
-      max-height: 100%;
-      height: calc(100vh - 230px);
-      min-height: 450px;
-      overflow: auto;
       width: 35%;
       flex-shrink: 0;
+      flex-grow: 0;
       margin-right: 10px;
+      position: relative;
 
       > div.artist-description {
         font-size: 1rem;
         line-height: 1.6;
-        padding-bottom: 50px;
+        position: absolute;
+        margin: 0;
+        height: 100%;
+        overflow: auto;
+        width: 100%;
 
         > p:first-of-type {
           margin-top: 0;
         }
+      }
 
-        &:after {
-          position: absolute;
-          content: '';
-          width: 35%;
-          height: 30px;
-          bottom: 0;
-          background: linear-gradient(0deg, #fff, transparent);
-        }
+      &:after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 15px;
+        bottom: 0;
+        background: linear-gradient(0deg, #fff, transparent);
+        z-index: 10;
+      }
+
+      &:before {
+        z-index: 10;
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 8px;
+        top: 0;
+        background: linear-gradient(0deg, transparent, #fff);
       }
     }
 
     .second-col {
-      margin: 0 15px 30px;
+      margin: 0 15px;
       display: flex;
       flex-direction: column;
       width: 35%;
@@ -141,10 +154,7 @@
 
         > div.bracket {
           font-size: 1rem;
-
-          > a {
-            margin: 0 7px;
-          }
+          line-height: 1.2;
         }
 
         > div.city {
@@ -177,7 +187,7 @@
       position: relative;
       padding: 20px;
       font-size: 0.9rem;
-      flex-grow: 1;
+      flex-grow: 0;
 
       > h2 {
         margin-top: 0;
@@ -208,10 +218,6 @@
       margin: 20px 0 0;
       .first-col {
         width: 50%;
-
-        .artist-description:after {
-          width: 50% !important;
-        }
       }
 
       .second-col {
@@ -233,8 +239,13 @@
         height: auto;
         order: 2;
 
-        > div.artist-description:after {
-          display: none;
+        > div.artist-description {
+          position: relative;
+          margin: 0 0 50px;
+          &:after,
+          &:before {
+            display: none;
+          }
         }
       }
 
