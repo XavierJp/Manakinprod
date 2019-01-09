@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
 import Header from '../../uiComponents/header';
+import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 import Link from '../../uiComponents/link';
@@ -171,6 +172,7 @@ export default props => (
         )}
       </div>
     </div>
+    <Footer />
   </Layout>
 );
 

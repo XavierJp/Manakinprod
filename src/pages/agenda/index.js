@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
 import Header from '../../uiComponents/header';
+import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 import ArtitstsList from '../../components/artitstsListForAgenda';
@@ -19,6 +20,7 @@ export default props => (
       <ArtitstsList />
       <DateListForAgenda dates={props.data.allContentfulShowDate.edges} />
     </div>
+    <Footer />
   </Layout>
 );
 
