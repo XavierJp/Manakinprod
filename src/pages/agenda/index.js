@@ -37,6 +37,7 @@ export const pageQuery = graphql`
           show {
             name
             creationYear
+            url
             artist {
               id
               name

@@ -81,6 +81,7 @@ exports.createPages = ({ graphql, actions }) => {
                 node {
                   id
                   name
+                  url
                   artist {
                     id
                     name
@@ -99,13 +100,12 @@ exports.createPages = ({ graphql, actions }) => {
         result.data.allContentfulShow.edges.forEach(edge => {
           let showPath = '';
           try {
-            showPath = sanitizeName(edge.node.name);
             artistPath = sanitizeName(edge.node.artist.name);
           } catch (e) {
             console.error(e);
           }
           createPage({
-            path: `artists/${artistPath}/${showPath}`, // required
+            path: `artists/${artistPath}/${edge.node.url}`, // required
             component: showPageTemplate,
             context: {
               showId: edge.node.id,

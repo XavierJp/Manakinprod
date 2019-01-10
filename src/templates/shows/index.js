@@ -4,6 +4,7 @@ import Header from '../../uiComponents/header';
 import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 import BreadCrumb from '../../uiComponents/breadCrumb';
+import { Helmet } from 'react-helmet';
 import { sanitizeName } from '../../utils';
 
 const breadCrumbPath = artist => [
@@ -19,6 +20,19 @@ const breadCrumbPath = artist => [
 
 export default props => (
   <Layout>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>
+        Manakin production | spectacle : {props.data.contentfulShow.name}
+      </title>
+      <meta
+        name="description"
+        content={`${props.data.contentfulShow.childContentfulShowDescriptionTextNode.description.slice(
+          0,
+          300,
+        )}...`}
+      />
+    </Helmet>
     <Header activeTab={'artists'} />
     <div styles={styles} className="show-page">
       <BreadCrumb
@@ -35,6 +49,8 @@ export default props => (
                   .childMarkdownRemark.html,
             }}
           />
+        </div>
+        <div className="second-col">
           <div
             className="show-distribution"
             dangerouslySetInnerHTML={{
@@ -57,6 +73,7 @@ export const pageQuery = graphql`
       id
       name
       childContentfulShowDescriptionTextNode {
+        description
         childMarkdownRemark {
           html
         }

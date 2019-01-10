@@ -42,6 +42,7 @@ export default props => (
                   show: {
                     name: show.name,
                     creationYear: show.creationYear,
+                    url: show.url,
                     artist: { name: props.data.contentfulArtists.name },
                   },
                 },
@@ -62,6 +63,7 @@ export const agendaForArtist = graphql`
       name
       show {
         name
+        url
         creationYear
         showdate {
           startDate

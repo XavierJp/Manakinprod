@@ -21,8 +21,15 @@ export default props => (
     <Helmet>
       <meta charSet="utf-8" />
       <title>
-        Manakin production | page artiste : {props.data.contentfulArtists.name}
+        Manakin production | artiste : {props.data.contentfulArtists.name}
       </title>
+      <meta
+        name="description"
+        content={`${props.data.contentfulArtists.childContentfulArtistsDescriptionTextNode.description.slice(
+          0,
+          300,
+        )}...`}
+      />
     </Helmet>
     <Header activeTab={'artists'} />
     <div styles={styles} className="artist-page">
@@ -71,7 +78,7 @@ export default props => (
                       className="more button"
                       to={`artists/${sanitizeName(
                         props.data.contentfulArtists.name,
-                      )}/${sanitizeName(show.name)}/`}
+                      )}/${show.url}/`}
                     >
                       <p>En savoir plus</p>
                     </Link>
@@ -96,6 +103,7 @@ export default props => (
                       return {
                         ...s,
                         name: show.name,
+                        showUrl: show.url,
                         creationYear: show.creationYear,
                       };
                     }),
@@ -108,9 +116,14 @@ export default props => (
                     <div className="separator">&#x2022;</div>
                     <div>
                       <div>
-                        <span className="show-name bracket">
+                        <Link
+                          to={`artists/${sanitizeName(
+                            props.data.contentfulArtists.name,
+                          )}/${showDate.showUrl}/`}
+                          className="show-name bracket"
+                        >
                           {showDate.name}
-                        </span>
+                        </Link>
                       </div>
                       <div className="date">
                         <div>{formatShowDate(showDate.startDate)}</div>
@@ -184,6 +197,7 @@ export const pageQuery = graphql`
       website
       pictureCredit
       childContentfulArtistsDescriptionTextNode {
+        description
         childMarkdownRemark {
           html
         }
@@ -199,6 +213,7 @@ export const pageQuery = graphql`
       show {
         name
         creationYear
+        url
         showdate {
           startDate
           endDate
