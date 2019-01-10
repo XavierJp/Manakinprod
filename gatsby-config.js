@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Manakin Sky dancer Rocks !`,
-    siteUrl: `https://www.manakinprod.fr`,
+    siteUrl: `https://manakinprod.fr`,
   },
   plugins: [
     `gatsby-plugin-sass`,
@@ -36,8 +36,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.manakinprod.fr',
-        sitemap: 'https://www.manakinprod.fr/sitemap.xml',
+        host: 'https://manakinprod.fr',
+        sitemap: 'https://manakinprod.fr/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
