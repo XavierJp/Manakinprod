@@ -18,7 +18,7 @@ export default props => (
               .childMarkdownRemark.html,
         }}
       />
-      <div>
+      <div className="biographies">
         <p
           dangerouslySetInnerHTML={{
             __html:

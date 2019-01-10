@@ -242,10 +242,10 @@
         > div.artist-description {
           position: relative;
           margin: 0 0 50px;
-          &:after,
-          &:before {
-            display: none;
-          }
+        }
+        &:after,
+        &:before {
+          display: none;
         }
       }
 
