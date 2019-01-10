@@ -39,6 +39,7 @@ export default props => (
           props.data.allContentfulAboutManakin.edges[0].node.picture.fixed.src
         }
         alt={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
+        title={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
       />
       <p className="picture-legend">
         {props.data.allContentfulAboutManakin.edges[0].node.picLegend}

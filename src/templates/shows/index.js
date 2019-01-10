@@ -29,7 +29,7 @@ export default props => (
         name="description"
         content={`${props.data.contentfulShow.childContentfulShowDescriptionTextNode.description.slice(
           0,
-          300,
+          280,
         )}...`}
       />
     </Helmet>

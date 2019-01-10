@@ -27,7 +27,7 @@ export default props => (
         name="description"
         content={`${props.data.contentfulArtists.childContentfulArtistsDescriptionTextNode.description.slice(
           0,
-          300,
+          280,
         )}...`}
       />
     </Helmet>
@@ -53,6 +53,7 @@ export default props => (
           <img
             src={props.data.contentfulArtists.image.fixed.src}
             alt={props.data.contentfulArtists.image.title}
+            title={props.data.contentfulArtists.image.title}
           />
           {props.data.contentfulArtists.pictureCredit && (
             <p className="picture-credit">

@@ -6,6 +6,7 @@ export default ({ children }) => (
   <div id="layout-global" style={globalStyles}>
     <Helmet>
       <meta charSet="utf-8" />
+      <meta name="language" content="fr-FR" />
       <title>Manakin - Plateforme de production</title>
       <link rel="canonical" href="https://www.manakinprod.fr" />
       <meta

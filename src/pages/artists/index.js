@@ -25,6 +25,7 @@ export default props => (
             <img
               src={artist.node.image.fixed.src}
               alt={artist.node.image.title}
+              title={artist.node.image.title}
             />
             <div className="button">
               <p>{artist.node.name}</p>
