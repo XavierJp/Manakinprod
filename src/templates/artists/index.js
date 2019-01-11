@@ -164,7 +164,7 @@ export default props => (
                 <Link
                   to={`/agenda/${sanitizeName(
                     props.data.contentfulArtists.name,
-                  )}`}
+                  )}/`}
                 >
                   <span className="hand-separator">&#x261e;</span> Agenda
                 </Link>

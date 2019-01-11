@@ -56,14 +56,14 @@ exports.createPages = ({ graphql, actions }) => {
             console.error(e);
           }
           createPage({
-            path: `artists/${path}`, // required
+            path: `artists/${path}/`, // required
             component: artistPageTemplate,
             context: {
               artistId: edge.node.id,
             },
           });
           createPage({
-            path: `agenda/${path}`, // required
+            path: `agenda/${path}/`, // required
             component: agendaPageTemplate,
             context: {
               artistId: edge.node.id,
@@ -105,7 +105,7 @@ exports.createPages = ({ graphql, actions }) => {
             console.error(e);
           }
           createPage({
-            path: `artists/${artistPath}/${edge.node.url}`, // required
+            path: `artists/${artistPath}/${edge.node.url}/`, // required
             component: showPageTemplate,
             context: {
               showId: edge.node.id,
