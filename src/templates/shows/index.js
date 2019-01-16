@@ -48,21 +48,21 @@ export default props => (
       />
       <div className="show-container">
         <div className="first-col">
-          {props.data.contentfulShow.pIctures.map(picture => (
-            <>
-              {' '}
-              <img
-                src={picture.fixed.src}
-                alt={picture.title}
-                title={picture.title}
-              />
-              {/* {props.data.contentfulArtists.pictureCredit && (
+          {props.data.contentfulShow.pIctures &&
+            props.data.contentfulShow.pIctures.map(picture => (
+              <>
+                <img
+                  src={picture.fixed.src}
+                  alt={picture.title}
+                  title={picture.title}
+                />
+                {/* {props.data.contentfulArtists.pictureCredit && (
                 <p className="picture-credit">
                   Crédits photo : {props.data.contentfulArtists.pictureCredit}
                 </p>
               )} */}
-            </>
-          ))}
+              </>
+            ))}
           <div
             className="show-description"
             dangerouslySetInnerHTML={{
