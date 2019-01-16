@@ -23,6 +23,12 @@ export default props => (
       <title>
         Manakin production | artiste : {props.data.contentfulArtists.name}
       </title>
+      <link
+        rel="canonical"
+        href={`https://manakinprod.fr/${sanitizeName(
+          props.data.contentfulArtists.name,
+        )}/`}
+      />
       <meta
         name="description"
         content={`${props.data.contentfulArtists.childContentfulArtistsDescriptionTextNode.description.slice(

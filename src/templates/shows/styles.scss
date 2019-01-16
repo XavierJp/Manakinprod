@@ -1,11 +1,97 @@
 @import 'src/resources/colors.scss';
 
 .show-page {
+  font-family: 'Fira Mono', 'Courier', monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+
   .show-container {
     display: flex;
     align-items: stretch;
     justify-content: left;
     position: relative;
     margin: 30px 0 0;
+
+    .first-col {
+      width: 35%;
+      font-style: italic;
+
+      > img {
+        width: 100%;
+        height: 300px;
+        background-color: #eee;
+        object-fit: cover;
+      }
+    }
+
+    .second-col {
+      padding: 0 20px;
+      width: 35%;
+    }
+
+    .third-col {
+      width: 30%;
+    }
+
+    .sub-section {
+      border: 1px solid $yellowManakin;
+      position: relative;
+      padding: 20px;
+      font-size: 0.9rem;
+      flex-grow: 0;
+
+      del {
+        text-decoration: none;
+        font-weight: 900;
+        color: $yellowManakin;
+      }
+
+      > h2 {
+        margin-top: 0;
+        font-size: 18px;
+        display: inline-block;
+        background-color: #fff;
+        position: absolute;
+        top: -12px;
+        left: 15px;
+        padding: 0 5px;
+      }
+
+      > li {
+        list-style-type: none;
+        display: flex;
+        margin: 5px 0 20px;
+
+        > div:first-of-type {
+          margin-right: 15px;
+        }
+
+        &:last-of-type {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    @media (min-width: 1px) and (max-width: 650px) {
+      flex-direction: column;
+      margin: 20px 0 0;
+
+      .first-col {
+        width: 100%;
+        height: auto;
+        order: 1;
+        margin-bottom: 40px;
+
+        > img {
+          height: 200px;
+        }
+      }
+
+      .second-col {
+        width: 100%;
+        order: 2;
+        margin: 0 0 20px;
+      }
+    }
   }
 }

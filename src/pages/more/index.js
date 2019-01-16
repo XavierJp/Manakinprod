@@ -3,14 +3,13 @@ import styles from './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
-import BreadCrumb from '../../uiComponents/breadCrumb';
 import { graphql } from 'gatsby';
 
 export default props => (
   <Layout>
     <Header />
     <div styles={styles} className="more-about-manakin">
-      <BreadCrumb current="A propos de Manakin" />
+      <h1 className="centered">A propos de MANAKIN</h1>
       <div
         dangerouslySetInnerHTML={{
           __html:
@@ -22,14 +21,7 @@ export default props => (
         <p
           dangerouslySetInnerHTML={{
             __html:
-              props.data.allContentfulAboutManakin.edges[0].node.bioLeslie
-                .childMarkdownRemark.html,
-          }}
-        />
-        <p
-          dangerouslySetInnerHTML={{
-            __html:
-              props.data.allContentfulAboutManakin.edges[0].node.bioLauren
+              props.data.allContentfulAboutManakin.edges[0].node.bios
                 .childMarkdownRemark.html,
           }}
         />
@@ -60,12 +52,7 @@ export const pageQuery = graphql`
               html
             }
           }
-          bioLeslie {
-            childMarkdownRemark {
-              html
-            }
-          }
-          bioLauren {
+          bios {
             childMarkdownRemark {
               html
             }

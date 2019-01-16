@@ -50,9 +50,9 @@ body {
   border-radius: 4px;
   margin: 0 5px;
   padding: 1px 3px;
-  background-color: #9a92aa;
-  border: 2px solid #cfc6e0;
-  color: #fff;
+  ackground-color: #ffe9ee;
+  border: 2px solid #ffa9b6;
+  color: #d05d69;
   font-weight: 800;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -80,5 +80,21 @@ body {
     color: $yellowManakin;
     font-weight: 900;
     margin-left: 8px;
+  }
+}
+
+h1.centered {
+  font-weight: 600;
+  font-size: 1.3rem !important;
+  line-height: 1.5 !important;
+  text-align: center;
+  margin-bottom: 40px;
+
+  &:before,
+  &:after {
+    content: '●';
+    color: $yellowManakin;
+    font-weight: 900;
+    margin: 0 20px;
   }
 }
