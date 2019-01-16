@@ -28,7 +28,7 @@ export default props => (
       </title>
       <link
         rel="canonical"
-        href={`https://manakinprod.fr/${sanitizeName(
+        href={`https://manakinprod.fr/artists/${sanitizeName(
           props.data.contentfulShow.artist.name,
         )}/${props.data.contentfulShow.url}/`}
       />
