@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from '../link';
 import styles from './styles.scss';
+// import Newsletter from '../../components/newsletter';
 
 export default props => (
   <footer styles={styles}>
@@ -11,8 +12,11 @@ export default props => (
       <span className="separator">&#x2022;</span>
       <Link to="/nous-soutenir">Nous soutenir</Link>
     </div>
+    {/* <Newsletter /> */}
     <div>
-      <span>&#x261e;</span> S'inscrire à la newsletter
+      <a href="https://manakinprod.us18.list-manage.com/subscribe/post?u=585d05eb73fc94d89734f03a6&amp;id=9a38620960">
+        <span>&#x261e;</span> S'inscrire à la newsletter
+      </a>
     </div>
   </footer>
 );

@@ -21,7 +21,7 @@
       flex-grow: 0;
       margin-right: 10px;
       position: relative;
-      min-height: 550px;
+      min-height: calc(100vh - 340px);
 
       > div.artist-description {
         font-size: 1rem;
