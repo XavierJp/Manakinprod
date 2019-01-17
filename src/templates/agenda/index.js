@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
-import Header from '../../components/header';
+import Header from '../../uiComponents/header';
+import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 import ArtitstsList from '../../components/artitstsListForAgenda';
@@ -22,6 +23,10 @@ export default props => (
         paths={breadCrumbPath}
         current={props.data.contentfulArtists.name}
       />
+      <p className="explanation">
+        Cliquez sur un des artistes ci-dessous pour afficher uniquement ses
+        dates
+      </p>
       <ArtitstsList active={props.data.contentfulArtists.name} />
       <DateListForAgenda
         dates={props.data.contentfulArtists.show.reduce((acc, show) => {
@@ -36,6 +41,8 @@ export default props => (
                   ...showdate,
                   show: {
                     name: show.name,
+                    creationYear: show.creationYear,
+                    url: show.url,
                     artist: { name: props.data.contentfulArtists.name },
                   },
                 },
@@ -45,6 +52,7 @@ export default props => (
         }, [])}
       />
     </div>
+    <Footer />
   </Layout>
 );
 
@@ -55,6 +63,8 @@ export const agendaForArtist = graphql`
       name
       show {
         name
+        url
+        creationYear
         showdate {
           startDate
           endDate

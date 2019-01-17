@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
-import Header from '../../components/header';
+import Header from '../../uiComponents/header';
+import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 import Link from '../../uiComponents/link';
@@ -20,8 +21,21 @@ export default props => (
     <Helmet>
       <meta charSet="utf-8" />
       <title>
-        Manakin production | page artiste : {props.data.contentfulArtists.name}
+        Manakin production | artiste : {props.data.contentfulArtists.name}
       </title>
+      <link
+        rel="canonical"
+        href={`https://manakinprod.fr/artists/${sanitizeName(
+          props.data.contentfulArtists.name,
+        )}/`}
+      />
+      <meta
+        name="description"
+        content={`${props.data.contentfulArtists.childContentfulArtistsDescriptionTextNode.description.slice(
+          0,
+          280,
+        )}...`}
+      />
     </Helmet>
     <Header activeTab={'artists'} />
     <div styles={styles} className="artist-page">
@@ -45,6 +59,7 @@ export default props => (
           <img
             src={props.data.contentfulArtists.image.fixed.src}
             alt={props.data.contentfulArtists.image.title}
+            title={props.data.contentfulArtists.image.title}
           />
           {props.data.contentfulArtists.pictureCredit && (
             <p className="picture-credit">
@@ -58,12 +73,19 @@ export default props => (
                 <li key="show">
                   <div className="separator">&#x2022;</div>
                   <div key={show.name}>
-                    <div>{show.name}</div>
+                    <div>
+                      <span className="bracket">{show.name}</span>
+                      {show.creationYear && (
+                        <span className="creation-year">
+                          Creation {show.creationYear}
+                        </span>
+                      )}
+                    </div>
                     <Link
                       className="more button"
                       to={`artists/${sanitizeName(
                         props.data.contentfulArtists.name,
-                      )}/${sanitizeName(show.name)}/`}
+                      )}/${show.url}/`}
                     >
                       <p>En savoir plus</p>
                     </Link>
@@ -88,6 +110,8 @@ export default props => (
                       return {
                         ...s,
                         name: show.name,
+                        showUrl: show.url,
+                        creationYear: show.creationYear,
                       };
                     }),
                   ];
@@ -98,7 +122,16 @@ export default props => (
                   <li key={showDate.name + showDate.startDate}>
                     <div className="separator">&#x2022;</div>
                     <div>
-                      <div className="show-name bracket">{showDate.name}</div>
+                      <div>
+                        <Link
+                          to={`artists/${sanitizeName(
+                            props.data.contentfulArtists.name,
+                          )}/${showDate.showUrl}/`}
+                          className="show-name bracket"
+                        >
+                          {showDate.name}
+                        </Link>
+                      </div>
                       <div className="date">
                         <div>{formatShowDate(showDate.startDate)}</div>
                         {showDate.endDate !== showDate.startDate && (
@@ -137,7 +170,7 @@ export default props => (
                 <Link
                   to={`/agenda/${sanitizeName(
                     props.data.contentfulArtists.name,
-                  )}`}
+                  )}/`}
                 >
                   <span className="hand-separator">&#x261e;</span> Agenda
                 </Link>
@@ -150,7 +183,7 @@ export default props => (
                     rel="noopener noreferrer"
                   >
                     <span className="hand-separator">&#x261e;</span> Site de
-                    l‘artiste
+                    l’artiste
                   </a>
                 </div>
               )}
@@ -159,6 +192,7 @@ export default props => (
         )}
       </div>
     </div>
+    <Footer />
   </Layout>
 );
 
@@ -170,6 +204,7 @@ export const pageQuery = graphql`
       website
       pictureCredit
       childContentfulArtistsDescriptionTextNode {
+        description
         childMarkdownRemark {
           html
         }
@@ -184,6 +219,8 @@ export const pageQuery = graphql`
       }
       show {
         name
+        creationYear
+        url
         showdate {
           startDate
           endDate

@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './styles.scss';
 import LinkUnderlined from '../uiComponents/linkUnderlined';
-import Header from '../components/header';
+import Header from '../uiComponents/header';
+import Footer from '../uiComponents/footer';
 import Layout from '../uiComponents/layout';
 import SocialNetworks from '../components/socialNetworks';
 import { graphql } from 'gatsby';
@@ -16,8 +17,7 @@ export default props => (
         <h1>
           MANAKIN est une{' '}
           <span className="bracket">
-            {' '}
-            <Link to="more">plateforme de production</Link>{' '}
+            <Link to="more">plateforme de production</Link>
           </span>{' '}
           co-fondée par Lauren Boyer et Leslie Perrin pour co-construire et
           développer des projets artistiques originaux avec
@@ -52,11 +52,7 @@ export default props => (
         <SocialNetworks />
         <div />
       </div>
-      <div className="footer">
-        <span>© 2018 Manakin production</span>
-        <span className="separator">&#x2022;</span>
-        <Link to="mentions-legales">Mentions légales</Link>
-      </div>
+      <Footer />
     </div>
   </Layout>
 );

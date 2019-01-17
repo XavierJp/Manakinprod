@@ -22,7 +22,11 @@ export default props => (
       <div styles={styles} className="artist-list-for-agenda">
         {data.allContentfulArtists.edges.map(artist => (
           <Link
-            to={`agenda/${props.active === artist.node.name ? '' : sanitizeName(artist.node.name)}`}
+            to={`agenda/${
+              props.active === artist.node.name
+                ? ''
+                : sanitizeName(artist.node.name)
+            }/`}
             key={artist.node.name}
             className={props.active === artist.node.name ? 'active' : ''}
           >

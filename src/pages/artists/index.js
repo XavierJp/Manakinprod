@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
-import Header from '../../components/header';
+import Header from '../../uiComponents/header';
+import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 import Link from '../../uiComponents/link';
@@ -24,6 +25,7 @@ export default props => (
         <img
               src={artist.node.image.fixed.src}
               alt={artist.node.image.title}
+              title={artist.node.image.title}
             />
             <div className="button">
               <p>{artist.node.name}</p>
@@ -32,6 +34,7 @@ export default props => (
         ))}
       </div>
     </div>
+    <Footer />
   </Layout>
 );
 

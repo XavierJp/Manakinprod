@@ -67,19 +67,6 @@
     }
   }
 
-  > div.footer {
-    font-size: 0.8rem;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    vertical-align: center;
-    margin: 30px 0 20px;
-
-    .separator {
-      margin: 0 10px;
-    }
-  }
-
   @media (min-width: 1px) and (max-width: 600px) {
     .summary {
       margin-top: 25px;

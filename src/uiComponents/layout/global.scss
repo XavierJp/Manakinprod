@@ -2,7 +2,7 @@
 
 body {
   // font-family: 'Courier', 'Courier New', monospace;
-  font-family:'Courier', monospace;
+  font-family: 'Courier', monospace;
   font-size: 18px;
   line-height: 1.3;
   color: $bodyManakin;
@@ -11,7 +11,12 @@ body {
   margin: 0;
   padding: 0;
 
-  div#layout-global > div:not(header) {
+  b {
+    font-weight: 700;
+  }
+
+  div#layout-global > div:not(header),
+  div#layout-global > footer {
     max-width: 1250px;
     margin: 20px auto 0;
     width: calc(100% - 80px);
@@ -41,6 +46,19 @@ body {
   margin-bottom: 5px;
 }
 
+.creation-year {
+  border-radius: 4px;
+  margin: 0 5px;
+  padding: 1px 3px;
+  ackground-color: #ffe9ee;
+  border: 2px solid #ffa9b6;
+  color: #d05d69;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .bracket {
   cursor: pointer;
   font-weight: 800;
@@ -54,11 +72,29 @@ body {
     content: '[';
     color: $yellowManakin;
     font-weight: 900;
+    margin-right: 8px;
   }
 
   &:after {
     content: ']';
     color: $yellowManakin;
     font-weight: 900;
+    margin-left: 8px;
+  }
+}
+
+h1.centered {
+  font-weight: 600;
+  font-size: 1.3rem !important;
+  line-height: 1.5 !important;
+  text-align: center;
+  margin-bottom: 40px;
+
+  &:before,
+  &:after {
+    content: '●';
+    color: $yellowManakin;
+    font-weight: 900;
+    margin: 0 20px;
   }
 }

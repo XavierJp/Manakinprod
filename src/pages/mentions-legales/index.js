@@ -1,15 +1,15 @@
 import React from 'react';
 import styles from './styles.scss';
-import Header from '../../components/header';
+import Header from '../../uiComponents/header';
+import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
-import BreadCrumb from '../../uiComponents/breadCrumb';
 
 export default props => (
   <Layout>
     <Header />
     <div styles={styles} className="mention-legales">
-      <BreadCrumb current="Mentions légales" />
+      <h1 className="centered">Mentions légales</h1>
       <p
         dangerouslySetInnerHTML={{
           __html:
@@ -18,6 +18,7 @@ export default props => (
         }}
       />
     </div>
+    <Footer />
   </Layout>
 );
 

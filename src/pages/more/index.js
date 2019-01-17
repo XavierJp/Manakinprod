@@ -1,15 +1,15 @@
 import React from 'react';
 import styles from './styles.scss';
-import Header from '../../components/header';
+import Header from '../../uiComponents/header';
+import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
-import BreadCrumb from '../../uiComponents/breadCrumb';
 import { graphql } from 'gatsby';
 
 export default props => (
   <Layout>
     <Header />
     <div styles={styles} className="more-about-manakin">
-      <BreadCrumb current="A propos de Manakin" />
+      <h1 className="centered">A propos de MANAKIN</h1>
       <div
         dangerouslySetInnerHTML={{
           __html:
@@ -17,18 +17,11 @@ export default props => (
               .childMarkdownRemark.html,
         }}
       />
-      <div>
-        <div
+      <div className="biographies">
+        <p
           dangerouslySetInnerHTML={{
             __html:
-              props.data.allContentfulAboutManakin.edges[0].node.bioLeslie
-                .childMarkdownRemark.html,
-          }}
-        />
-        <div
-          dangerouslySetInnerHTML={{
-            __html:
-              props.data.allContentfulAboutManakin.edges[0].node.bioLauren
+              props.data.allContentfulAboutManakin.edges[0].node.bios
                 .childMarkdownRemark.html,
           }}
         />
@@ -38,9 +31,13 @@ export default props => (
           props.data.allContentfulAboutManakin.edges[0].node.picture.fixed.src
         }
         alt={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
+        title={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
       />
-      <p>{props.data.allContentfulAboutManakin.edges[0].node.picLegend}</p>
+      <p className="picture-legend">
+        {props.data.allContentfulAboutManakin.edges[0].node.picLegend}
+      </p>
     </div>
+    <Footer />
   </Layout>
 );
 
@@ -55,12 +52,7 @@ export const pageQuery = graphql`
               html
             }
           }
-          bioLeslie {
-            childMarkdownRemark {
-              html
-            }
-          }
-          bioLauren {
+          bios {
             childMarkdownRemark {
               html
             }

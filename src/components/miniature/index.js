@@ -6,7 +6,7 @@ import logo_manakin from '../../resources/logo_centered_low_q.jpg';
 export default () => (
   <div styles={styles} className="logo">
     <Link to="/">
-      <img alt="MANAKIN PRODUCTION" src={logo_manakin} />
+      <img alt="Logo de Manakin Production" src={logo_manakin} />
     </Link>
     <div>
       <p>
@@ -15,8 +15,7 @@ export default () => (
         </Link>{' '}
         <span className="separator">&#x2022;</span>{' '}
         <span to="/more" className="bracket">
-          {' '}
-          <Link to="/more">plateforme de production</Link>{' '}
+          <Link to="/more">plateforme de production</Link>
         </span>
         <br />
       </p>

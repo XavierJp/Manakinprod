@@ -1,15 +1,10 @@
 @import 'src/resources/colors.scss';
 
 .agenda-page {
-  h1 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    display: inline-block;
-  }
-
-  h3 {
-    font-size: 1.2rem;
-    display: inline-block;
-    margin: 0 0 5px;
+  > p.explanation {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    font-style: italic;
+    color: $pictureLegendManakin;
   }
 }
