@@ -21,7 +21,7 @@ export default props => (
             }}
             to={`/artists/${sanitizeName(artist.node.name)}/`}
           >
-            <img
+        <img
               src={artist.node.image.fixed.src}
               alt={artist.node.image.title}
             />
