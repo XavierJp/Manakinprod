@@ -69,29 +69,31 @@ export default props => (
           {props.data.contentfulArtists.show && (
             <div className="sub-section">
               <h2>Spectacles</h2>
-              {props.data.contentfulArtists.show.map(show => (
-                <li key="show">
-                  <div className="separator">&#x2022;</div>
-                  <div key={show.name}>
-                    <div>
-                      <span className="bracket">{show.name}</span>
-                      {show.creationYear && (
-                        <span className="creation-year">
-                          Creation {show.creationYear}
-                        </span>
-                      )}
+              <ul>
+                {props.data.contentfulArtists.show.map(show => (
+                  <li key="show">
+                    <div className="separator">&#x2022;</div>
+                    <div key={show.name}>
+                      <div>
+                        <span className="bracket">{show.name}</span>
+                        {show.creationYear && (
+                          <span className="creation-year">
+                            Creation {show.creationYear}
+                          </span>
+                        )}
+                      </div>
+                      <Link
+                        className="more button"
+                        to={`artists/${sanitizeName(
+                          props.data.contentfulArtists.name,
+                        )}/${show.url}/`}
+                      >
+                        <p>En savoir plus</p>
+                      </Link>
                     </div>
-                    <Link
-                      className="more button"
-                      to={`artists/${sanitizeName(
-                        props.data.contentfulArtists.name,
-                      )}/${show.url}/`}
-                    >
-                      <p>En savoir plus</p>
-                    </Link>
-                  </div>
-                </li>
-              ))}
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
         </div>
@@ -99,70 +101,72 @@ export default props => (
           <div className="third-col">
             <div className="sub-section">
               <h2>Prochaines dates</h2>
-              {props.data.contentfulArtists.show
-                .reduce((acc, show) => {
-                  if (!show.showdate) {
-                    return acc;
-                  }
-                  return [
-                    ...acc,
-                    ...show.showdate.map(s => {
-                      return {
-                        ...s,
-                        name: show.name,
-                        showUrl: show.url,
-                        creationYear: show.creationYear,
-                      };
-                    }),
-                  ];
-                }, [])
-                .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
-                .slice(0, 4)
-                .map(showDate => (
-                  <li key={showDate.name + showDate.startDate}>
-                    <div className="separator">&#x2022;</div>
-                    <div>
+              <ul>
+                {props.data.contentfulArtists.show
+                  .reduce((acc, show) => {
+                    if (!show.showdate) {
+                      return acc;
+                    }
+                    return [
+                      ...acc,
+                      ...show.showdate.map(s => {
+                        return {
+                          ...s,
+                          name: show.name,
+                          showUrl: show.url,
+                          creationYear: show.creationYear,
+                        };
+                      }),
+                    ];
+                  }, [])
+                  .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
+                  .slice(0, 4)
+                  .map(showDate => (
+                    <li key={showDate.name + showDate.startDate}>
+                      <div className="separator">&#x2022;</div>
                       <div>
-                        <Link
-                          to={`artists/${sanitizeName(
-                            props.data.contentfulArtists.name,
-                          )}/${showDate.showUrl}/`}
-                          className="show-name bracket"
-                        >
-                          {showDate.name}
-                        </Link>
-                      </div>
-                      <div className="date">
-                        <div>{formatShowDate(showDate.startDate)}</div>
-                        {showDate.endDate !== showDate.startDate && (
-                          <>
-                            <div className="separator">&#x2022;</div>
-                            <div className="date">
-                              {formatShowDate(showDate.endDate)}
-                            </div>
-                          </>
+                        <div>
+                          <Link
+                            to={`artists/${sanitizeName(
+                              props.data.contentfulArtists.name,
+                            )}/${showDate.showUrl}/`}
+                            className="show-name bracket"
+                          >
+                            {showDate.name}
+                          </Link>
+                        </div>
+                        <div className="date">
+                          <div>{formatShowDate(showDate.startDate)}</div>
+                          {showDate.endDate !== showDate.startDate && (
+                            <>
+                              <div className="separator">&#x2022;</div>
+                              <div className="date">
+                                {formatShowDate(showDate.endDate)}
+                              </div>
+                            </>
+                          )}
+                        </div>
+                        {showDate.url && showDate.theatre && (
+                          <a
+                            className="theatre"
+                            href={showDate.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span className="hand-separator">&#x261e;</span>
+                            {showDate.theatre}
+                          </a>
+                        )}
+                        {!showDate.url && showDate.theatre && (
+                          <div className="theatre">{showDate.theatre}</div>
+                        )}
+                        {showDate.city && (
+                          <div className="city">{showDate.city}</div>
                         )}
                       </div>
-                      {showDate.url && showDate.theatre && (
-                        <a
-                          className="theatre"
-                          href={showDate.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <span className="hand-separator">&#x261e;</span>
-                          {showDate.theatre}
-                        </a>
-                      )}
-                      {!showDate.url && showDate.theatre && (
-                        <div className="theatre">{showDate.theatre}</div>
-                      )}
-                      {showDate.city && (
-                        <div className="city">{showDate.city}</div>
-                      )}
-                    </div>
-                  </li>
-                ))}
+                    </li>
+                  ))}
+              </ul>
             </div>
             <div className="artist-links">
               <h2>Liens utiles</h2>
