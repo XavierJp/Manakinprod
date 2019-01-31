@@ -48,21 +48,31 @@ export default props => (
       />
       <div className="show-container">
         <div className="first-col">
+          <div className="picture-container">
           {props.data.contentfulShow.pIctures &&
-            props.data.contentfulShow.pIctures.map(picture => (
-              <>
-                <img
-                  src={picture.fixed.src}
-                  alt={picture.title}
-                  title={picture.title}
-                />
-                {props.data.contentfulShow.creditsPictures && (
-                <p className="picture-credit">
-                  Crédits photo : {props.data.contentfulShow.creditsPictures}
-                </p>
-              )}
-              </>
+            props.data.contentfulShow.pIctures.map((picture, index) => (
+              <img
+                src={picture.fixed.src}
+                className={index === 0 ? 'active' : ''}
+                alt={picture.title}
+                title={picture.title}
+                id
+              />
             ))}
+            {props.data.contentfulShow.pIctures &&
+            props.data.contentfulShow.pIctures.length > 1 && (
+              <div className="picture-carroussel">
+                {props.data.contentfulShow.pIctures.map((el, index) => (
+                  <span className={index === 0 ? 'active' : ''}>{index + 1}</span>
+                ))}
+              </div>
+            )}
+            {props.data.contentfulShow.creditsPictures && (
+              <p className="picture-credit">
+                Crédits photo : {props.data.contentfulShow.creditsPictures}
+              </p>
+            )}
+          </div>
           <div
             className="show-description"
             dangerouslySetInnerHTML={{
@@ -92,7 +102,7 @@ export default props => (
             <div>En construction</div>
           </div>
           {(props.data.contentfulShow.artisticFile || props.data.contentfulShow.pressFile || props.data.contentfulShow.technicalFile) && (
-            <div className="artist-links">
+            <div className="show-links">
               <h2>Liens utiles</h2>
               {props.data.contentfulShow.artisticFile && (
                 <div>

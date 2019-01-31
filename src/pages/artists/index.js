@@ -40,7 +40,7 @@ export default props => (
 
 export const pageQuery = graphql`
   query artistsListForPage {
-    allContentfulArtists {
+    allContentfulArtists(sort: {fields: order, order: ASC}) {
       edges {
         node {
           id

@@ -17,6 +17,55 @@
       font-style: normal;
       margin-right:20px;
 
+      > div.picture-container {
+        position:relative;
+        
+        > img {
+          width: 100%;
+          height: 300px;
+          background-color: #eee;
+          object-fit: cover;
+          display: none;
+        }
+
+        > img.active {
+          display: block;
+        }
+  
+        div.picture-carroussel {
+          display: flex;
+          margin-top: 8px;
+  
+          > span {
+            font-family: Courier, monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0 3px;
+            margin: 0 5px 0 0;
+            background-color:#fff;
+            border-radius: 0;
+            border: 1px solid $bodyManakin;
+
+            &:hover {
+              cursor: pointer;
+              background-color: $bodyManakin;
+              color: #fff;
+            }
+          }
+          > span.active {
+            background-color: $bodyManakin;
+            color: #fff;
+          }
+        }
+  
+        .picture-credit {
+          margin: 8px 0;
+          font-style: italic;
+          font-size: 0.7rem;
+          color: $pictureLegendManakin;
+        }
+      }
+
       blockquote {
         position: relative;
         font-size: 0.9rem;
@@ -48,13 +97,6 @@
           right: -15px;
         }
       }
-
-      > img {
-        width: 100%;
-        height: 300px;
-        background-color: #eee;
-        object-fit: cover;
-      }
     }
 
     .second-col {
@@ -64,6 +106,15 @@
 
     .third-col {
       width: 30%;
+
+      > div.show-links {
+        font-size: 0.9rem;
+        margin-top: 20px;
+
+        > div > a > span {
+          vertical-align: middle;
+        }
+      }
     }
 
     .sub-section {

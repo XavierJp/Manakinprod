@@ -70,7 +70,7 @@ export default props => (
             <div className="sub-section">
               <h2>Spectacles</h2>
               <ul>
-                {props.data.contentfulArtists.show.map(show => (
+                {props.data.contentfulArtists.show.sort((a, b) => (a.order < b.order ? -1 : 1)).map(show => (
                   <li key="show">
                     <div className="separator">&#x2022;</div>
                     <div key={show.name}>
@@ -222,6 +222,7 @@ export const pageQuery = graphql`
         }
       }
       show {
+        order
         name
         creationYear
         url
