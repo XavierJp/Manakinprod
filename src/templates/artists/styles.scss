@@ -70,7 +70,7 @@
         background-color: #eee;
         object-fit: cover;
       }
-      > div > li {
+      > div > ul > li {
         > div:last-of-type {
           margin-bottom: 5px;
           flex-direction: column;
@@ -139,7 +139,7 @@
       display: flex;
       flex-direction: column;
 
-      > div > li > div:not(.separator) {
+      > div > ul > li > div:not(.separator) {
         font-size: 0.9rem;
 
         > div.date {
@@ -201,7 +201,7 @@
         padding: 0 5px;
       }
 
-      > li {
+      > ul > li {
         list-style-type: none;
         display: flex;
         margin: 5px 0 20px;
