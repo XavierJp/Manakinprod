@@ -98,7 +98,7 @@ export default props => (
         </div>
         <div className="third-col">
           <div className="sub-section">
-            <h2>Dates passées</h2>
+            <h2>Dates à venir</h2>
             <div>En construction</div>
           </div>
           {(props.data.contentfulShow.artisticFile || props.data.contentfulShow.pressFile || props.data.contentfulShow.technicalFile) && (

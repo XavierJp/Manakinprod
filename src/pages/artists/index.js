@@ -47,7 +47,7 @@ export const pageQuery = graphql`
           name
           image {
             title
-            fixed(height: 250, width: 360) {
+            fixed(height: 350, width: 560) {
               width
               height
               src
