@@ -7,10 +7,37 @@ import Layout from '../../uiComponents/layout';
 export default props => (
   <Layout>
     <Header />
-    <div styles={styles} className="mention-legales">
+    <div styles={styles} className="support-us">
       <h1 className="centered">Nous soutenir</h1>
-      <p>Page en cours de construction</p>
+      <div>
+        <p
+          dangerouslySetInnerHTML={{
+            __html:
+              props.data.allContentfulAboutManakin.edges[0].node.supportUs
+                .childMarkdownRemark.html,
+          }}
+        />
+      </div>
     </div>
     <Footer />
   </Layout>
 );
+
+
+
+export const pageQuery = graphql`
+  query supportUs {
+    allContentfulAboutManakin {
+      edges {
+        node {
+          id
+          supportUs {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+      }
+    }
+  }
+`;

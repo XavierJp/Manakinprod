@@ -54,6 +54,12 @@
       font-size: 1rem;
       line-height: 1.5;
 
+      > div > a {
+        color: $bodyLightManakin;
+        font-weight: 400;
+        border-bottom: 2px solid $bodyLightManakin;
+      }
+
       > div:first-of-type {
         text-align: right;
         border-right: 2px solid $yellowManakin;

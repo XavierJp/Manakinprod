@@ -56,11 +56,11 @@ export default props => (
                   alt={picture.title}
                   title={picture.title}
                 />
-                {/* {props.data.contentfulArtists.pictureCredit && (
+                {props.data.contentfulShow.creditsPictures && (
                 <p className="picture-credit">
-                  Crédits photo : {props.data.contentfulArtists.pictureCredit}
+                  Crédits photo : {props.data.contentfulShow.creditsPictures}
                 </p>
-              )} */}
+              )}
               </>
             ))}
           <div
@@ -91,6 +91,47 @@ export default props => (
             <h2>Dates passées</h2>
             <div>En construction</div>
           </div>
+          {(props.data.contentfulShow.artisticFile || props.data.contentfulShow.pressFile || props.data.contentfulShow.technicalFile) && (
+            <div className="artist-links">
+              <h2>Liens utiles</h2>
+              {props.data.contentfulShow.artisticFile && (
+                <div>
+                  <a
+                    href={props.data.contentfulShow.artisticFile.file.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    alt={props.data.contentfulShow.artisticFile.description}
+                  >
+                    <span className="hand-separator">&#x261e;</span> Dossier artistique
+                  </a>
+                </div>
+              )}
+              {props.data.contentfulShow.technicalFile && (
+                <div>
+                  <a
+                    href={props.data.contentfulShow.technicalFile.file.url}
+                    alt={props.data.contentfulShow.technicalFile.description}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="hand-separator">&#x261e;</span> Fiche technique
+                  </a>
+                </div>
+              )}
+              {/* {props.data.contentfulShow.pressFile && (
+                <div>
+                  <a
+                    href={props.data.contentfulShow.pressFile.file.url}
+                    alt={props.data.contentfulShow.pressFile.description}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="hand-separator">&#x261e;</span> Dossier de presse
+                  </a>
+                </div>
+              )} */}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -116,6 +157,21 @@ export const pageQuery = graphql`
           width
           height
           src
+        }
+      }
+      creditsPictures
+      artisticFile {
+        title
+        description
+        file {
+          url
+        }
+      }
+      technicalFile {
+        title
+        description
+        file {
+          url
         }
       }
       childContentfulShowDistributionTextNode {

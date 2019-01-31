@@ -10,11 +10,12 @@
     align-items: stretch;
     justify-content: left;
     position: relative;
-    margin: 30px 0 0;
+    margin: 30px 20px 0 0;
 
     .first-col {
       width: 35%;
       font-style: normal;
+      margin-right:20px;
 
       blockquote {
         position: relative;
@@ -57,7 +58,7 @@
     }
 
     .second-col {
-      padding: 0 20px;
+      margin-right:20px;
       width: 35%;
     }
 
@@ -113,6 +114,7 @@
         height: auto;
         order: 1;
         margin-bottom: 40px;
+        margin-right: 0;
 
         > img {
           height: 200px;
@@ -123,6 +125,11 @@
         width: 100%;
         order: 2;
         margin: 0 0 20px;
+      }
+
+      .third-col {
+        width:100%;
+        order:3;
       }
     }
   }

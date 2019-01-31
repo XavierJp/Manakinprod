@@ -26,16 +26,18 @@ export default props => (
           }}
         />
       </div>
-      <img
-        src={
-          props.data.allContentfulAboutManakin.edges[0].node.picture.fixed.src
-        }
-        alt={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
-        title={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
-      />
-      <p className="picture-legend">
-        {props.data.allContentfulAboutManakin.edges[0].node.picLegend}
-      </p>
+      <div className="picture">
+        <img
+          src={
+            props.data.allContentfulAboutManakin.edges[0].node.picture.fixed.src
+          }
+          alt={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
+          title={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
+          />
+        <p>
+          {props.data.allContentfulAboutManakin.edges[0].node.picLegend}
+        </p>
+      </div>
     </div>
     <Footer />
   </Layout>
