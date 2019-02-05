@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from '../link';
-import styles from './styles.scss';
+import './styles.scss';
 // import Newsletter from '../../components/newsletter';
 
 export default props => (
-  <footer styles={styles}>
+  <div className="footer">
     <div>
       <span>© 2018 Manakin production</span>
       <span className="separator">&#x2022;</span>
@@ -18,5 +18,5 @@ export default props => (
         <span>&#x261e;</span> S'inscrire à la newsletter
       </a>
     </div>
-  </footer>
+  </div>
 );

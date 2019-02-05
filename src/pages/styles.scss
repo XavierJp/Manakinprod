@@ -58,6 +58,10 @@
         color: $bodyLightManakin;
         font-weight: 400;
         border-bottom: 2px solid $bodyLightManakin;
+
+        &:hover {
+          font-weight: 900;
+        }
       }
 
       > div:first-of-type {

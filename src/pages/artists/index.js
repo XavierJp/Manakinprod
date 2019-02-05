@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
@@ -11,7 +11,7 @@ import BreadCrumb from '../../uiComponents/breadCrumb';
 export default props => (
   <Layout>
     <Header activeTab={'artists'} />
-    <div styles={styles} className="artists-page">
+    <div className="artists-page">
       <BreadCrumb current="Artistes" />
       <div className="artists-list">
         {props.data.allContentfulArtists.edges.map(artist => (
@@ -22,7 +22,7 @@ export default props => (
             }}
             to={`/artists/${sanitizeName(artist.node.name)}/`}
           >
-        <img
+            <img
               src={artist.node.image.fixed.src}
               alt={artist.node.image.title}
               title={artist.node.image.title}
@@ -40,7 +40,7 @@ export default props => (
 
 export const pageQuery = graphql`
   query artistsListForPage {
-    allContentfulArtists(sort: {fields: order, order: ASC}) {
+    allContentfulArtists(sort: { fields: order, order: ASC }) {
       edges {
         node {
           id

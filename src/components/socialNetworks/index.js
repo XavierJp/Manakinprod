@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import styles from './styles.scss';
+import './styles.scss';
 
 const instaIcon = (
   <svg
@@ -50,7 +50,7 @@ export default () => (
       }
     `}
     render={data => (
-      <div styles={styles} className="social-networks">
+      <div className="social-networks">
         <a
           target="_blank"
           rel="noopener noreferrer"

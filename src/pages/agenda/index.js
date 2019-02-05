@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
@@ -11,7 +11,7 @@ import BreadCrumb from '../../uiComponents/breadCrumb';
 export default props => (
   <Layout>
     <Header activeTab={'agenda'} />
-    <div styles={styles} className="agenda-page">
+    <div className="agenda-page">
       <BreadCrumb current="Agenda" />
       <p className="explanation">
         Cliquez sur un des artistes ci-dessous pour afficher uniquement ses

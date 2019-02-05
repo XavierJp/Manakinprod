@@ -1,9 +1,10 @@
 import React from 'react';
-import globalStyles from './global.scss';
+import '../../resources/reset.scss';
+import './global.scss';
 import { Helmet } from 'react-helmet';
 
 export default ({ children }) => (
-  <div id="layout-global" style={globalStyles}>
+  <div id="layout-global">
     <Helmet>
       <meta charSet="utf-8" />
       <meta name="language" content="fr-FR" />

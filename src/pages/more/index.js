@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
@@ -8,9 +8,10 @@ import { graphql } from 'gatsby';
 export default props => (
   <Layout>
     <Header />
-    <div styles={styles} className="more-about-manakin">
+    <div className="more-about-manakin">
       <h1 className="centered">A propos de MANAKIN</h1>
       <div
+        className="markdown"
         dangerouslySetInnerHTML={{
           __html:
             props.data.allContentfulAboutManakin.edges[0].node.about
@@ -18,7 +19,8 @@ export default props => (
         }}
       />
       <div className="biographies">
-        <p
+        <div
+          className="markdown"
           dangerouslySetInnerHTML={{
             __html:
               props.data.allContentfulAboutManakin.edges[0].node.bios
@@ -32,11 +34,11 @@ export default props => (
             props.data.allContentfulAboutManakin.edges[0].node.picture.fixed.src
           }
           alt={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
-          title={props.data.allContentfulAboutManakin.edges[0].node.picture.title}
-          />
-        <p>
-          {props.data.allContentfulAboutManakin.edges[0].node.picLegend}
-        </p>
+          title={
+            props.data.allContentfulAboutManakin.edges[0].node.picture.title
+          }
+        />
+        <p>{props.data.allContentfulAboutManakin.edges[0].node.picLegend}</p>
       </div>
     </div>
     <Footer />

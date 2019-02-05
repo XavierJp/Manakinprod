@@ -1,10 +1,9 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import Link from '../link';
 
-
 export default props => (
-  <div style={styles} className="bread-crumb">
+  <div className="bread-crumb">
     {props.paths &&
       props.paths.map(path => (
         <>

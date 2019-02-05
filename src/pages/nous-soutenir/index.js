@@ -1,16 +1,18 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
+import { graphql } from 'gatsby';
 
 export default props => (
   <Layout>
     <Header />
-    <div styles={styles} className="support-us">
+    <div className="support-us">
       <h1 className="centered">Nous soutenir</h1>
       <div>
-        <p
+        <div
+          className="markdown"
           dangerouslySetInnerHTML={{
             __html:
               props.data.allContentfulAboutManakin.edges[0].node.supportUs
@@ -22,8 +24,6 @@ export default props => (
     <Footer />
   </Layout>
 );
-
-
 
 export const pageQuery = graphql`
   query supportUs {

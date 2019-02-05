@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
@@ -18,7 +18,7 @@ const breadCrumbPath = [
 export default props => (
   <Layout>
     <Header activeTab={'agenda'} />
-    <div styles={styles} className="agenda-page">
+    <div className="agenda-page">
       <BreadCrumb
         paths={breadCrumbPath}
         current={props.data.contentfulArtists.name}

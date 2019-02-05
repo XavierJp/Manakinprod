@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 
 class Newsletter extends React.PureComponent {
   constructor(props) {
@@ -74,7 +74,7 @@ class Newsletter extends React.PureComponent {
     const { email } = this.state;
 
     return (
-      <div style={styles} className="newsletter">
+      <div className="newsletter">
         <a href="https://manakinprod.us18.list-manage.com/subscribe/post?u=585d05eb73fc94d89734f03a6&amp;id=9a38620960">
           <span>&#x261e;</span> S'inscrire à la newsletter
         </a>

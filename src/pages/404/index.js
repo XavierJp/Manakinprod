@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import Header from '../../uiComponents/header';
 import Layout from '../../uiComponents/layout';
 import Link from '../../uiComponents/link';
@@ -136,7 +136,7 @@ const logo_small = (
 export default () => (
   <Layout>
     <Header />
-    <div styles={styles} className="error-404">
+    <div className="error-404">
       <div className="title-404">4{logo_small}4</div>
       <p>
         Oups ! On a bien cherché, mais la page que vous cherchez à atteindre est

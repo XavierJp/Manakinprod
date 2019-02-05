@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
@@ -8,9 +8,10 @@ import { graphql } from 'gatsby';
 export default props => (
   <Layout>
     <Header />
-    <div styles={styles} className="mention-legales">
+    <div className="mention-legales">
       <h1 className="centered">Mentions légales</h1>
-      <p
+      <div
+        className="markdown"
         dangerouslySetInnerHTML={{
           __html:
             props.data.allContentfulAboutManakin.edges[0].node.mentionsLegales

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import Link from '../link';
 
 class LinkUnderlined extends React.Component {
@@ -47,7 +47,7 @@ class LinkUnderlined extends React.Component {
     const { label, targetPath, style, highlighted } = this.props;
     return (
       <Link
-        style={{ ...styles, ...style }}
+        style={{ ...style }}
         className={`link-underlined ${highlighted ? 'highlighted' : ''}`}
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Link from '../../uiComponents/link';
-import styles from './styles.scss';
+import './styles.scss';
 import { sanitizeName } from '../../utils';
 
 export default props => (
@@ -19,7 +19,7 @@ export default props => (
       }
     `}
     render={data => (
-      <div styles={styles} className="artist-list-for-agenda">
+      <div className="artist-list-for-agenda">
         {data.allContentfulArtists.edges.map(artist => (
           <Link
             to={`agenda/${

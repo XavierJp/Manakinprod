@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import LinkUnderlined from '../uiComponents/linkUnderlined';
 import Header from '../uiComponents/header';
 import Footer from '../uiComponents/footer';
@@ -12,7 +12,7 @@ import { sanitizeName } from '../utils';
 export default props => (
   <Layout>
     <Header />
-    <div styles={styles} className="home">
+    <div className="home">
       <div className="summary">
         <h1>
           MANAKIN est une{' '}

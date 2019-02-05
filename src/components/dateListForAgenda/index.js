@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import Link from '../../uiComponents/link';
 import { sanitizeName, formatShowDate } from '../../utils';
 
@@ -40,7 +40,7 @@ const monthNames = [
 ];
 
 export default props => (
-  <div className="date-list-for-agenda" styles={styles}>
+  <div className="date-list-for-agenda">
     {Object.entries(computeAgendaByDate(props.dates)).map(keyValuePair => (
       <>
         <h2>{keyValuePair[0]}</h2>

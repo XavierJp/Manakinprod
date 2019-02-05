@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import LinkUnderlined from '../../uiComponents/linkUnderlined';
 
 class Menu extends Component {
@@ -66,7 +66,7 @@ class Menu extends Component {
   render() {
     const { activeTab } = this.props;
     return (
-      <menu styles={styles}>
+      <menu>
         <div ref={el => (this.menu = el)}>
           <LinkUnderlined
             targetPath="/artists"

@@ -2,6 +2,7 @@
 
 .artist-page {
   font-family: 'Fira Mono', 'Courier', monospace;
+
   h2 {
     font-size: 1.2rem;
     display: inline-block;
@@ -177,6 +178,10 @@
         font-size: 0.9rem;
         margin-top: 20px;
 
+        > h2 {
+          font-size: 1.3rem;
+        }
+
         > div > a > span {
           vertical-align: middle;
         }
@@ -186,17 +191,21 @@
     .sub-section {
       border: 1px solid $yellowManakin;
       position: relative;
-      padding: 20px;
+      padding: 25px;
       font-size: 0.9rem;
       flex-grow: 0;
 
+      .markdown > p {
+        font-size: 0.9rem;
+      }
+
       > h2 {
         margin-top: 0;
-        font-size: 18px;
+        font-size: 1.3rem;
         display: inline-block;
         background-color: #fff;
         position: absolute;
-        top: -12px;
+        top: -16px;
         left: 15px;
         padding: 0 5px;
       }

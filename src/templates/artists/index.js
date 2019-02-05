@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
@@ -38,7 +38,7 @@ export default props => (
       />
     </Helmet>
     <Header activeTab={'artists'} />
-    <div styles={styles} className="artist-page">
+    <div className="artist-page">
       <BreadCrumb
         paths={breadCrumbPath}
         current={props.data.contentfulArtists.name}
@@ -46,7 +46,7 @@ export default props => (
       <div className="artist-container">
         <div className="first-col">
           <div
-            className="artist-description"
+            className="artist-description markdown"
             dangerouslySetInnerHTML={{
               __html:
                 props.data.contentfulArtists
@@ -70,29 +70,31 @@ export default props => (
             <div className="sub-section">
               <h2>Spectacles</h2>
               <ul>
-                {props.data.contentfulArtists.show.sort((a, b) => (a.order < b.order ? -1 : 1)).map(show => (
-                  <li key="show">
-                    <div className="separator">&#x2022;</div>
-                    <div key={show.name}>
-                      <div>
-                        <span className="bracket">{show.name}</span>
-                        {show.creationYear && (
-                          <span className="creation-year">
-                            Creation {show.creationYear}
-                          </span>
-                        )}
+                {props.data.contentfulArtists.show
+                  .sort((a, b) => (a.order < b.order ? -1 : 1))
+                  .map(show => (
+                    <li key="show">
+                      <div className="separator">&#x2022;</div>
+                      <div key={show.name}>
+                        <div>
+                          <span className="bracket">{show.name}</span>
+                          {show.creationYear && (
+                            <span className="creation-year">
+                              Creation {show.creationYear}
+                            </span>
+                          )}
+                        </div>
+                        <Link
+                          className="more button"
+                          to={`artists/${sanitizeName(
+                            props.data.contentfulArtists.name,
+                          )}/${show.url}/`}
+                        >
+                          <p>En savoir plus</p>
+                        </Link>
                       </div>
-                      <Link
-                        className="more button"
-                        to={`artists/${sanitizeName(
-                          props.data.contentfulArtists.name,
-                        )}/${show.url}/`}
-                      >
-                        <p>En savoir plus</p>
-                      </Link>
-                    </div>
-                  </li>
-                ))}
+                    </li>
+                  ))}
               </ul>
             </div>
           )}
