@@ -7,6 +7,7 @@ import { graphql } from 'gatsby';
 import BreadCrumb from '../../uiComponents/breadCrumb';
 import { Helmet } from 'react-helmet';
 import { sanitizeName } from '../../utils';
+import NextDates from '../../components/nextDates';
 
 const breadCrumbPath = artist => [
   {
@@ -52,34 +53,37 @@ const Show = props => {
         <div className="show-container">
           <div className="first-col">
             <div className="picture-container">
-              {props.data.contentfulShow.pIctures &&
-                props.data.contentfulShow.pIctures.map((picture, index) => (
-                  <img
-                    key={picture.fixed.src}
-                    src={picture.fixed.src}
-                    className={index === selectedPic ? 'active' : ''}
-                    alt={picture.title}
-                    title={picture.title}
-                  />
-                ))}
-              {props.data.contentfulShow.pIctures &&
-                props.data.contentfulShow.pIctures.length > 1 && (
-                  <div className="picture-carroussel">
-                    {props.data.contentfulShow.pIctures.map((el, index) => (
-                      <span
-                        onClick={() => setSelectedPic(index)}
-                        key={el.fixed.src}
-                        className={index === selectedPic ? 'active' : ''}
-                      >
-                        {index + 1}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              {props.data.contentfulShow.creditsPictures && (
-                <p className="picture-credit">
-                  Crédits photo : {props.data.contentfulShow.creditsPictures}
-                </p>
+              {props.data.contentfulShow.pIctures && (
+                <>
+                  {props.data.contentfulShow.pIctures.map((picture, index) => (
+                    <img
+                      key={picture.fixed.src}
+                      src={picture.fixed.src}
+                      className={index === selectedPic ? 'active' : ''}
+                      alt={picture.title}
+                      title={picture.title}
+                    />
+                  ))}
+                  {props.data.contentfulShow.pIctures.length > 1 && (
+                    <div className="picture-carroussel">
+                      {props.data.contentfulShow.pIctures.map((el, index) => (
+                        <span
+                          onClick={() => setSelectedPic(index)}
+                          key={el.fixed.src}
+                          className={index === selectedPic ? 'active' : ''}
+                        >
+                          {index + 1}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  {props.data.contentfulShow.creditsPictures && (
+                    <p className="picture-credit">
+                      Crédits photo :{' '}
+                      {props.data.contentfulShow.creditsPictures}
+                    </p>
+                  )}
+                </>
               )}
             </div>
             <div
@@ -109,7 +113,26 @@ const Show = props => {
           <div className="third-col">
             <div className="sub-section">
               <h2>Dates à venir</h2>
-              <div>En construction</div>
+              {props.data.contentfulShow.showdate ? (
+                <NextDates
+                  shows={props.data.contentfulShow.showdate
+                    .map(showDate => {
+                      return {
+                        ...showDate,
+                        name: props.data.contentfulShow.name,
+                        showUrl: props.data.contentfulShow.url,
+                        creationYear: props.data.contentfulShow.creationYear,
+                      };
+                    })
+                    .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
+                    .slice(0, 6)}
+                  artistName={props.data.contentfulShow.artist.name}
+                />
+              ) : (
+                <div className="italic">
+                  Aucune date n'est prévue pour ce spectacle
+                </div>
+              )}
             </div>
             {(props.data.contentfulShow.artisticFile ||
               props.data.contentfulShow.pressFile ||
@@ -177,6 +200,13 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
         }
+      }
+      showdate {
+        startDate
+        endDate
+        theatre
+        city
+        url
       }
       pIctures {
         title

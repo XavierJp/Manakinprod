@@ -22,7 +22,7 @@ module.exports = {
                 siteUrl
               }
             }
-  
+
             allSitePage {
               edges {
                 node {
@@ -66,8 +66,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `GatsbyJS`,
-        short_name: `GatsbyJS`,
+        name: `Manakin Prod`,
+        short_name: `Manakin Prod`,
         start_url: `/`,
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,

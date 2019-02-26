@@ -1,0 +1,51 @@
+ul.next-dates {
+  padding: 0;
+
+  > li {
+    list-style-type: none;
+    display: flex;
+    margin: 5px 0 20px;
+
+    > div:first-of-type {
+      margin-right: 15px;
+    }
+
+    &:last-of-type {
+      margin-bottom: 10px;
+    }
+
+    > div:not(.separator) {
+      font-size: 0.9rem;
+
+      > div.date {
+        display: flex;
+        flex-direction: row;
+        font-size: 0.9rem;
+        margin: 6px 0 3px;
+
+        > .separator {
+          margin: 0 8px;
+        }
+      }
+
+      > div.bracket {
+        font-size: 1rem;
+        line-height: 1.2;
+      }
+
+      > div.city {
+        font-size: 0.8rem;
+        font-style: italic;
+      }
+
+      > div.theatre,
+      > a.theatre {
+        font-size: 0.9rem;
+
+        > .hand-separator {
+          margin-right: 7px;
+        }
+      }
+    }
+  }
+}

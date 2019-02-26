@@ -10,10 +10,6 @@ body {
   margin: 0;
   padding: 0;
 
-  b {
-    font-weight: 700;
-  }
-
   div#layout-global > div:not(.header),
   div#layout-global > .footer {
     max-width: 1250px;
@@ -23,64 +19,9 @@ body {
       width: calc(100% - 40px);
     }
   }
-  a:not(.link-underlined):not(.button) {
-    border-bottom: 2px solid transparent;
-    color: $bodyManakin;
-    text-decoration: none;
-    transition: color 150ms ease-in-out;
-  }
-  a:not(.link-underlined):not(.button):hover {
-    border-bottom: 2px solid $bodyManakin;
-    font-weight: 600;
-  }
-
-  a.button {
-    color: $bodyManakin;
-    text-decoration: none;
-  }
-}
-.separator {
-  color: $yellowManakin;
-  font-weight: 500;
-  margin-bottom: 5px;
 }
 
-.creation-year {
-  border-radius: 4px;
-  margin: 0 5px;
-  padding: 1px 3px;
-  ackground-color: #ffe9ee;
-  border: 2px solid #ffa9b6;
-  color: #d05d69;
-  font-weight: 800;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.bracket {
-  cursor: pointer;
-  font-weight: 800;
-  transition: color 100ms ease-in;
-
-  &:hover {
-    color: $bodyManakin;
-  }
-
-  &:before {
-    content: '[';
-    color: $yellowManakin;
-    font-weight: 900;
-    margin-right: 8px;
-  }
-
-  &:after {
-    content: ']';
-    color: $yellowManakin;
-    font-weight: 900;
-    margin-left: 8px;
-  }
-}
+// Contentful
 
 div.markdown {
   margin: 0;
@@ -127,6 +68,8 @@ div.markdown {
   }
 }
 
+// Titles, links and default styling
+
 h1 {
   font-size: 2.3rem;
   line-height: 2;
@@ -158,5 +101,116 @@ h1.centered {
     color: $yellowManakin;
     font-weight: 900;
     margin: 0 20px;
+  }
+}
+
+b,
+.bold {
+  font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.small {
+  font-size: 0.9rem;
+}
+
+a.button {
+  color: $bodyManakin;
+  text-decoration: none;
+}
+
+a:not(.link-underlined):not(.button) {
+  border-bottom: 2px solid transparent;
+  color: $bodyManakin;
+  text-decoration: none;
+  transition: color 150ms ease-in-out;
+}
+a:not(.link-underlined):not(.button):hover {
+  border-bottom: 2px solid $bodyManakin;
+  font-weight: 600;
+}
+
+a.more {
+  margin-top: 6px;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.8rem;
+
+  &:before {
+    z-index: 1;
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: 100%;
+    width: 100%;
+    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><pattern id="Pattern2" patternUnits="userSpaceOnUse" width="5" height="5"><path d="M 0,5 l 5,-5 M -1,1 l 2.5,-2.5 M 4,6 l 2.5,-2.5" stroke-width="1" shape-rendering="auto" stroke="rgb(67, 54, 91)" stroke-linecap="square"></path></pattern></defs><rect fill="url(%23Pattern2)" x="0" y="0" width="100" height="100"/></svg>');
+  }
+
+  > p {
+    z-index: 20;
+    position: relative;
+    background: $backgroundManakin;
+    border: 1px solid $bodyManakin;
+    padding: 5px;
+    margin: 0;
+  }
+
+  &:hover {
+    > p {
+      transform: translateY(-2px);
+      font-weight: 900;
+    }
+  }
+}
+
+// Manakin specific
+
+.separator {
+  color: $yellowManakin;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.creation-year {
+  border-radius: 4px;
+  margin: 0 5px;
+  padding: 1px 3px;
+  ackground-color: #ffe9ee;
+  border: 2px solid #ffa9b6;
+  color: #d05d69;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bracket {
+  cursor: pointer;
+  font-weight: 800;
+  transition: color 100ms ease-in;
+
+  &:hover {
+    color: $bodyManakin;
+  }
+
+  &:before {
+    content: '[';
+    color: $yellowManakin;
+    font-weight: 900;
+    margin-right: 8px;
+  }
+
+  &:after {
+    content: ']';
+    color: $yellowManakin;
+    font-weight: 900;
+    margin-left: 8px;
   }
 }

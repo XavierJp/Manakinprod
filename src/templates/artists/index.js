@@ -5,9 +5,10 @@ import Footer from '../../uiComponents/footer';
 import Layout from '../../uiComponents/layout';
 import { graphql } from 'gatsby';
 import Link from '../../uiComponents/link';
-import { sanitizeName, formatShowDate } from '../../utils';
+import { sanitizeName } from '../../utils';
 import BreadCrumb from '../../uiComponents/breadCrumb';
 import { Helmet } from 'react-helmet';
+import NextDates from '../../components/nextDates';
 
 const breadCrumbPath = [
   {
@@ -103,8 +104,8 @@ export default props => (
           <div className="third-col">
             <div className="sub-section">
               <h2>Prochaines dates</h2>
-              <ul>
-                {props.data.contentfulArtists.show
+              <NextDates
+                shows={props.data.contentfulArtists.show
                   .reduce((acc, show) => {
                     if (!show.showdate) {
                       return acc;
@@ -122,53 +123,9 @@ export default props => (
                     ];
                   }, [])
                   .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
-                  .slice(0, 4)
-                  .map(showDate => (
-                    <li key={showDate.name + showDate.startDate}>
-                      <div className="separator">&#x2022;</div>
-                      <div>
-                        <div>
-                          <Link
-                            to={`artists/${sanitizeName(
-                              props.data.contentfulArtists.name,
-                            )}/${showDate.showUrl}/`}
-                            className="show-name bracket"
-                          >
-                            {showDate.name}
-                          </Link>
-                        </div>
-                        <div className="date">
-                          <div>{formatShowDate(showDate.startDate)}</div>
-                          {showDate.endDate !== showDate.startDate && (
-                            <>
-                              <div className="separator">&#x2022;</div>
-                              <div className="date">
-                                {formatShowDate(showDate.endDate)}
-                              </div>
-                            </>
-                          )}
-                        </div>
-                        {showDate.url && showDate.theatre && (
-                          <a
-                            className="theatre"
-                            href={showDate.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <span className="hand-separator">&#x261e;</span>
-                            {showDate.theatre}
-                          </a>
-                        )}
-                        {!showDate.url && showDate.theatre && (
-                          <div className="theatre">{showDate.theatre}</div>
-                        )}
-                        {showDate.city && (
-                          <div className="city">{showDate.city}</div>
-                        )}
-                      </div>
-                    </li>
-                  ))}
-              </ul>
+                  .slice(0, 4)}
+                artistName={props.data.contentfulArtists.name}
+              />
             </div>
             <div className="artist-links">
               <h2>Liens utiles</h2>
@@ -178,7 +135,8 @@ export default props => (
                     props.data.contentfulArtists.name,
                   )}/`}
                 >
-                  <span className="hand-separator">&#x261e;</span> Agenda
+                  <span className="hand-separator">&#x261e;</span> Agenda de
+                  l‘artiste
                 </Link>
               </div>
               {props.data.contentfulArtists.website && (
