@@ -17,15 +17,15 @@
     margin: 30px 0 0;
 
     .first-col {
-      width: 35%;
+      width: 40%;
       flex-shrink: 0;
       flex-grow: 0;
-      margin-right: 10px;
+      margin-right: 20px;
       position: relative;
       min-height: calc(100vh - 340px);
 
       > div.artist-description {
-        font-size: 1rem;
+        font-size: 0.9rem;
         line-height: 1.6;
         position: absolute;
         margin: 0;

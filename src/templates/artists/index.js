@@ -78,21 +78,20 @@ export default props => (
                       <div className="separator">&#x2022;</div>
                       <div key={show.name}>
                         <div>
-                          <span className="bracket">{show.name}</span>
+                          <Link
+                            className="bracket"
+                            to={`artists/${sanitizeName(
+                              props.data.contentfulArtists.name,
+                            )}/${show.url}/`}
+                          >
+                            {show.name}
+                          </Link>
                           {show.creationYear && (
                             <span className="creation-year">
                               Creation {show.creationYear}
                             </span>
                           )}
                         </div>
-                        <Link
-                          className="more button"
-                          to={`artists/${sanitizeName(
-                            props.data.contentfulArtists.name,
-                          )}/${show.url}/`}
-                        >
-                          <p>En savoir plus</p>
-                        </Link>
                       </div>
                     </li>
                   ))}
@@ -122,6 +121,7 @@ export default props => (
                       }),
                     ];
                   }, [])
+                  .filter(d => new Date(d.startDate) > new Date())
                   .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
                   .slice(0, 4)}
                 artistName={props.data.contentfulArtists.name}

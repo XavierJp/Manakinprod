@@ -48,7 +48,7 @@ export default props => (
         </li>
       ))
     ) : (
-      <div className="italic">Aucune date n’est prévue pour ce spectacle</div>
+      <div className="italic">Aucune date n’est prévue</div>
     )}
   </ul>
 );

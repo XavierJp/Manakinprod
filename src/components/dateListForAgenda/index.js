@@ -41,80 +41,87 @@ const monthNames = [
 
 export default props => (
   <div className="date-list-for-agenda">
-    {Object.entries(computeAgendaByDate(props.dates)).map(keyValuePair => (
-      <>
-        <h2>{keyValuePair[0]}</h2>
-        {Object.entries(keyValuePair[1])
-          .sort()
-          .map(keyEntryPair => (
-            <>
-              <h3>{monthNames[keyEntryPair[0] - 1]}</h3>
-              <ul>
-                {keyEntryPair[1]
-                  .sort((a, b) => {
-                    return a.startDate < b.startDate ? -1 : 1;
-                  })
-                  .map(dateEntry => (
-                    <li key={dateEntry.startDate}>
-                      <div>
-                        <span className="show-name bracket">
+    {props.dates.length >= 1 ? (
+      Object.entries(computeAgendaByDate(props.dates))
+        // most recent year first
+        .sort((y1, y2) => y2[0] - y1[0])
+        .map(keyValuePair => (
+          <>
+            <h2>{keyValuePair[0]}</h2>
+            {Object.entries(keyValuePair[1]).map(keyEntryPair => (
+              <>
+                <h3>{monthNames[keyEntryPair[0] - 1]}</h3>
+                <ul>
+                  {keyEntryPair[1]
+                    .sort((a, b) => {
+                      return a.startDate < b.startDate ? -1 : 1;
+                    })
+                    .map(dateEntry => (
+                      <li key={dateEntry.startDate}>
+                        <div>
+                          <span className="show-name bracket">
+                            <Link
+                              to={`/artists/${sanitizeName(
+                                dateEntry.show.artist.name,
+                              )}/${dateEntry.show.url}/`}
+                            >
+                              {dateEntry.show.name}
+                            </Link>
+                          </span>
+                          {dateEntry.show.creationYear && (
+                            <span className="creation-year">
+                              Creation {dateEntry.show.creationYear}
+                            </span>
+                          )}
+                        </div>
+                        <div className="show-artist">
                           <Link
                             to={`/artists/${sanitizeName(
                               dateEntry.show.artist.name,
-                            )}/${dateEntry.show.url}/`}
+                            )}/`}
                           >
-                            {dateEntry.show.name}
+                            {dateEntry.show.artist.name}
                           </Link>
-                        </span>
-                        {dateEntry.show.creationYear && (
-                          <span className="creation-year">
-                            Creation {dateEntry.show.creationYear}
-                          </span>
+                        </div>
+                        <div className="date">
+                          <div>{formatShowDate(dateEntry.startDate)}</div>
+                          {dateEntry.endDate !== dateEntry.startDate && (
+                            <>
+                              <div className="separator">&#x2022;</div>
+                              <div className="date">
+                                {formatShowDate(dateEntry.endDate)}
+                              </div>
+                            </>
+                          )}
+                        </div>
+                        {dateEntry.url && dateEntry.theatre && (
+                          <a
+                            className="theatre"
+                            href={dateEntry.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span className="hand-separator">&#x261e;</span>
+                            {dateEntry.theatre}
+                          </a>
                         )}
-                      </div>
-                      <div className="show-artist">
-                        <Link
-                          to={`/artists/${sanitizeName(
-                            dateEntry.show.artist.name,
-                          )}/`}
-                        >
-                          {dateEntry.show.artist.name}
-                        </Link>
-                      </div>
-                      <div className="date">
-                        <div>{formatShowDate(dateEntry.startDate)}</div>
-                        {dateEntry.endDate !== dateEntry.startDate && (
-                          <>
-                            <div className="separator">&#x2022;</div>
-                            <div className="date">
-                              {formatShowDate(dateEntry.endDate)}
-                            </div>
-                          </>
+                        {!dateEntry.url && dateEntry.theatre && (
+                          <div className="theatre">{dateEntry.theatre}</div>
                         )}
-                      </div>
-                      {dateEntry.url && dateEntry.theatre && (
-                        <a
-                          className="theatre"
-                          href={dateEntry.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <span className="hand-separator">&#x261e;</span>
-                          {dateEntry.theatre}
-                        </a>
-                      )}
-                      {!dateEntry.url && dateEntry.theatre && (
-                        <div className="theatre">{dateEntry.theatre}</div>
-                      )}
-                      {dateEntry.city && (
-                        <div className="city">{dateEntry.city}</div>
-                      )}
-                    </li>
-                  ))}
-              </ul>
-            </>
-          ))}
-      </>
-    ))}
+                        {dateEntry.city && (
+                          <div className="city">{dateEntry.city}</div>
+                        )}
+                      </li>
+                    ))}
+                </ul>
+              </>
+            ))}
+          </>
+        ))
+    ) : (
+      <div className="italic small">
+        Nous n’avons malheureusement aucune date pour cet artiste.
+      </div>
+    )}
   </div>
 );

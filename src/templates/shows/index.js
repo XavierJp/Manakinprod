@@ -113,26 +113,21 @@ const Show = props => {
           <div className="third-col">
             <div className="sub-section">
               <h2>Dates à venir</h2>
-              {props.data.contentfulShow.showdate ? (
-                <NextDates
-                  shows={props.data.contentfulShow.showdate
-                    .map(showDate => {
-                      return {
-                        ...showDate,
-                        name: props.data.contentfulShow.name,
-                        showUrl: props.data.contentfulShow.url,
-                        creationYear: props.data.contentfulShow.creationYear,
-                      };
-                    })
-                    .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
-                    .slice(0, 6)}
-                  artistName={props.data.contentfulShow.artist.name}
-                />
-              ) : (
-                <div className="italic">
-                  Aucune date n’est prévue pour cet artiste
-                </div>
-              )}
+              <NextDates
+                shows={props.data.contentfulShow.showdate
+                  .map(showDate => {
+                    return {
+                      ...showDate,
+                      name: props.data.contentfulShow.name,
+                      showUrl: props.data.contentfulShow.url,
+                      creationYear: props.data.contentfulShow.creationYear,
+                    };
+                  })
+                  .filter(d => new Date(d.startDate) > new Date())
+                  .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
+                  .slice(0, 6)}
+                artistName={props.data.contentfulShow.artist.name}
+              />
             </div>
             {(props.data.contentfulShow.artisticFile ||
               props.data.contentfulShow.pressFile ||
