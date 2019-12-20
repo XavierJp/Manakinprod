@@ -130,7 +130,7 @@ const Show = props => {
                 />
               ) : (
                 <div className="italic">
-                  Aucune date n'est prévue pour ce spectacle
+                  Aucune date n’est prévue pour cet artiste
                 </div>
               )}
             </div>
