@@ -77,5 +77,8 @@ module.exports = {
         icon: 'src/resources/favicon.png',
       },
     },
+    {
+      resolve: `gatsby-plugin-netlify`,
+    },
   ],
 };

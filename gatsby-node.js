@@ -23,6 +23,7 @@ const sanitizeName = artistName => {
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
+
   return new Promise((resolve, reject) => {
     const artistPageTemplate = path.resolve(`src/templates/artists/index.js`);
     const agendaPageTemplate = path.resolve(`src/templates/agenda/index.js`);
