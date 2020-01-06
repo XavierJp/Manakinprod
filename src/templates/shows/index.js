@@ -224,13 +224,6 @@ export const pageQuery = graphql`
           url
         }
       }
-      technicalFile {
-        title
-        description
-        file {
-          url
-        }
-      }
       childContentfulShowDistributionTextNode {
         childMarkdownRemark {
           html
