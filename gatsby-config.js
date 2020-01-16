@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Manakin Sky dancer Rocks !`,
@@ -45,22 +49,18 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `l6zoou2d4e5q`,
-        accessToken: `9dc9304c61118a176c123a46dbe135dae690219c975be43e115b8bd10aa2a2b2`,
+        accessToken: process.env.CONTENTFUL_TOKEN,
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
-        trackingId: 'UA-131736457-1',
-        // Puts tracking script in the head instead of the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Avoids sending pageview hits from custom paths
-        exclude: [],
-        // Enables Google Optimize using your container Id
+        googleAnalytics: {
+          trackingId: process.env.GA_TRACKING_ID,
+          anonymize: true,
+        },
+        // Defines the environments where the tracking should be available  - default is ["production"]
+        environments: ['production', 'development'],
       },
     },
     {
