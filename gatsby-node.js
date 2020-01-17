@@ -64,7 +64,7 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
           createPage({
-            path: `agenda/${path}/`, // required
+            path: `/agenda/${path}/`, // required
             component: agendaPageTemplate,
             context: {
               artistId: edge.node.id,
