@@ -1,0 +1,56 @@
+@import 'src/resources/colors.scss';
+
+.cookie-warning {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  background-color: #fff;
+  width: 400px !important;
+  z-index: 3;
+  padding: 10px;
+  border: 1px solid $bodyManakin;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @media (min-width: 1px) and (max-width: 1024px) {
+    flex-direction: row;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+    width: calc(100% - 20px) !important;
+    bottom: 0;
+    left: 0;
+  }
+
+  > div:last-of-type {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    > button {
+      margin: 5px 5px 0;
+      border: 1px solid $bodyManakin;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      &.accept {
+        background-color: $bodyManakin;
+        color: #fff;
+        border-radius: 0;
+        font: inherit;
+      }
+
+      &.refuse {
+        background-color: #fff;
+        color: $bodyManakin;
+        border-radius: 0;
+        font: inherit;
+      }
+    }
+  }
+}
