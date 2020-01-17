@@ -4,8 +4,6 @@ import LinkUnderlined from '../../uiComponents/linkUnderlined';
 
 class Menu extends Component {
   handleKeyDown = event => {
-    // check keys if you want
-    console.log(event.keyCode);
     if (event.keyCode === 13) {
       this.toggleMenu();
     }
@@ -92,10 +90,15 @@ class Menu extends Component {
         <div
           className="hamburger"
           ref={el => (this.burger = el)}
+          /**  accessibility - not perfect as it is a CSS menu.
+           * So menu selection with tab key remains tricky as you have to go through
+           * all focusable elements hidden by the menu
+           **/
+          tabIndex="0"
           onClick={this.toggleMenu}
           onKeyDown={this.handleKeyDown}
           role="menu"
-          aria-label="burger-trigger"
+          aria-label="ouverture-menu"
         >
           <span />
           <span />

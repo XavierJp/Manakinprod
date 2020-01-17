@@ -17,7 +17,7 @@ export default props => (
         <h1>
           MANAKIN est une{' '}
           <span className="bracket">
-            <Link to="more">plateforme de production</Link>
+            <Link to="/more">plateforme de production</Link>
           </span>{' '}
           co-fondée par Lauren Boyer et Leslie Perrin pour co-construire et
           développer des projets artistiques originaux avec

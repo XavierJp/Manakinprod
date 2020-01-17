@@ -23,6 +23,12 @@ const breadCrumbPath = artist => [
 const Show = props => {
   const [selectedPic, setSelectedPic] = useState(0);
 
+  const keyDownSelectPic = (event, index) => {
+    if (event.keyCode === 13) {
+      setSelectedPic(index);
+    }
+  };
+
   return (
     <Layout>
       <Helmet>
@@ -70,6 +76,10 @@ const Show = props => {
                         <span
                           onClick={() => setSelectedPic(index)}
                           key={el.fixed.src}
+                          tabIndex="0"
+                          onKeyDown={event => keyDownSelectPic(event, index)}
+                          role="menu"
+                          aria-label="image-suivante"
                           className={index === selectedPic ? 'active' : ''}
                         >
                           {index + 1}
@@ -165,18 +175,19 @@ const Show = props => {
                     </a>
                   </div>
                 )}
-                {/* {props.data.contentfulShow.pressFile && (
-                <div>
-                  <a
-                    href={props.data.contentfulShow.pressFile.file.url}
-                    alt={props.data.contentfulShow.pressFile.description}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="hand-separator">&#x261e;</span> Dossier de presse
-                  </a>
-                </div>
-              )} */}
+                {props.data.contentfulShow.pressFile && (
+                  <div>
+                    <a
+                      href={props.data.contentfulShow.pressFile.file.url}
+                      alt={props.data.contentfulShow.pressFile.description}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="hand-separator">&#x261e;</span> Dossier
+                      de presse
+                    </a>
+                  </div>
+                )}
               </div>
             )}
           </div>

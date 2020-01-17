@@ -74,7 +74,7 @@ export default props => (
                 {props.data.contentfulArtists.show
                   .sort((a, b) => (a.order < b.order ? -1 : 1))
                   .map(show => (
-                    <li key="show">
+                    <li key={show.name}>
                       <div className="separator">&#x2022;</div>
                       <div key={show.name}>
                         <div>
