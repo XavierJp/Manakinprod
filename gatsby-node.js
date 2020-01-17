@@ -21,101 +21,98 @@ const sanitizeName = artistName => {
   return path;
 };
 
-exports.createPages = ({ graphql, actions }) => {
+const templates = {
+  artist: path.resolve(`src/templates/artists/index.js`),
+  agenda: path.resolve(`src/templates/agenda/index.js`),
+  show: path.resolve(`src/templates/shows/index.js`),
+};
+
+const convertToUrl = name => {
+  try {
+    return sanitizeName(name);
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+const artistsQuery = `
+query artistsForPath {
+  allContentfulArtists {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}
+`;
+
+const showsQuery = `
+query showsForPath {
+  allContentfulShow {
+    edges {
+      node {
+        id
+        name
+        url
+        artist {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+`;
+
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  return new Promise((resolve, reject) => {
-    const artistPageTemplate = path.resolve(`src/templates/artists/index.js`);
-    const agendaPageTemplate = path.resolve(`src/templates/agenda/index.js`);
-    const showPageTemplate = path.resolve(`src/templates/shows/index.js`);
-    // Query for markdown nodes to use in creating pages.
-    resolve(
-      graphql(
-        `
-          query artistsForPath {
-            allContentfulArtists {
-              edges {
-                node {
-                  id
-                  name
-                }
-              }
-            }
-          }
-        `,
-      ).then(result => {
-        if (result.errors) {
-          reject(result.errors);
-        }
+  const createPageWithResults = (path, cpmnt, context) => {
+    createPage({
+      path: path,
+      component: cpmnt,
+      context: context,
+    });
+  };
 
-        // Create blog post pages.
-        result.data.allContentfulArtists.edges.forEach(edge => {
-          let path = '';
-          try {
-            path = sanitizeName(edge.node.name);
-          } catch (e) {
-            console.error(e);
-          }
-          createPage({
-            path: `artists/${path}/`, // required
-            component: artistPageTemplate,
-            context: {
-              artistId: edge.node.id,
-            },
-          });
-          createPage({
-            path: `/agenda/${path}/`, // required
-            component: agendaPageTemplate,
-            context: {
-              artistId: edge.node.id,
-            },
-          });
-        });
+  return await Promise.all([
+    graphql(artistsQuery).then(result => {
+      if (result.errors) {
+        reject(result.errors);
+      }
 
-        return;
-      }),
-      graphql(
-        `
-          query showsForPath {
-            allContentfulShow {
-              edges {
-                node {
-                  id
-                  name
-                  url
-                  artist {
-                    id
-                    name
-                  }
-                }
-              }
-            }
-          }
-        `,
-      ).then(result => {
-        if (result.errors) {
-          reject(result.errors);
-        }
+      // Create blog post pages.
+      result.data.allContentfulArtists.edges.map(edge => {
+        const artistPath = `/artists/${convertToUrl(edge.node.name)}`;
+        const agendaPath = `/agenda/${convertToUrl(edge.node.name)}`;
+        const context = {
+          artistId: edge.node.id,
+        };
+        createPageWithResults(artistPath, templates.artist, context);
+        createPageWithResults(agendaPath, templates.agenda, context);
+      });
 
-        // Create blog post pages.
-        result.data.allContentfulShow.edges.forEach(edge => {
-          let showPath = '';
-          try {
-            artistPath = sanitizeName(edge.node.artist.name);
-          } catch (e) {
-            console.error(e);
-          }
-          createPage({
-            path: `artists/${artistPath}/${edge.node.url}/`, // required
-            component: showPageTemplate,
-            context: {
-              showId: edge.node.id,
-            },
-          });
-        });
+      return;
+    }),
+    graphql(showsQuery).then(result => {
+      if (result.errors) {
+        reject(result.errors);
+      }
 
-        return;
-      }),
-    );
-  });
+      // Create show pages.
+      result.data.allContentfulShow.edges.forEach(edge => {
+        const artistPath = `/artists/${convertToUrl(edge.node.artist.name)}/${
+          edge.node.url
+        }/`;
+        const context = {
+          showId: edge.node.id,
+        };
+        createPageWithResults(artistPath, templates.show, context);
+      });
+
+      return;
+    }),
+  ]);
 };

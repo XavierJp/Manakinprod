@@ -1,29 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import './styles.scss';
+import { setGACookie, getGACookie, initGA, logPageView } from '../../utils';
 
-export const setCookie = (accept = true) => {
-  const d = new Date();
-  d.setDate(d.getDate() + 365);
-
-  if (hasCookie()) {
-    console.log('already az cookie');
-    return;
-  }
-
-  document.cookie = `gatsby-gdpr-google-analytics=${accept}; expires=${d.toUTCString()}`;
-};
-
-export const hasCookie = () => {
-  return document.cookie.indexOf('gatsby-gdpr-google-analytics=') !== -1;
-};
-
-export default props => {
+export default () => {
   const cookieWarning = useRef(null);
 
   const acceptOrRefuse = (accept = true) => {
     return e => {
       e.preventDefault();
-      setCookie(true);
+
+      setGACookie(accept);
+
+      if (accept) {
+        initGA();
+        logPageView();
+      }
 
       if (!!cookieWarning && cookieWarning.current) {
         cookieWarning.current.style.display = 'none';
@@ -31,9 +22,20 @@ export default props => {
     };
   };
 
+  useEffect(() => {
+    // mount
+    return () => {
+      // unmount
+      const gac = getGACookie();
+      if (gac === undefined) {
+        setGACookie(true);
+      }
+    };
+  }, []);
+
   return (
     <>
-      {!hasCookie() && (
+      {getGACookie() === undefined && (
         <div className="cookie-warning" ref={cookieWarning}>
           <div>
             Afin d’optimiser votre expérience, ce site utilise des cookies, que

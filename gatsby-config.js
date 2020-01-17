@@ -53,17 +53,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-gdpr-cookies`,
-      options: {
-        googleAnalytics: {
-          trackingId: process.env.GA_TRACKING_ID,
-          anonymize: true,
-        },
-        // Defines the environments where the tracking should be available  - default is ["production"]
-        environments: ['production', 'development'],
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Manakin Prod`,
