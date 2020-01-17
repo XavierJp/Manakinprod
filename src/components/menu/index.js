@@ -3,18 +3,23 @@ import './styles.scss';
 import LinkUnderlined from '../../uiComponents/linkUnderlined';
 
 class Menu extends Component {
+  handleKeyDown = event => {
+    // check keys if you want
+    console.log(event.keyCode);
+    if (event.keyCode === 13) {
+      this.toggleMenu();
+    }
+  };
+
   toggleMenu = () => {
     if (!this.menu || !this.burger) {
       return;
     }
-    // should check first if js is active
-
     try {
       this.tryToggleMenu();
     } catch (e) {
       this.menu.classList.toggle('force-visible');
       this.burger.classList.toggle('open');
-      // throw e;
     }
   };
 
@@ -83,18 +88,14 @@ class Menu extends Component {
             label="EN SAVOIR +"
             highlighted={activeTab === 'more'}
           />
-          {/* <LinkUnderlined
-            className="newletter"
-            targetPath="/"
-            label="&#x261e; NEWSLETTER"
-            highlighted={activeTab === 'newsletter'}
-          /> */}
-          {/* <Newsletter /> */}
         </div>
         <div
           className="hamburger"
           ref={el => (this.burger = el)}
           onClick={this.toggleMenu}
+          onKeyDown={this.handleKeyDown}
+          role="menu"
+          aria-label="burger-trigger"
         >
           <span />
           <span />

@@ -3,7 +3,7 @@ import './styles.scss';
 import LinkUnderlined from '../uiComponents/linkUnderlined';
 import Header from '../uiComponents/header';
 import Footer from '../uiComponents/footer';
-import Layout from '../uiComponents/layout';
+import Layout from '../components/layout';
 import SocialNetworks from '../components/socialNetworks';
 import { graphql } from 'gatsby';
 import Link from '../uiComponents/link';
@@ -28,7 +28,7 @@ export default props => (
               <LinkUnderlined
                 className="artist-name"
                 label={artist.node.name}
-                targetPath={`artists/${sanitizeName(
+                targetPath={`/artists/${sanitizeName(
                   artist.node.name,
                   artist,
                 )}/`}

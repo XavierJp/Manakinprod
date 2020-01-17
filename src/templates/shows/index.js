@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
-import Layout from '../../uiComponents/layout';
+import Layout from '../../components/layout';
 import { graphql } from 'gatsby';
 import BreadCrumb from '../../uiComponents/breadCrumb';
 import { Helmet } from 'react-helmet';

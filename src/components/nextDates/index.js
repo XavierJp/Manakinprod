@@ -12,7 +12,7 @@ export default props => (
           <div>
             <div>
               <Link
-                to={`artists/${sanitizeName(props.artistName)}/${
+                to={`/artists/${sanitizeName(props.artistName)}/${
                   showDate.showUrl
                 }/`}
                 className="show-name bracket"

@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 import Header from '../../uiComponents/header';
-import Layout from '../../uiComponents/layout';
+import Layout from '../../components/layout';
 import Link from '../../uiComponents/link';
 
 const logo_small = (

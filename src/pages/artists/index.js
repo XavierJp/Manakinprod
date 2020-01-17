@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
-import Layout from '../../uiComponents/layout';
+import Layout from '../../components/layout';
 import { graphql } from 'gatsby';
 import Link from '../../uiComponents/link';
 import { sanitizeName } from '../../utils';

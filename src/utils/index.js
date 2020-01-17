@@ -1,3 +1,4 @@
+// TODO : use EncodeURI
 export const sanitizeName = artistName => {
   if (!artistName) {
     console.error(`invalid url : no name provided`);

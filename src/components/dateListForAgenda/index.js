@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './styles.scss';
 import Link from '../../uiComponents/link';
 import { sanitizeName, formatShowDate } from '../../utils';
@@ -45,14 +45,14 @@ export default props => (
       Object.entries(computeAgendaByDate(props.dates))
         // most recent year first
         .sort((y1, y2) => y2[0] - y1[0])
-        .map(keyValuePair => (
-          <>
-            <h2>{keyValuePair[0]}</h2>
-            {Object.entries(keyValuePair[1]).map(keyEntryPair => (
-              <>
-                <h3>{monthNames[keyEntryPair[0] - 1]}</h3>
+        .map(byYearKvp => (
+          <Fragment key={byYearKvp[0]}>
+            <h2>{byYearKvp[0]}</h2>
+            {Object.entries(byYearKvp[1]).map(byMonthKvp => (
+              <Fragment key={byMonthKvp[0]}>
+                <h3>{monthNames[byMonthKvp[0] - 1]}</h3>
                 <ul>
-                  {keyEntryPair[1]
+                  {byMonthKvp[1]
                     .sort((a, b) => {
                       return a.startDate < b.startDate ? -1 : 1;
                     })
@@ -114,9 +114,9 @@ export default props => (
                       </li>
                     ))}
                 </ul>
-              </>
+              </Fragment>
             ))}
-          </>
+          </Fragment>
         ))
     ) : (
       <div className="italic small">
