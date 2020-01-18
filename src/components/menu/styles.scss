@@ -76,6 +76,10 @@ menu {
       right: 10px;
       cursor: pointer;
 
+      &:focus {
+        outline: none;
+      }
+
       span {
         display: block;
         position: absolute;

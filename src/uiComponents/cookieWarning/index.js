@@ -23,8 +23,10 @@ export default () => {
   };
 
   useEffect(() => {
+    console.log('mount');
     // mount
     return () => {
+      console.log('unmount');
       // unmount
       const gac = getGACookie();
       if (gac === undefined) {
@@ -35,25 +37,23 @@ export default () => {
 
   return (
     <>
-      {getGACookie() === undefined && (
-        <div className="cookie-warning" ref={cookieWarning}>
-          <div>
-            Afin d’optimiser votre expérience, ce site utilise des cookies, que
-            vous acceptez en poursuivant votre navigation.
-            <span role="img" aria-label="cookies">
-              🍪
-            </span>
-          </div>
-          <div>
-            <button className="accept" onClick={acceptOrRefuse(true)}>
-              Ok
-            </button>
-            <button className="refuse" onClick={acceptOrRefuse(false)}>
-              Non merci
-            </button>
-          </div>
+      <div className="cookie-warning" ref={cookieWarning}>
+        <div>
+          Afin d’optimiser votre expérience, ce site utilise des cookies, que
+          vous acceptez en poursuivant votre navigation.
+          <span role="img" aria-label="cookies">
+            🍪
+          </span>
         </div>
-      )}
+        <div>
+          <button className="accept" onClick={acceptOrRefuse(true)}>
+            Ok
+          </button>
+          <button className="refuse" onClick={acceptOrRefuse(false)}>
+            Non merci
+          </button>
+        </div>
+      </div>
     </>
   );
 };
