@@ -21,7 +21,7 @@ export default ({ children }) => (
         content="1s82ZT6xQazOFEVwn5iUg4KJEQW48-WPgioXI98u8-g"
       />
     </Helmet>
-    {getGACookie() === undefined && <CookieWarning></CookieWarning>}
+    {/* {getGACookie() === undefined && <CookieWarning></CookieWarning>} */}
     {children}
   </div>
 );
