@@ -2,8 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import '../../resources/reset.scss';
 import './global.scss';
-import CookieWarning from '../../uiComponents/cookieWarning';
-import { getGACookie } from '../../utils';
 
 export default ({ children }) => (
   <div id="layout-global">
@@ -21,7 +19,6 @@ export default ({ children }) => (
         content="1s82ZT6xQazOFEVwn5iUg4KJEQW48-WPgioXI98u8-g"
       />
     </Helmet>
-    {/* {getGACookie() === undefined && <CookieWarning></CookieWarning>} */}
     {children}
   </div>
 );

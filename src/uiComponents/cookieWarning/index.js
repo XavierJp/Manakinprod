@@ -1,59 +1,68 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import { setGACookie, getGACookie, initGA, logPageView } from '../../utils';
 
 export default () => {
-  const cookieWarning = useRef(null);
+  const [showCookie, setShowCookie] = useState(false);
 
-  const acceptOrRefuse = (accept = true) => {
-    return e => {
+  const accept = e => {
+    if (e) {
       e.preventDefault();
+    }
+    setGACookie(true);
+    initGA();
+    logPageView();
+    setShowCookie(false);
+  };
 
-      setGACookie(accept);
-
-      if (accept) {
-        initGA();
-        logPageView();
-      }
-
-      if (!!cookieWarning && cookieWarning.current) {
-        cookieWarning.current.style.display = 'none';
-      }
-    };
+  const refuse = e => {
+    if (e) {
+      e.preventDefault();
+    }
+    setGACookie(false);
+    setShowCookie(false);
   };
 
   useEffect(() => {
-    console.log('mount');
-    // mount
+    const gaCookie = getGACookie();
+
+    if (gaCookie === undefined) {
+      setShowCookie(true);
+    }
+
+    if (gaCookie === true) {
+      initGA();
+    }
+
     return () => {
-      console.log('unmount');
-      // unmount
       const gac = getGACookie();
       if (gac === undefined) {
-        setGACookie(true);
+        accept();
       }
     };
   }, []);
 
   return (
     <>
-      <div className="cookie-warning" ref={cookieWarning}>
-        <div>
-          Afin d’optimiser votre expérience, ce site utilise des cookies, que
-          vous acceptez en poursuivant votre navigation.
-          <span role="img" aria-label="cookies">
-            🍪
-          </span>
+      {showCookie && (
+        <div className="cookie-warning">
+          <div>
+            Afin d’optimiser votre expérience, ce site utilise des cookies, que
+            vous acceptez en poursuivant votre navigation.
+            <span role="img" aria-label="cookies">
+              🍪
+            </span>
+          </div>
+          <div>
+            <button className="accept" onClick={accept}>
+              D’accord
+            </button>
+            <button className="refuse" onClick={refuse}>
+              Non merci
+            </button>
+          </div>
         </div>
-        <div>
-          <button className="accept" onClick={acceptOrRefuse(true)}>
-            Ok
-          </button>
-          <button className="refuse" onClick={acceptOrRefuse(false)}>
-            Non merci
-          </button>
-        </div>
-      </div>
+      )}
     </>
   );
 };

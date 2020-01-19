@@ -2,13 +2,21 @@ import ReactGA from 'react-ga';
 import { getCookie, setCookie } from './cookie';
 
 export const GA_COOKIE_NAME = 'gatsby-gdpr-google-analytics';
+
+let initalized = false;
 /**
  * Init Google analitics
  */
 export const initGA = () => {
+  if (initalized) {
+    return;
+  }
+
   ReactGA.initialize(process.env.GA_TRACKING_ID, {
     anonymize: true,
   });
+
+  initalized = true;
 
   ReactGA.ga('set', 'checkProtocolTask', function() {});
 };
@@ -17,9 +25,11 @@ export const initGA = () => {
  * Log a page view event - path optional
  */
 export const logPageView = path => {
-  if (typeof ReactGA !== undefined) {
-    ReactGA.pageview(path || document.location.pathname);
+  if (!initalized) {
+    initGA();
   }
+
+  ReactGA.pageview(path || document.location.pathname);
 };
 /**
  * Return true or false if cookie has been set, undefined otherwise
