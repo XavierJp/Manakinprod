@@ -121,7 +121,7 @@ export default props => (
                       }),
                     ];
                   }, [])
-                  .filter(d => new Date(d.startDate) > new Date())
+                  .filter(d => new Date(d.endDate) > new Date())
                   .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
                   .slice(0, 4)}
                 artistName={props.data.contentfulArtists.name}

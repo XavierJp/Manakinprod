@@ -136,7 +136,7 @@ const Show = props => {
                               props.data.contentfulShow.creationYear,
                           };
                         })
-                        .filter(d => new Date(d.startDate) > new Date())
+                        .filter(d => new Date(d.endDate) > new Date())
                         .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
                         .slice(0, 6)
                     : []
