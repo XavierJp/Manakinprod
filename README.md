@@ -1,12 +1,14 @@
 # Manakin Production website
 
-MANAKIN part du constat que les spectacles de demain ne sont pas encore nés aujourd'hui.
+✌︎ Manakin part du constat que les spectacles de demain ne sont pas encore nés aujourd'hui. ✌︎
 
-## Development
+Développement en local :
 
-`gatsby develop`
+`npm run dev`
 
-## Prod
+Pour tester le build :
 
-`gatsby build`
-`gatsby serve`
+`npm run build && npm run start`
+
+[Et sinon, avez-vous deja vu un Manakin 🐥 ?](https://giphy.com/gifs/S1yE8lnWZ1k3K)
+
