@@ -3,10 +3,13 @@
   "description": "Manakin production website",
   "license": "MIT",
   "main": "public/index.html",
+  "engines": {
+    "node": "13.x"
+  },
   "scripts": {
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve"
+    "start": "gatsby serve"
   },
   "dependencies": {
     "gatsby": "^2.18.23",

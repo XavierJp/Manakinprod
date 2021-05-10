@@ -3,7 +3,7 @@ import './styles.scss';
 import Link from '../../uiComponents/link';
 import { sanitizeName, formatShowDate } from '../../utils';
 
-const computeAgendaByDate = flatDateList => {
+const computeAgendaByDate = (flatDateList) => {
   return flatDateList.reduce((acc, flatDate) => {
     const y = new Intl.DateTimeFormat('fr-FR', {
       year: 'numeric',
@@ -39,16 +39,16 @@ const monthNames = [
   'Decembre',
 ];
 
-export default props => (
+export default (props) => (
   <div className="date-list-for-agenda">
     {props.dates.length >= 1 ? (
       Object.entries(computeAgendaByDate(props.dates))
         // most recent year first
         .sort((y1, y2) => y2[0] - y1[0])
-        .map(byYearKvp => (
+        .map((byYearKvp) => (
           <Fragment key={byYearKvp[0]}>
             <h2>{byYearKvp[0]}</h2>
-            {Object.entries(byYearKvp[1]).map(byMonthKvp => (
+            {Object.entries(byYearKvp[1]).map((byMonthKvp) => (
               <Fragment key={byMonthKvp[0]}>
                 <h3>{monthNames[byMonthKvp[0] - 1]}</h3>
                 <ul>
@@ -56,7 +56,7 @@ export default props => (
                     .sort((a, b) => {
                       return a.startDate < b.startDate ? -1 : 1;
                     })
-                    .map(dateEntry => (
+                    .map((dateEntry) => (
                       <li key={dateEntry.startDate}>
                         <div>
                           <span className="show-name bracket">
