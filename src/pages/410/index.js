@@ -4,7 +4,7 @@ import Header from '../../uiComponents/header';
 import Layout from '../../components/layout';
 import Link from '../../uiComponents/link';
 
-export default () => (
+const Page410 = () => (
   <Layout>
     <Header />
     <div className="error-410">
@@ -18,3 +18,4 @@ export default () => (
     </div>
   </Layout>
 );
+export default Page410;

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import { setGACookie, getGACookie, initGA, logPageView } from '../../utils';
 
-export default () => {
+const CookieWarning = () => {
   const [showCookie, setShowCookie] = useState(false);
 
-  const accept = e => {
+  const accept = (e) => {
     if (e) {
       e.preventDefault();
     }
@@ -15,7 +15,7 @@ export default () => {
     setShowCookie(false);
   };
 
-  const refuse = e => {
+  const refuse = (e) => {
     if (e) {
       e.preventDefault();
     }
@@ -66,3 +66,5 @@ export default () => {
     </>
   );
 };
+
+export default CookieWarning;

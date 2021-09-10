@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-export default ({
+const ImprovedLink = ({
   to,
   children,
   style,
@@ -19,3 +19,4 @@ export default ({
     {children}
   </Link>
 );
+export default ImprovedLink;

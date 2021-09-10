@@ -6,7 +6,7 @@ import Menu from '../../components/menu';
 
 import CookieWarning from '../../uiComponents/cookieWarning';
 
-export default props => (
+const Header = (props) => (
   <div className="header">
     <Miniature />
     <Menu activeTab={props.activeTab} />
@@ -14,3 +14,5 @@ export default props => (
     <CookieWarning />
   </div>
 );
+
+export default Header;

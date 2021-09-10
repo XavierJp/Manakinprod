@@ -9,7 +9,7 @@ import { graphql } from 'gatsby';
 import Link from '../uiComponents/link';
 import { sanitizeName } from '../utils';
 
-export default props => (
+const IndexPage = (props) => (
   <Layout>
     <Header />
     <div className="home">
@@ -59,7 +59,7 @@ export default props => (
 
 export const pageQuery = graphql`
   query artists {
-    allContentfulArtists {
+    allContentfulArtists(sort: { fields: order, order: ASC }) {
       edges {
         node {
           id
@@ -70,3 +70,4 @@ export const pageQuery = graphql`
     }
   }
 `;
+export default IndexPage;

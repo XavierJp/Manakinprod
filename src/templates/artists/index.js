@@ -17,7 +17,7 @@ const breadCrumbPath = [
   },
 ];
 
-export default props => (
+const ArtistsTemplates = (props) => (
   <Layout>
     <Helmet>
       <meta charSet="utf-8" />
@@ -73,7 +73,7 @@ export default props => (
               <ul>
                 {props.data.contentfulArtists.show
                   .sort((a, b) => (a.order < b.order ? -1 : 1))
-                  .map(show => (
+                  .map((show) => (
                     <li key={show.name}>
                       <div className="separator">&#x2022;</div>
                       <div key={show.name}>
@@ -111,7 +111,7 @@ export default props => (
                     }
                     return [
                       ...acc,
-                      ...show.showdate.map(s => {
+                      ...show.showdate.map((s) => {
                         return {
                           ...s,
                           name: show.name,
@@ -121,7 +121,7 @@ export default props => (
                       }),
                     ];
                   }, [])
-                  .filter(d => new Date(d.endDate) > new Date())
+                  .filter((d) => new Date(d.endDate) > new Date())
                   .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
                   .slice(0, 4)}
                 artistName={props.data.contentfulArtists.name}
@@ -161,7 +161,7 @@ export default props => (
 );
 
 export const pageQuery = graphql`
-  query($artistId: String!) {
+  query ($artistId: String!) {
     contentfulArtists(id: { eq: $artistId }) {
       id
       name
@@ -197,3 +197,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default ArtistsTemplates;

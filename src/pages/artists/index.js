@@ -8,13 +8,13 @@ import Link from '../../uiComponents/link';
 import { sanitizeName } from '../../utils';
 import BreadCrumb from '../../uiComponents/breadCrumb';
 
-export default props => (
+const ArtistsPage = (props) => (
   <Layout>
     <Header activeTab={'artists'} />
     <div className="artists-page">
       <BreadCrumb current="Artistes" />
       <div className="artists-list">
-        {props.data.allContentfulArtists.edges.map(artist => (
+        {props.data.allContentfulArtists.edges.map((artist) => (
           <Link
             style={{
               width: `${artist.node.image.fixed.width}px`,
@@ -59,3 +59,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default ArtistsPage;

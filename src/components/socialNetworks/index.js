@@ -34,7 +34,7 @@ const facebookIcon = (
   </svg>
 );
 
-export default () => (
+const SocialNetworks = () => (
   <StaticQuery
     query={graphql`
       query socialNetworks {
@@ -49,7 +49,7 @@ export default () => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <div className="social-networks">
         <a
           target="_blank"
@@ -69,3 +69,4 @@ export default () => (
     )}
   />
 );
+export default SocialNetworks;

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import '../../resources/reset.scss';
 import './global.scss';
 
-export default ({ children }) => (
+const DefaultLayout = ({ children }) => (
   <div id="layout-global">
     <Helmet>
       <meta charSet="utf-8" />
@@ -22,3 +22,4 @@ export default ({ children }) => (
     {children}
   </div>
 );
+export default DefaultLayout;

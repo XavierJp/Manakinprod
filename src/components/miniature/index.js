@@ -4,7 +4,7 @@ import Link from '../../uiComponents/link';
 import logo_manakin from '../../resources/logo_centered_low_q.jpg';
 import { StaticQuery, graphql } from 'gatsby';
 
-export default () => (
+const Miniature = () => (
   <StaticQuery
     query={graphql`
       query manakinInfos {
@@ -20,7 +20,7 @@ export default () => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <div className="logo">
         <Link to="/">
           <img alt="Logo de Manakin Production" src={logo_manakin} />
@@ -44,3 +44,4 @@ export default () => (
     )}
   />
 );
+export default Miniature;

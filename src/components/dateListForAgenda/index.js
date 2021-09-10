@@ -39,7 +39,7 @@ const monthNames = [
   'Decembre',
 ];
 
-export default (props) => (
+const DateListForAgenda = (props) => (
   <div className="date-list-for-agenda">
     {props.dates.length >= 1 ? (
       Object.entries(computeAgendaByDate(props.dates))
@@ -125,3 +125,5 @@ export default (props) => (
     )}
   </div>
 );
+
+export default DateListForAgenda;

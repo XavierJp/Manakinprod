@@ -4,11 +4,11 @@ import Link from '../../uiComponents/link';
 import './styles.scss';
 import { sanitizeName } from '../../utils';
 
-export default props => (
+const ArtistsListForAgenda = (props) => (
   <StaticQuery
     query={graphql`
       query artistsList {
-        allContentfulArtists {
+        allContentfulArtists(sort: { fields: order, order: ASC }) {
           edges {
             node {
               id
@@ -18,9 +18,9 @@ export default props => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <div className="artist-list-for-agenda">
-        {data.allContentfulArtists.edges.map(artist => (
+        {data.allContentfulArtists.edges.map((artist) => (
           <Link
             to={`/agenda/${
               props.active === artist.node.name
@@ -37,3 +37,5 @@ export default props => (
     )}
   />
 );
+
+export default ArtistsListForAgenda;

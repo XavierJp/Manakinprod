@@ -3,10 +3,10 @@ import './styles.scss';
 import { sanitizeName, formatShowDate } from '../../utils';
 import Link from '../../uiComponents/link';
 
-export default props => (
+const NextDates = (props) => (
   <ul className="next-dates">
     {props.shows.length >= 1 ? (
-      props.shows.map(showDate => (
+      props.shows.map((showDate) => (
         <li key={showDate.name + showDate.startDate}>
           <div className="separator">&#x2022;</div>
           <div>
@@ -52,3 +52,5 @@ export default props => (
     )}
   </ul>
 );
+
+export default NextDates;

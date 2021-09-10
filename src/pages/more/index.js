@@ -5,7 +5,7 @@ import Footer from '../../uiComponents/footer';
 import Layout from '../../components/layout';
 import { graphql } from 'gatsby';
 
-export default props => (
+const MorePage = (props) => (
   <Layout>
     <Header />
     <div className="more-about-manakin">
@@ -75,3 +75,4 @@ export const pageQuery = graphql`
     }
   }
 `;
+export default MorePage;

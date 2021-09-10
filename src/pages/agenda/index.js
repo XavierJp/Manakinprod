@@ -8,7 +8,7 @@ import ArtitstsList from '../../components/artitstsListForAgenda';
 import DateListForAgenda from '../../components/dateListForAgenda';
 import BreadCrumb from '../../uiComponents/breadCrumb';
 
-export default props => (
+const AgendaPage = (props) => (
   <Layout>
     <Header activeTab={'agenda'} />
     <div className="agenda-page">
@@ -48,3 +48,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default AgendaPage;

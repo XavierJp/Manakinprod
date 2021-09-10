@@ -133,7 +133,7 @@ const logo_small = (
   </svg>
 );
 
-export default () => (
+const Page404 = () => (
   <Layout>
     <Header />
     <div className="error-404">
@@ -148,3 +148,5 @@ export default () => (
     </div>
   </Layout>
 );
+
+export default Page404;

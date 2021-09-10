@@ -5,7 +5,7 @@ import Footer from '../../uiComponents/footer';
 import Layout from '../../components/layout';
 import { graphql } from 'gatsby';
 
-export default props => (
+const MentionsLegalesPage = (props) => (
   <Layout>
     <Header />
     <div className="mention-legales">
@@ -39,3 +39,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default MentionsLegalesPage;

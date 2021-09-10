@@ -5,7 +5,7 @@ import Footer from '../../uiComponents/footer';
 import Layout from '../../components/layout';
 import { graphql } from 'gatsby';
 
-export default props => (
+const NousSoutenir = (props) => (
   <Layout>
     <Header />
     <div className="support-us">
@@ -41,3 +41,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default NousSoutenir;

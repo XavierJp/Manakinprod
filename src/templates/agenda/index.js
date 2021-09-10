@@ -15,7 +15,7 @@ const breadCrumbPath = [
   },
 ];
 
-export default props => (
+const AgendaTemplate = (props) => (
   <Layout>
     <Header activeTab={'agenda'} />
     <div className="agenda-page">
@@ -35,7 +35,7 @@ export default props => (
           }
           return [
             ...acc,
-            ...show.showdate.map(showdate => {
+            ...show.showdate.map((showdate) => {
               return {
                 node: {
                   ...showdate,
@@ -57,7 +57,7 @@ export default props => (
 );
 
 export const agendaForArtist = graphql`
-  query($artistId: String!) {
+  query ($artistId: String!) {
     contentfulArtists(id: { eq: $artistId }) {
       id
       name
@@ -76,3 +76,5 @@ export const agendaForArtist = graphql`
     }
   }
 `;
+
+export default AgendaTemplate;

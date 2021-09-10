@@ -1,9 +1,8 @@
 import React from 'react';
 import Link from '../link';
 import './styles.scss';
-// import Newsletter from '../../components/newsletter';
 
-export default props => (
+const Footer = () => (
   <div className="footer">
     <div>
       <span>© 2018 Manakin production</span>
@@ -20,3 +19,4 @@ export default props => (
     </div>
   </div>
 );
+export default Footer;

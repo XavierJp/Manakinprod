@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 import './styles.scss';
 import Link from '../link';
 
-export default props => (
+const BreadCrumb = (props) => (
   <div className="bread-crumb">
     {props.paths &&
-      props.paths.map(path => (
+      props.paths.map((path) => (
         <Fragment key={path.to + path.label}>
           <Link to={path.to}>{path.label}</Link>
           <span className="hand-separator">&#x261e;</span>
@@ -14,3 +14,5 @@ export default props => (
     <h1>{props.current}</h1>
   </div>
 );
+
+export default BreadCrumb;
