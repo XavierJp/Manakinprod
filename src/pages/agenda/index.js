@@ -3,7 +3,7 @@ import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
 import Layout from '../../components/layout';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import ArtitstsList from '../../components/artitstsListForAgenda';
 import DateListForAgenda from '../../components/dateListForAgenda';
 import BreadCrumb from '../../uiComponents/breadCrumb';
@@ -14,10 +14,15 @@ const AgendaPage = (props) => (
     <div className="agenda-page">
       <BreadCrumb current="Agenda" />
       <p className="explanation">
-        Cliquez sur un des artistes ci-dessous pour afficher uniquement ses
-        dates
+        Cliquez sur un des artistes ci-dessous pour afficher ses dates à venir.{' '}
       </p>
       <ArtitstsList />
+      <p className="explanation">
+        Pour consultez les dates passées, accédez aux{' '}
+        <Link to="/archives">
+          <b>☞ Archives</b>
+        </Link>
+      </p>
       <DateListForAgenda dates={props.data.allContentfulShowDate.edges} />
     </div>
     <Footer />
@@ -26,7 +31,7 @@ const AgendaPage = (props) => (
 
 export const pageQuery = graphql`
   query {
-    allContentfulShowDate {
+    allContentfulShowDate(sort: { fields: startDate, order: ASC }) {
       edges {
         node {
           startDate

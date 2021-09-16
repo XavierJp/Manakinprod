@@ -1,0 +1,40 @@
+.select {
+  width: 100%;
+  min-width: 150px;
+  max-width: 300px;
+  border: 1px solid;
+  border-radius: 2px;
+  margin: 0px 20px 30px 0;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #43365b;
+  background-color: #fff;
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: '';
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #43365b transparent transparent transparent;
+    pointer-events: none;
+  }
+
+  select {
+    // A reset of styles, including removing the default dropdown arrow
+    appearance: none;
+    // Additional resets for further consistency
+    background-color: transparent;
+    border: none;
+    padding: 8px 10px;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+  }
+}

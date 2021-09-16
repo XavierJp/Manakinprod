@@ -3,28 +3,42 @@ import './styles.scss';
 import Link from '../../uiComponents/link';
 import { sanitizeName, formatShowDate } from '../../utils';
 
+export const extractYear = (d) =>
+  new Intl.DateTimeFormat('fr-FR', {
+    year: 'numeric',
+  }).format(new Date(d));
+
+export const extractMonth = (d) =>
+  new Intl.DateTimeFormat('fr-FR', {
+    month: 'numeric',
+  }).format(new Date(d));
+
 const computeAgendaByDate = (flatDateList) => {
-  return flatDateList.reduce((acc, flatDate) => {
-    const y = new Intl.DateTimeFormat('fr-FR', {
-      year: 'numeric',
-    }).format(new Date(flatDate.node.startDate));
-    const m = new Intl.DateTimeFormat('fr-FR', {
-      month: 'numeric',
-    }).format(new Date(flatDate.node.startDate));
+  const now = new Date();
+  const agenda = flatDateList.reduce((acc, flatDate) => {
+    const startDate = flatDate.node.startDate;
 
-    if (!acc[y]) {
-      acc[y] = {};
-    }
-    if (!acc[y][m]) {
-      acc[y][m] = [];
+    if (new Date(startDate) >= now) {
+      const y = extractYear(startDate);
+      const m = extractMonth(startDate);
+
+      if (!acc[y]) {
+        acc[y] = {};
+      }
+      if (!acc[y][m]) {
+        acc[y][m] = [];
+      }
+
+      acc[y][m].push(flatDate.node);
     }
 
-    acc[y][m].push(flatDate.node);
     return acc;
   }, {});
+
+  return agenda;
 };
 
-const monthNames = [
+export const monthNames = [
   'Janvier',
   'Février',
   'Mars',
@@ -38,13 +52,11 @@ const monthNames = [
   'Novembre',
   'Decembre',
 ];
-
 const DateListForAgenda = (props) => (
   <div className="date-list-for-agenda">
     {props.dates.length >= 1 ? (
       Object.entries(computeAgendaByDate(props.dates))
         // most recent year first
-        .sort((y1, y2) => y2[0] - y1[0])
         .map((byYearKvp) => (
           <Fragment key={byYearKvp[0]}>
             <h2>{byYearKvp[0]}</h2>

@@ -1,0 +1,28 @@
+@import 'src/resources/colors.scss';
+
+.date-list-for-archives {
+  .line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .artist-and-show {
+    flex-shrink: 0;
+
+    i {
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+  }
+
+  .place {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+  }
+  .city {
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+}
