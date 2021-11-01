@@ -1,5 +1,7 @@
 ul.next-dates {
   padding: 0;
+  max-height: 400px;
+  overflow: auto;
 
   > li {
     list-style-type: none;

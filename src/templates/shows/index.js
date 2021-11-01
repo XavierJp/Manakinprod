@@ -3,13 +3,13 @@ import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
 import Layout from '../../components/layout';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import BreadCrumb from '../../uiComponents/breadCrumb';
 import { Helmet } from 'react-helmet';
 import { sanitizeName } from '../../utils';
 import NextDates from '../../components/nextDates';
 
-const breadCrumbPath = artist => [
+const breadCrumbPath = (artist) => [
   {
     to: '/artists',
     label: 'Artistes',
@@ -20,7 +20,7 @@ const breadCrumbPath = artist => [
   },
 ];
 
-const Show = props => {
+const Show = (props) => {
   const [selectedPic, setSelectedPic] = useState(0);
 
   const keyDownSelectPic = (event, index) => {
@@ -77,7 +77,7 @@ const Show = props => {
                           onClick={() => setSelectedPic(index)}
                           key={el.fixed.src}
                           tabIndex="0"
-                          onKeyDown={event => keyDownSelectPic(event, index)}
+                          onKeyDown={(event) => keyDownSelectPic(event, index)}
                           role="menu"
                           aria-label="image-suivante"
                           className={index === selectedPic ? 'active' : ''}
@@ -127,7 +127,7 @@ const Show = props => {
                 shows={
                   props.data.contentfulShow.showdate
                     ? props.data.contentfulShow.showdate
-                        .map(showDate => {
+                        .map((showDate) => {
                           return {
                             ...showDate,
                             name: props.data.contentfulShow.name,
@@ -136,7 +136,7 @@ const Show = props => {
                               props.data.contentfulShow.creationYear,
                           };
                         })
-                        .filter(d => new Date(d.endDate) > new Date())
+                        .filter((d) => new Date(d.endDate) > new Date())
                         .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
                         .slice(0, 6)
                     : []
@@ -144,52 +144,54 @@ const Show = props => {
                 artistName={props.data.contentfulShow.artist.name}
               />
             </div>
-            {(props.data.contentfulShow.artisticFile ||
-              props.data.contentfulShow.pressFile ||
-              props.data.contentfulShow.technicalFile) && (
-              <div className="show-links">
-                <h2>Liens utiles</h2>
-                {props.data.contentfulShow.artisticFile && (
-                  <div>
-                    <a
-                      href={props.data.contentfulShow.artisticFile.file.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      alt={props.data.contentfulShow.artisticFile.description}
-                    >
-                      <span className="hand-separator">&#x261e;</span> Dossier
-                      artistique
-                    </a>
-                  </div>
-                )}
-                {props.data.contentfulShow.technicalFile && (
-                  <div>
-                    <a
-                      href={props.data.contentfulShow.technicalFile.file.url}
-                      alt={props.data.contentfulShow.technicalFile.description}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span className="hand-separator">&#x261e;</span> Fiche
-                      technique
-                    </a>
-                  </div>
-                )}
-                {props.data.contentfulShow.pressFile && (
-                  <div>
-                    <a
-                      href={props.data.contentfulShow.pressFile.file.url}
-                      alt={props.data.contentfulShow.pressFile.description}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span className="hand-separator">&#x261e;</span> Dossier
-                      de presse
-                    </a>
-                  </div>
-                )}
+            <div className="show-links">
+              <h2>Liens utiles</h2>
+              <div>
+                <Link to={`/archives`}>
+                  <span className="hand-separator">&#x261e;</span> Voir les
+                  dates passées
+                </Link>
               </div>
-            )}
+              {props.data.contentfulShow.artisticFile && (
+                <div>
+                  <a
+                    href={props.data.contentfulShow.artisticFile.file.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    alt={props.data.contentfulShow.artisticFile.description}
+                  >
+                    <span className="hand-separator">&#x261e;</span> Dossier
+                    artistique
+                  </a>
+                </div>
+              )}
+              {props.data.contentfulShow.technicalFile && (
+                <div>
+                  <a
+                    href={props.data.contentfulShow.technicalFile.file.url}
+                    alt={props.data.contentfulShow.technicalFile.description}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="hand-separator">&#x261e;</span> Fiche
+                    technique
+                  </a>
+                </div>
+              )}
+              {props.data.contentfulShow.pressFile && (
+                <div>
+                  <a
+                    href={props.data.contentfulShow.pressFile.file.url}
+                    alt={props.data.contentfulShow.pressFile.description}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="hand-separator">&#x261e;</span> Dossier de
+                    presse
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -201,7 +203,7 @@ const Show = props => {
 export default Show;
 
 export const pageQuery = graphql`
-  query($showId: String!) {
+  query ($showId: String!) {
     contentfulShow(id: { eq: $showId }) {
       id
       name

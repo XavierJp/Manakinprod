@@ -16,4 +16,10 @@
   .archive-menu {
     display: flex;
   }
+
+  @media (min-width: 1px) and (max-width: 600px) {
+    .archive-menu {
+      flex-direction: column;
+    }
+  }
 }

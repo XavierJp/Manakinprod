@@ -122,8 +122,7 @@ const ArtistsTemplates = (props) => (
                     ];
                   }, [])
                   .filter((d) => new Date(d.endDate) > new Date())
-                  .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))
-                  .slice(0, 4)}
+                  .sort((a, b) => (a.startDate < b.startDate ? -1 : 1))}
                 artistName={props.data.contentfulArtists.name}
               />
             </div>
@@ -137,6 +136,12 @@ const ArtistsTemplates = (props) => (
                 >
                   <span className="hand-separator">&#x261e;</span> Agenda de
                   l‘artiste
+                </Link>
+              </div>
+              <div>
+                <Link to={`/archives`}>
+                  <span className="hand-separator">&#x261e;</span> Voir les
+                  dates passées
                 </Link>
               </div>
               {props.data.contentfulArtists.website && (
