@@ -43,7 +43,7 @@ const ArchivePage = (props) => {
     });
     setDates(selectedDates);
     return () => {};
-  }, [year, artist]);
+  }, [year, artist, initialData]);
 
   return (
     <Layout>

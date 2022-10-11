@@ -34,7 +34,7 @@ const Show = (props) => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>
-          Manakin production | spectacle : {props.data.contentfulShow.name}
+          Manakin production | projet : {props.data.contentfulShow.name}
         </title>
         <link
           rel="canonical"

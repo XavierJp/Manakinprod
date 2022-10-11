@@ -69,7 +69,7 @@ const ArtistsTemplates = (props) => (
           )}
           {props.data.contentfulArtists.show && (
             <div className="sub-section">
-              <h2>Spectacles</h2>
+              <h2>Projets</h2>
               <ul>
                 {props.data.contentfulArtists.show
                   .sort((a, b) => (a.order < b.order ? -1 : 1))
