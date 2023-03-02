@@ -7,8 +7,8 @@ import { extractYear, extractMonth, monthNames } from '../dateListForAgenda';
 const DateListForArchives = (props) => (
   <div className="date-list-for-archives">
     {props.dates.length >= 1 ? (
-      props.dates.map(({ node }) => (
-        <div key={node.startDate + node.artist + node.show} className="line">
+      props.dates.map(({ node }, index) => (
+        <div key={`date-list-${index}`} className="line">
           <span>
             {extractYear(node.startDate)}
             <span className="separator">&#x2022;</span>

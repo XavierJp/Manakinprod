@@ -3,7 +3,7 @@ import './styles.scss';
 import Header from '../../uiComponents/header';
 import Footer from '../../uiComponents/footer';
 import Layout from '../../components/layout';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import ArtitstsList from '../../components/artitstsListForAgenda';
 import DateListForAgenda from '../../components/dateListForAgenda';
 import BreadCrumb from '../../uiComponents/breadCrumb';
@@ -28,6 +28,12 @@ const AgendaTemplate = (props) => (
         dates
       </p>
       <ArtitstsList active={props.data.contentfulArtists.name} />
+      <p className="explanation">
+        Pour consultez les dates passées, accédez aux{' '}
+        <Link to="/archives">
+          <b>☞ Archives</b>
+        </Link>
+      </p>
       <DateListForAgenda
         dates={props.data.contentfulArtists.show.reduce((acc, show) => {
           if (!show.showdate) {

@@ -16,7 +16,9 @@ const Select = ({ label, values, onSelect, feminine = false }) => {
           ← Tou{feminine && 'te'}s les {label}s →
         </option>
         {values.map((value) => (
-          <option value={value}>{value}</option>
+          <option key={value} value={value}>
+            {value}
+          </option>
         ))}
       </select>
     </div>
