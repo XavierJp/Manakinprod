@@ -5,11 +5,9 @@ import './styles.scss';
 const Footer = () => (
   <div className="footer">
     <div>
-      <span>© 2018 Manakin production</span>
+      <span>© {new Date().getFullYear()} Manakin production</span>
       <span className="separator">&#x2022;</span>
       <Link to="/mentions-legales">Mentions légales</Link>
-      <span className="separator">&#x2022;</span>
-      <Link to="/nous-soutenir">Nous soutenir</Link>
     </div>
     {/* <Newsletter /> */}
     <div>

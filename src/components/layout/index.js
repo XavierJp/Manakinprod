@@ -12,7 +12,7 @@ const DefaultLayout = ({ children }) => (
       <link rel="canonical" href="https://manakinprod.fr" />
       <meta
         name="description"
-        content="MANAKIN est une plateforme de production co-fondée par Lauren Boyer et Leslie Perrin pour co-construire et développer des projets artistiques originaux"
+        content="MANAKIN est une plateforme de production qui co-construit et développe des projets artistiques originaux"
       />
       <meta
         name="google-site-verification"
